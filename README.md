@@ -1,4 +1,5 @@
 # Spring Boot基础教程
+[spring boot 实践学习案例，是 spring boot 初学者及核心技术巩固的最佳实践](https://github.com/JeffLi1993/springboot-learning-example.git)
 
 本项目内容为Spring Boot教程程序样例。如您觉得该项目对您有用，欢迎点击右上方的**Star**按钮，给予支持！！
 
@@ -11,11 +12,6 @@
 - Spring Cloud基础教程：http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/
 
 **声明：本人已放弃"Spring Cloud中国社区"，该社区的任何行为均与本人无关。[Spring For All社区](http://spring4all.com/)是新组建的关于Spring的纯技术交流社区（涵盖Spring Boot、Spring Cloud等内容），集诸多开源爱好者和技术大牛贡献内容和交流问题。我们不夸大、不装逼、做最纯粹的技术分享！！！**
-
-**优惠云服务推荐**
-
-- [腾讯云：3年时长最低265元/年](https://cloud.tencent.com/redirect.php?redirect=1005&cps_key=f6a8af1297bfac40b9d10ffa1270029a)
-- [阿里云：ECS云服务器2折起](https://s.click.taobao.com/t?e=m%3D2%26s%3Dzj4kbQ5lKukcQipKwQzePCperVdZeJviEViQ0P1Vf2kguMN8XjClAq9GNeKfy2AD4SaRmc4YmqYCxNLxWxqxDPY8Eqzf%2BUWbOTauL6DcROffvu81lbXO1DDVuRn8ddiDsEVVC24eqozO54LQ%2FVw1L9X5LHh3Z8M%2BWS6ALZVeqlk9XUfbPSJC%2F06deTzTIbffYpyF7ku%2BxKgGargQjSAC4C6cUF%2FXAmem)
 
 ## Spring Boot 2.0 新特性学习
 
@@ -106,6 +102,8 @@
 
 - chapter5-1-1：[JMS（未完成）]
 - chapter5-2-1：[Spring Boot中使用RabbitMQ](http://blog.didispace.com/spring-boot-rabbitmq/)
+- MQTT
+- Kafka Stream
 
 #### 其他功能
 
@@ -119,6 +117,52 @@
 
 - chapter9-2-1：[Spring Boot中使用Dubbo进行服务治理](https://gitee.com/didispace/SpringBoot-Learning/tree/master/Chapter9-2-1)
 - chapter9-2-2：[Spring Boot与Dubbo中管理服务依赖](https://gitee.com/didispace/SpringBoot-Learning/tree/master/Chapter9-2-2)
+
+#### Spring Cloud构建微服务架构
+由于Spring Cloud偏宏观架构，Spring Boot偏微观细节，内容上越来越多，为了两部分内容不互相干扰，所以迁移Spring Cloud内容到：SpringCloud-Learning项目，该项目将不再更新Spring Cloud内容，关注Spring Cloud内容的请移步至SpringCloud-Learning项目
+
+chapter9-1-1：[Spring Cloud构建微服务架构（一）服务注册与发现](http://blog.didispace.com/springcloud1/)
+chapter9-1-2：[Spring Cloud构建微服务架构（二）服务消费者](http://blog.didispace.com/springcloud1/)
+chapter9-1-3：[Spring Cloud构建微服务架构（三）断路器](http://blog.didispace.com/springcloud3/)
+chapter9-1-4：[Spring Cloud构建微服务架构（四）分布式配置中心](http://blog.didispace.com/springcloud4/)
+chapter9-1-5：[Spring Cloud构建微服务架构（五）服务网关](http://blog.didispace.com/springcloud5/)
+chapter9-1-6：[Spring Cloud构建微服务架构（六）集群监控]
+[Spring Cloud构建微服务架构（六）高可用服务注册中心](http://blog.didispace.com/springcloud6/)
+[Spring Cloud构建微服务架构（七）消息总线](http://blog.didispace.com/springcloud7/)
+
+#### [Spring Cloud基础教程](http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/)
+[Spring Cloud构建微服务架构：服务注册与发现（Eureka、Consul）](http://blog.didispace.com/spring-cloud-starter-dalston-1/)
+[Spring Cloud构建微服务架构：服务消费者（基础）](http://blog.didispace.com/spring-cloud-starter-dalston-2-1/)
+[Spring Cloud构建微服务架构：服务消费者（Ribbon）](http://blog.didispace.com/spring-cloud-starter-dalston-2-2/)
+[Spring Cloud构建微服务架构：服务消费者（Feign）](http://blog.didispace.com/spring-cloud-starter-dalston-2-3/)
+[Spring Cloud构建微服务架构：服务消费者（Feign）传文件](http://blog.didispace.com/spring-cloud-starter-dalston-2-4/)
+[Spring Cloud构建微服务架构：分布式配置中心](http://blog.didispace.com/spring-cloud-starter-dalston-3)
+[Spring Cloud构建微服务架构：分布式配置中心（加密与解密）](http://blog.didispace.com/spring-cloud-starter-dalston-3)
+[Spring Cloud构建微服务架构：分布式配置中心（高可用与动态刷新）](http://blog.didispace.com/springcloud4-2/)
+[Spring Cloud构建微服务架构：服务容错保护(Hystrix服务降级)](http://blog.didispace.com/spring-cloud-starter-dalston-4-1)
+[Spring Cloud构建微服务架构：服务容错保护(Hystrix依赖隔离)](http://blog.didispace.com/spring-cloud-starter-dalston-4-2)
+[Spring Cloud构建微服务架构：服务容错保护(Hystrix断路器)](http://blog.didispace.com/spring-cloud-starter-dalston-4-3)
+[Spring Cloud构建微服务架构：Hystrix监控面板](http://blog.didispace.com/spring-cloud-starter-dalston-5-1)
+[Spring Cloud构建微服务架构：Hystrix监控数据聚合](http://blog.didispace.com/spring-cloud-starter-dalston-5-2)
+[Spring Cloud构建微服务架构：服务网关（基础）](http://blog.didispace.com/spring-cloud-starter-dalston-6-1/)
+[Spring Cloud构建微服务架构：服务网关（路由配置）](http://blog.didispace.com/spring-cloud-starter-dalston-6-2/)
+[Spring Cloud构建微服务架构：服务网关（过滤器）](http://blog.didispace.com/spring-cloud-starter-dalston-6-3/)
+[Spring Cloud构建微服务架构：服务网关（API文档汇总）](http://blog.didispace.com/Spring-Cloud-Zuul-use-Swagger-API-doc/)
+[Spring Cloud构建微服务架构：消息驱动的微服务（入门）](http://blog.didispace.com/spring-cloud-starter-dalston-7-1/)
+[Spring Cloud构建微服务架构：消息驱动的微服务（核心概念）](http://blog.didispace.com/spring-cloud-starter-dalston-7-2/)
+[Spring Cloud构建微服务架构：消息驱动的微服务（消费组）](http://blog.didispace.com/spring-cloud-starter-dalston-7-2/)
+[Spring Cloud构建微服务架构：消息驱动的微服务（消息分区）](http://blog.didispace.com/spring-cloud-starter-dalston-7-4/)
+[Spring Cloud构建微服务架构：分布式服务跟踪（入门）](http://blog.didispace.com/spring-cloud-starter-dalston-8-1/)
+[Spring Cloud构建微服务架构：分布式服务跟踪（跟踪原理）](http://blog.didispace.com/spring-cloud-starter-dalston-8-2/)
+[Spring Cloud构建微服务架构：分布式服务跟踪（整合logstash）](http://blog.didispace.com/spring-cloud-starter-dalston-8-3/)
+[Spring Cloud构建微服务架构：分布式服务跟踪（整合zipkin）](http://blog.didispace.com/spring-cloud-starter-dalston-8-4/)
+[Spring Cloud构建微服务架构：分布式服务跟踪（收集原理）](http://blog.didispace.com/spring-cloud-starter-dalston-8-5/)
+[Spring Cloud构建微服务架构：分布式服务跟踪（抽样收集）](http://blog.didispace.com/spring-cloud-starter-dalston-8-6/)
+[【待更新】Spring Cloud构建微服务架构：服务综合管理（入门）]
+
+#### [SpringBoot 新特性学习](http://blog.didispace.com/Spring-Boot-2-0-feature/)
+
+#### [教程整理地址](http://blog.didispace.com/book/springboot/)
 
 ## 我的公众号
 
