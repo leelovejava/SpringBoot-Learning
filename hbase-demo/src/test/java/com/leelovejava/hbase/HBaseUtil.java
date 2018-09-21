@@ -278,7 +278,7 @@ public class HBaseUtil {
      * @param tableName
      * @param rowKey
      * @param cfName
-     * @param qualifier 限定符
+     * @param qualifier 列标识
      * @return
      */
     public static boolean deleteQualifier(String tableName, String rowKey, String cfName,
