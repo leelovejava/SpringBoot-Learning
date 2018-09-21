@@ -174,8 +174,17 @@ public class HBaseUtil {
         return null;
     }
 
+    /**
+     * 查询数据
+     * hbase查询数据的两种方式:
+     * 1、按指定RowKey获取唯一一条记录，get方法（org.apache.hadoop.hbase.client.Get）
+     * 2、按指定的条件获取一批记录，scan方法（org.apache.Hadoop.Hbase.client.Scan）  ==>scan
+     * @param tableName 表名
+     * @return
+     */
     public static ResultScanner getScanner(String tableName) {
         try (Table table = HBaseConn.getTable(tableName)) {
+            // scan:通过对表的扫描来获取对用的值
             Scan scan = new Scan();
             scan.setCaching(1000);
             return table.getScanner(scan);
@@ -196,8 +205,10 @@ public class HBaseUtil {
     public static ResultScanner getScanner(String tableName, String startRowKey, String endRowKey) {
         try (Table table = HBaseConn.getTable(tableName)) {
             Scan scan = new Scan();
+            // 限定范围,范围越小,性能越高
             scan.withStartRow(Bytes.toBytes(startRowKey));
             scan.withStopRow(Bytes.toBytes(endRowKey));
+            // 设置缓存大小,提高查询效率
             scan.setCaching(1000);
             return table.getScanner(scan);
         } catch (IOException ioe) {
@@ -206,13 +217,19 @@ public class HBaseUtil {
         return null;
     }
 
+    /**
+     * 批量检索数据.
+     * @param tableName     表名
+     * @param startRowKey   起始RowKey
+     * @param endRowKey     终止RowKey
+     * @param filterList    过滤器
+     * @return
+     */
     public static ResultScanner getScanner(String tableName, String startRowKey, String endRowKey,
                                            FilterList filterList) {
         try (Table table = HBaseConn.getTable(tableName)) {
             Scan scan = new Scan();
-            //scan.setStartRow(Bytes.toBytes(startRowKey));
             scan.withStartRow(Bytes.toBytes(startRowKey));
-            //scan.setStopRow(Bytes.toBytes(endRowKey));
             scan.withStopRow(Bytes.toBytes(endRowKey));
             scan.setFilter(filterList);
             scan.setCaching(1000);
