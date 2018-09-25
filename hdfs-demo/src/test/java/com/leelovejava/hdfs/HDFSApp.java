@@ -64,7 +64,7 @@ public class HDFSApp {
     @Test
     public void readFileTest() {
         try {
-            readFile("/opt/zookeeper-3.5.4-beta.tar.gz");
+            readFile("/hadoop001/1.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
