@@ -22,13 +22,32 @@ public class SpringBootHDFSApp implements CommandLineRunner {
     private FsShell fsShell;  // 用于执行hdfs shell命令的对象
 
     public void run(String... strings) throws Exception {
+        System.setProperty("hadoop.home.dir","D:/setup/hadoop/bin");
         // 查看根目录下的所有文件
         for (FileStatus fileStatus : fsShell.ls("/")) {
             System.out.println("> " + fileStatus.getPath());
         }
+
+        // 创建文件夹
+        //fsShell.mkdir("/hadoop001/");
+
+        // 上传文件
+        //fsShell.put("D:/3.zip","/hadoop001/");
+
+        // 删除文件
+        //fsShell.rm("/hadoop001/3.zip");
+
+        // 下载文件
+        fsShell.get("/hadoop001/1.txt","C://");
     }
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootHDFSApp.class, args);
     }
+
+    /**
+     * Caused by: org.apache.hadoop.ipc.RemoteException(java.io.IOException): File /hadoop001/3.zip could only be written to 0 of the 1 minReplication nodes. There are 1 datanode(s) running and 1 node(s) are excluded in this operation.
+     *
+     * Failed to connect to /127.0.0.1:9866 for block BP-806866622-0.0.0.0-1537509597269:blk_1073741841_1018, add to deadNodes and continue.
+     */
 }
