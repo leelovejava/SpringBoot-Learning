@@ -54,4 +54,14 @@ public class SpringHadoopApp {
         IOUtils.copyBytes(in, System.out, 1024);
         in.close();
     }
+
+    /**
+     * 异常
+     * 1.连接拒绝:
+     *   1).修改/etc/hosts 0.0.0.0 hadoop001
+     *   2).修改hadoop/etc/hadoop/core-site.xml
+     * 2.org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create directory /SpringHDFS. Name node is in safe mode
+     * 关闭安全模式
+     *   bin/hadoop dfsadmin -safemode leave
+     */
 }

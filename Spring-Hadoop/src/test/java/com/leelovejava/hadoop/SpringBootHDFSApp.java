@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.data.hadoop.fs.FsShell;
 
 /**
@@ -13,7 +15,7 @@ import org.springframework.data.hadoop.fs.FsShell;
  * @author: 01
  * @create: 2018-04-04 18:45
  **/
-@SpringBootApplication
+@SpringBootApplication(exclude={DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class SpringBootHDFSApp implements CommandLineRunner {
 
     @Autowired
