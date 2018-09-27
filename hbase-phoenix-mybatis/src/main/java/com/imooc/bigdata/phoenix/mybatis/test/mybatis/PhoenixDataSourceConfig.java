@@ -49,6 +49,12 @@ public class PhoenixDataSourceConfig {
     return factory.getDataSource();
   }
 
+  /**
+   * Qualifier 注入的方式传入dataSource
+   * @param dataSource
+   * @return
+   * @throws Exception
+   */
   @Bean(name = "PhoenixSqlSessionFactory")
   @Primary
   public SqlSessionFactory phoenixSqlSessionFactory(

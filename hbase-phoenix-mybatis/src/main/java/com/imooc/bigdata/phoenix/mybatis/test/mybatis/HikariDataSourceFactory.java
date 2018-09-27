@@ -9,7 +9,7 @@ import com.zaxxer.hikari.HikariDataSource;
  */
 public class HikariDataSourceFactory extends UnpooledDataSourceFactory {
 
-  public HikariDataSourceFactory() {
-    this.dataSource = new HikariDataSource();
-  }
+    public HikariDataSourceFactory() {
+        this.dataSource = new HikariDataSource();
+    }
 }
