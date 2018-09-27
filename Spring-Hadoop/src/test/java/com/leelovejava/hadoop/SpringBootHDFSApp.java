@@ -22,12 +22,11 @@ public class SpringBootHDFSApp implements CommandLineRunner {
     private FsShell fsShell;  // 用于执行hdfs shell命令的对象
 
     public void run(String... strings) throws Exception {
-        System.setProperty("hadoop.home.dir","D:/setup/hadoop/bin");
+        System.setProperty("hadoop.home.dir","D:/setup/hadoop");
         // 查看根目录下的所有文件
         for (FileStatus fileStatus : fsShell.ls("/")) {
             System.out.println("> " + fileStatus.getPath());
         }
-
         // 创建文件夹
         //fsShell.mkdir("/hadoop001/");
 
@@ -38,7 +37,7 @@ public class SpringBootHDFSApp implements CommandLineRunner {
         //fsShell.rm("/hadoop001/3.zip");
 
         // 下载文件
-        fsShell.get("/hadoop001/1.txt","C://");
+        fsShell.get("/1.txt","C://");
     }
 
     public static void main(String[] args) {

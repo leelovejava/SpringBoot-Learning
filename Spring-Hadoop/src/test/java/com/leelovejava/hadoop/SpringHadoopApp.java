@@ -56,6 +56,22 @@ public class SpringHadoopApp {
     }
 
     /**
+     * 往hdfs上传文件
+     * org.apache.hadoop.ipc.RemoteException(java.io.IOException): File /1.jpg could only be written to 0 of the 1 minReplication nodes. There are 1 datanode(s) running and 1 node(s) are excluded in this operation
+     * @throws Exception
+     */
+    @Test
+    public void testAddFileToHdfs() throws Exception {
+
+        // 要上传的文件所在的本地路径
+        Path src = new Path("D:/1/1.jpg");
+        // 要上传到hdfs的目标路径
+        Path dst = new Path("/");
+        fileSystem.copyFromLocalFile(src, dst);
+        fileSystem.close();
+    }
+
+    /**
      * 异常
      * 1.连接拒绝:
      *   1).修改/etc/hosts 0.0.0.0 hadoop001
