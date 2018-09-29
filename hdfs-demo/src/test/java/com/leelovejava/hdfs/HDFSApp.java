@@ -20,7 +20,7 @@ import java.net.URISyntaxException;
  * @date 2018-09-12 09:44
  */
 public class HDFSApp {
-    private static final String HDFS_PATH = "hdfs://192.168.109.131:9000";
+    private static final String HDFS_PATH = "hdfs://192.168.9.161:8020";
     private FileSystem fileSystem;
     private Configuration configuration;
 
@@ -33,7 +33,7 @@ public class HDFSApp {
             //configuration.set("fs.hdfs.impl",org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
             //configuration.set("hadoop.home.dir", "D:/setup/hadoop");
             //configuration.set("HADOOP_HOME","D:/setup/hadoop");
-            fileSystem = FileSystem.get(new URI(HDFS_PATH),configuration,"root");
+            fileSystem = FileSystem.get(new URI(HDFS_PATH),configuration,"hadoop");
             //fileSystem = FileSystem.get(new URI(HDFS_PATH),configuration);
             //fileSystem = FileSystem.get(configuration);
         } catch (IOException e) {
@@ -64,7 +64,7 @@ public class HDFSApp {
     @Test
     public void readFileTest() {
         try {
-            readFile("/hadoop001/1.txt");
+            readFile("/hadoop000/1.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }

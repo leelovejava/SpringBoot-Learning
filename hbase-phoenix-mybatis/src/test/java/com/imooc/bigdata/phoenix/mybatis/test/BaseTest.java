@@ -30,7 +30,7 @@ public class BaseTest {
     @Test
     public void addUser() {
         UserInfo userInfo = new UserInfo();
-        userInfo.setId(5);
+        userInfo.setId(1);
         userInfo.setName("Jerry");
         userInfoMapper.addUser(userInfo);
     }

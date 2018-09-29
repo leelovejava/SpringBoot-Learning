@@ -31,13 +31,13 @@ public class SpringBootHDFSApp implements CommandLineRunner {
         //fsShell.mkdir("/hadoop001/");
 
         // 上传文件
-        //fsShell.put("D:/3.zip","/hadoop001/");
+        fsShell.put("D:/3.zip","/hadoop001/");
 
         // 删除文件
         //fsShell.rm("/hadoop001/3.zip");
 
         // 下载文件
-        fsShell.get("/1.txt","C://");
+        //fsShell.get("/hadoop000/1.txt","C://");
     }
 
     public static void main(String[] args) {
@@ -48,5 +48,12 @@ public class SpringBootHDFSApp implements CommandLineRunner {
      * Caused by: org.apache.hadoop.ipc.RemoteException(java.io.IOException): File /hadoop001/3.zip could only be written to 0 of the 1 minReplication nodes. There are 1 datanode(s) running and 1 node(s) are excluded in this operation.
      *
      * Failed to connect to /127.0.0.1:9866 for block BP-806866622-0.0.0.0-1537509597269:blk_1073741841_1018, add to deadNodes and continue.
+     *
+     * 3.上传文件异常:
+     *  Permission denied: user=Administrator, access=WRITE, inode="/":hadoop:supergroup:drwxr-xr-x
+     *  1) 修改hadoop目录的权限
+     *  sudo chmod -R 755 /home/hadoop/
+     *  2) 修改hdfs的权限:sudo bin/hadoop dfs -chmod -R 755 /
+     *  https://blog.csdn.net/xianjie0318/article/details/75453758/
      */
 }
