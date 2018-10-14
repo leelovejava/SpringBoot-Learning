@@ -22,7 +22,8 @@ public class HBaseConn {
     try {
       if (configuration == null) {
         configuration = HBaseConfiguration.create();
-        configuration.set("hbase.zookeeper.quorum", "192.168.109.131:2181");
+        configuration.set("hbase.zookeeper.quorum", "192.168.0.110:2181");
+        configuration.set("HADOOP_HOME","C:/Program Files (x86)/hadoop");
         // HBase RegionServer绑定的端口
         //configuration.set("hbase.regionserver.port","192.168.109.131:16020");
         // HBase的Master的端口,默认60000
