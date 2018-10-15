@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.{RequestMapping, RequestMethod, R
 @RestController
 class ScalaHelloBoot {
 
-  @RequestMapping(value = Array("/sayScalaHello"),method = Array(RequestMethod.GET))
+  @RequestMapping(value = Array("/sayScalaHello"), method = Array(RequestMethod.GET))
   def sayScalaHello() = {
 
     "Hello Scala Boot...."
