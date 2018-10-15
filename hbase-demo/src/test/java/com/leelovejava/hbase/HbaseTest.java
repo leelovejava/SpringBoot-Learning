@@ -25,7 +25,7 @@ public class HbaseTest {
             Table table =HBaseConn.getTable("test");
             System.out.println("tableName:"+table.getName());
             System.out.println("nameAsString:"+table.getName().getNameAsString());
-            System.out.println("columnFamilyCount:"+table.getDescriptor().getColumnFamilyCount());
+            //System.out.println("columnFamilyCount:"+table.getDescriptor().getColumnFamilyCount());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,7 +49,7 @@ public class HbaseTest {
                 System.out.println("table exists");
             }*/
             System.out.println("admin start");
-            System.out.println(admin.balance());
+            //System.out.println(admin.balance());
             System.out.println("tableExists:"+admin.tableExists(tableName));
             System.out.println("admin end");
         } catch (Exception e) {

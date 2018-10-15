@@ -1,7 +1,6 @@
 package com.leelovejava.hbase;
 
-import org.apache.hadoop.hbase.CompareOperator;
-import org.apache.hadoop.hbase.TableName;
+
 import org.apache.hadoop.hbase.client.ResultScanner;
 import org.apache.hadoop.hbase.filter.*;
 import org.apache.hadoop.hbase.filter.FilterList.Operator;
@@ -18,7 +17,7 @@ public class HBaseFilterTest {
 
     @Test
     public void createTable() {
-        HBaseUtil.createTable(TableName.valueOf("FileTable"), new String[]{"fileInfo", "saveInfo"});
+        HBaseUtil.createTable("FileTable", new String[]{"fileInfo", "saveInfo"});
     }
 
     @Test
@@ -42,7 +41,7 @@ public class HBaseFilterTest {
      * rowKey过滤器—RowFilter
      * 通过正则，过滤rowKey值
      */
-    @Test
+    /*@Test
     public void rowFilterTest() {
         // CompareOperator op, ByteArrayComparable rowComparator
         Filter filter = new RowFilter(CompareOperator.EQUAL, new BinaryComparator(Bytes.toBytes("rowkey1")));
@@ -53,7 +52,7 @@ public class HBaseFilterTest {
                 .getScanner("FileTable", "rowkey1", "rowkey3", filterList);
 
         print(scanner);
-    }
+    }*/
 
     /**
      * 前缀过滤器:过滤指定列名

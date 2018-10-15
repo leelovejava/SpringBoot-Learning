@@ -22,7 +22,7 @@ public class HBaseUtilTest {
 
     @Test
     public void createTable() {
-        HBaseUtil.createTable(TableName.valueOf("FileTable"), new String[]{"fileInfo", "saveInfo"});
+        HBaseUtil.createTable("FileTable", new String[]{"fileInfo", "saveInfo"});
     }
 
     @Test
@@ -68,7 +68,7 @@ public class HBaseUtilTest {
 
     @Test
     public void deleteTable() {
-        HBaseUtil.deleteTable(TableName.valueOf("FileTable"));
+        HBaseUtil.deleteTable("FileTable");
     }
 
    /* @After
