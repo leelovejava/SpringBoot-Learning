@@ -18,6 +18,11 @@ class MetaTableController @Autowired()(metaTableService: MetaTableService) {
     ResultVOUtil.success()  // 此处就是Scala调用已有的Java代码
   }
 
+  /**
+    * 查询
+    * http://127.0.0.1:7777/scala-boot/meta/table/
+    * @return
+    */
   @RequestMapping(value = Array("/"), method = Array(RequestMethod.GET))
   @ResponseBody
   def query() = {
