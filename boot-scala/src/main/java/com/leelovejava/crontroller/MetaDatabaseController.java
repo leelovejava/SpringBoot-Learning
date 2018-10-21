@@ -5,7 +5,7 @@ import com.leelovejava.service.MetaDatabaseService;
 import com.leelovejava.utils.ResultVO;
 import com.leelovejava.utils.ResultVOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,7 @@ public class MetaDatabaseController {
     private MetaDatabaseService metaDatabaseService;
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResultVO save(@ModelAttribute MetaDatabase metaDatabase) {
+    public ResultVO save(@RequestBody MetaDatabase metaDatabase) {
         metaDatabaseService.save(metaDatabase);
         return ResultVOUtil.success();
     }
