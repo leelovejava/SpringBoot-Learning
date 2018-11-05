@@ -16,7 +16,7 @@ object JSON_DF {
 
     // A JSON dataset is pointed to by path.
     // The path can be either a single text file or a directory storing text files
-    val path = "D:/workspace/SpringBoot-Learning/Spark-Learning/src/scala/resources/people.json"
+    val path = "D:/workspace/SpringBoot-Learning/Spark-Learning/src/resources/people.json"
     val peopleDF = spark.read.json(path)
 
     // The inferred schema can be visualized using the printSchema() method

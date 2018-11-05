@@ -27,7 +27,7 @@ object HelloWorld {
     import spark.implicits._
 
     //var path="examples/src/main/resources/people.json"
-    val path = "D:/workspace/SpringBoot-Learning/Spark-Learning/src/scala/resources/people.json"
+    val path = "D:/workspace/SpringBoot-Learning/Spark-Learning/src/resources/people.json"
     val df = spark.read.json(path)
 
     // Displays the content of the DataFrame to stdout
