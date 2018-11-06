@@ -162,7 +162,7 @@
 
 #### [SpringBoot 新特性学习](http://blog.didispace.com/Spring-Boot-2-0-feature/)
 
-#### [教程整理地址](http://blog.didispace.com/book/springboot/)
+#### [教程整理地址](http://blog.didispace.com/)
 
 ## 我的公众号
 
