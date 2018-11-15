@@ -87,7 +87,11 @@
 #### 安全管理
 
 - chapter4-3-1：[使用Spring Security](http://blog.didispace.com/springbootsecurity/)
+- [从源码看Spring Security之采坑笔记（Spring Boot篇）](https://www.javazhiyin.com/4582.html)
 - chapter4-3-2：[使用Spring Session（未完成）]
+- [教你 Shiro 整合 SpringBoot，避开各种坑](https://www.javazhiyin.com/452.html)
+- [教你 Shiro + SpringBoot 整合 JWT](https://www.javazhiyin.com/464.html)
+- [SpringBoot+Shiro+MyBatisPlus搭建前后端分离的多模块项目(附源码)](https://www.javazhiyin.com/16396.html)
 
 #### 缓存支持
 
@@ -101,9 +105,19 @@
 #### 消息服务
 
 - chapter5-1-1：[JMS（未完成）]
+- [JMS 在 SpringBoot 中的使用](https://www.cnblogs.com/niit-soft-518/p/6957384.html)
 - chapter5-2-1：[Spring Boot中使用RabbitMQ](http://blog.didispace.com/spring-boot-rabbitmq/)
 - MQTT
 - Kafka Stream
+
+#### 文件上传
+- [Spring Boot文件上传](https://www.javazhiyin.com/16281.html)
+
+#### 网络
+- [Netty与Spring Boot的整合](https://www.cnblogs.com/tdg-yyx/p/8376842.html)
+
+#### 搜索
+- [SpringBoot整合elasticsearch](https://www.cnblogs.com/dalaoyang/p/8990989.html)
 
 #### 其他功能
 
@@ -112,6 +126,7 @@
 - [在传统Spring应用中使用spring-boot-actuator模块提供监控端点](http://blog.didispace.com/spring-boot-actuator-without-boot/)
 - [Spring Boot应用的后台运行配置](http://blog.didispace.com/spring-boot-run-backend/)
 - [Spring Boot自定义Banner](http://blog.didispace.com/spring-boot-banner/)
+- [Springboot webSocket（一）](https://www.javazhiyin.com/20712.html)
 
 #### Dubbo进行服务治理
 
