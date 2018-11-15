@@ -14,6 +14,8 @@
         <log4j.version>1.2.17</log4j.version>
         <!--mysql驱动-->
         <mysql-connector-java.verson>5.1.27</mysql-connector-java.verson>
+        <kafka-clients.version>0.10.2.1</kafka-clients.version>
+        <commons-pool2.version>2.4.2</commons-pool2.version>
     </properties>
 
     <dependencies>
@@ -42,6 +44,25 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.27</version>
         </dependency>
+
+        <!--spark stream kafka start-->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka-clients.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>${commons-pool2.version}</version>
+        </dependency>
+        <!--spark stream kafka end-->
+
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -108,16 +129,16 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                 </configuration>
-                 <executions>
-                     <!--在应用maven该插件会启动-->
-                     <execution>
-                         <id>make-assembly</id>
-                         <phase>package</phase>
-                         <goals>
-                             <goal>single</goal>
-                         </goals>
-                     </execution>
-                 </executions>
+                <executions>
+                    <!--在应用maven该插件会启动-->
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
