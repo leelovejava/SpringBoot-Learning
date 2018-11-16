@@ -11,7 +11,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
   *
   * 在 DStream 中跨批次维护状态
   */
-object WorldCount {
+object UpdateStateWorldCount {
 
   def main(args: Array[String]) {
 

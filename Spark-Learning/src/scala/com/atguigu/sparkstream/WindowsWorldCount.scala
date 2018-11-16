@@ -11,7 +11,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
   * 每隔十秒对持续30秒的数据生成word count
   * Window Operations有点类似于Storm中的State，可以设置窗口的大小和滑动窗口的间隔来动态的获取当前Steaming的允许状态
   */
-object WorldCount {
+object WindowsWorldCount {
 
   def main(args: Array[String]) {
 
