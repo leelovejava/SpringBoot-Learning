@@ -24,7 +24,11 @@ object Transformation {
 
     //sampleTest
 
-    unionTest
+    //unionTest
+
+    //partitionByTest
+
+    //orderTest
 
     // 停止sc，结束该任务
     sc.stop()
@@ -104,33 +108,34 @@ object Transformation {
     * 以指定的随机种子随机抽样出数量为fraction的数据，withReplacement表示是抽出的数据是否放回，true为有放回的抽样，false为无放回的抽样，seed用于指定随机数生成器种子。
     * 例子从RDD中随机且有放回的抽出50%的数据，随机种子值为3（即可能以1 2 3的其中一个起始值）
     */
-  def sampleTest: Unit ={
+  def sampleTest: Unit = {
     val rdd = sc.parallelize(1 to 10)
     // res4: Array[Int] = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
     // 有放回抽样
-    println(rdd.sample(true,0.4,2).collect())
+    println(rdd.sample(true, 0.4, 2).collect())
     // res0: Array[Int] = Array(1, 2, 2)
 
-    println(rdd.sample(false,0.4,2).collect())
+    println(rdd.sample(false, 0.4, 2).collect())
     // res1: Array[Int] = Array(1, 3)
 
     /**
       * takeSample(withReplacement,num,seed)
       * 和Sample的区别是：takeSample返回的是最终的结果集合。
       */
-    println(rdd.takeSample(false,1,2))
+    println(rdd.takeSample(false, 1, 2))
     // res10: Array[Int] = Array(4)
   }
 
-  /**
-    * union(otherDataset)	对源RDD和参数RDD求并集后返回一个新的RDD
-    */
-  def unionTest: Unit ={
-    val rdd1=sc.parallelize(1 to 5)
 
-    val rdd2=sc.parallelize(2 to 6)
+  def unionTest: Unit = {
+    val rdd1 = sc.parallelize(1 to 5)
 
+    val rdd2 = sc.parallelize(2 to 6)
+
+    /**
+      * union(otherDataset)	对源RDD和参数RDD求并集后返回一个新的RDD
+      */
     println(rdd1.union(rdd2).collect().mkString(","))
     // res11: Array[Int] = Array(1, 2, 3, 4, 5, 2, 3, 4, 5, 6)
 
@@ -141,10 +146,112 @@ object Transformation {
     // res12: Array[Int] = Array(4, 2, 3, 5)
 
     /**
-      * distinct([numTasks]))
+      * cartesian(otherDataset)	笛卡尔积
+      */
+    println(rdd1.cartesian(rdd2).collect().mkString(","))
+    // res22: Array[(Int, Int)] = Array((1,2), (1,3), (2,2), (2,3), (1,4), (1,5), (1,6), (2,4), (2,5), (2,6), (3,2), (3,3), (4,2), (4,3), (5,2), (5,3), (3,4), (3,5), (3,6), (4,4), (4,5), (4,6), (5,4), (5,5), (5,6))
+
+    /**
+      * distinct([numTasks])) 去重
       * 对源RDD进行去重后返回一个新的RDD. 默认情况下，只有8个并行任务来操作，但是可以传入一个可选的numTasks参数改变它。
       */
-    val rdd3=sc.parallelize(List(1, 2, 3, 4, 5, 2, 3, 4, 5, 6))
+    val rdd3 = sc.parallelize(List(1, 2, 3, 4, 5, 2, 3, 4, 5, 6))
+    println(rdd3.distinct(2).collect().mkString(","))
     println(rdd3.distinct().collect().mkString(","))
+  }
+
+  /**
+    * partitionBy
+    * 对RDD进行分区操作，如果原有的partionRDD和现有的partionRDD是一致的话就不进行分区， 
+    * 否则会生成ShuffleRDD. 
+    */
+  def partitionByTest: Unit = {
+    var rdd = sc.parallelize(Array((1, "aaa"), (2, "bbb"), (3, "ccc")))
+    println(rdd.partitions.size)
+    var rdd2 = rdd.partitionBy(new org.apache.spark.HashPartitioner(3))
+    println(rdd2.partitions.size)
+  }
+
+  /**
+    * groupByKey
+    * 对相同键的值进行分组
+    * 对每个key进行操作，只生成一个sequence
+    */
+  def groupByKey: Unit = {
+    varl words = Array("aaa", "bbb", "ccc")
+    val wordPairsRDD = sc.parallelize(words).map(word => (word, 1))
+    // res14: Array[(String, Int)] = Array((aaa,1), (bbb,1), (ccc,1))
+    println(wordPairsRDD.groupByKey().collect())
+    // res13: Array[(String, Iterable[Int])] = Array((bbb,CompactBuffer(1)), (ccc,CompactBuffer(1)), (aaa,CompactBuffer(1)))
+  }
+
+
+  /**
+    * 排序
+    */
+  def orderTest: Unit = {
+    val rdd = sc.parallelize(Array((3, "aa"), (6, "cc"), (2, "bb"), (1, "dd")))
+
+    /**
+      * keys() 返回一个仅包含key的RDD
+      */
+    println(rdd.keys())
+
+    /**
+      * values() 返回一个仅包含value的RDD
+      */
+    println(rdd.values())
+
+    /**
+      * sortByKey([ascending], [numTasks])
+      * 根据键进行排序
+      * 在一个(K,V)的RDD上调用，K必须实现Ordered接口，返回一个按照key进行排序的(K,V)的RDD
+      */
+    rdd.sortByKey(true).collect()
+    // res16: Array[(Int, String)] = Array((1,dd), (2,bb), (3,aa), (6,cc))
+
+    rdd.sortByKey(false).collect()
+    // res17: Array[(Int, String)] = Array((6,cc), (3,aa), (2,bb), (1,dd))
+
+    /**
+      * sortBy(func,[ascending], [numTasks])
+      * 与sortByKey类似，但是更灵活,可以用func先对数据进行处理，按照处理后的数据比较结果排序
+      */
+    // 第一个元素+1,再进行排序
+    rdd.sortBy(x => x._1 + 1).collect()
+    // res19: Array[(Int, String)] = Array((1,dd), (2,bb), (3,aa), (6,cc))
+  }
+
+  /**
+    * join(otherDataset, [numTasks])
+    * 内连接
+    * 在类型为(K,V)和(K,W)的RDD上调用，返回一个相同key对应的所有元素对在一起的(K,(V,W))的RDD
+    */
+  def join: Unit = {
+    val rdd = sc.parallelize(Array((3, "aa"), (6, "cc"), (2, "bb"), (1, "dd")))
+    val rdd1 = sc.parallelize(Array((1, 4), (2, 5), (3, 6)))
+    rdd.join(rdd1).collect()
+    // res20: Array[(Int, (String, Int))] = Array((2,(bb,5)), (1,(dd,4)), (3,(aa,6)))
+
+    /**
+      * 右外连接
+      */
+    rdd.rightOuterJoin(rdd1).collect()
+
+    /**
+      * 左外连接
+      */
+    rdd.leftOuterJoin(rdd1).collect()
+  }
+
+  /**
+    * subtract(otherDataset)
+    * 计算差的一种函数去除两个RDD中相同的元素，不同的RDD将保留下来 
+    */
+  def subtractTest: Unit = {
+    var rdd = sc.parallelize(1 to 5)
+    var rdd1 = sc.parallelize(2 to 6)
+    rdd.subtract(rdd1).collect()
+    // res25: Array[Int] = Array(1)
   }
 }
