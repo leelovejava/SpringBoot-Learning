@@ -178,7 +178,7 @@ object Transformation {
     * 对每个key进行操作，只生成一个sequence
     */
   def groupByKey: Unit = {
-    varl words = Array("aaa", "bbb", "ccc")
+    var words = Array("aaa", "bbb", "ccc")
     val wordPairsRDD = sc.parallelize(words).map(word => (word, 1))
     // res14: Array[(String, Int)] = Array((aaa,1), (bbb,1), (ccc,1))
     println(wordPairsRDD.groupByKey().collect())
@@ -195,12 +195,12 @@ object Transformation {
     /**
       * keys() 返回一个仅包含key的RDD
       */
-    println(rdd.keys())
+    println(rdd.keys)
 
     /**
       * values() 返回一个仅包含value的RDD
       */
-    println(rdd.values())
+    println(rdd.values)
 
     /**
       * sortByKey([ascending], [numTasks])
@@ -223,13 +223,17 @@ object Transformation {
   }
 
   /**
-    * join(otherDataset, [numTasks])
-    * 内连接
-    * 在类型为(K,V)和(K,W)的RDD上调用，返回一个相同key对应的所有元素对在一起的(K,(V,W))的RDD
+    * 连接
     */
   def join: Unit = {
     val rdd = sc.parallelize(Array((3, "aa"), (6, "cc"), (2, "bb"), (1, "dd")))
     val rdd1 = sc.parallelize(Array((1, 4), (2, 5), (3, 6)))
+
+    /**
+      * join(otherDataset, [numTasks])
+      * 内连接
+      * 在类型为(K,V)和(K,W)的RDD上调用，返回一个相同key对应的所有元素对在一起的(K,(V,W))的RDD
+      */
     rdd.join(rdd1).collect()
     // res20: Array[(Int, (String, Int))] = Array((2,(bb,5)), (1,(dd,4)), (3,(aa,6)))
 
@@ -249,9 +253,70 @@ object Transformation {
     * 计算差的一种函数去除两个RDD中相同的元素，不同的RDD将保留下来 
     */
   def subtractTest: Unit = {
-    var rdd = sc.parallelize(1 to 5)
-    var rdd1 = sc.parallelize(2 to 6)
+    val rdd = sc.parallelize(1 to 5)
+    val rdd1 = sc.parallelize(2 to 6)
     rdd.subtract(rdd1).collect()
     // res25: Array[Int] = Array(1)
+  }
+
+  /**
+    * 数值RDD的统计操作
+    */
+  def numTest: Unit = {
+    val rdd = sc.parallelize(1 to 10)
+
+    /**
+      * rdd中的元素个数
+      */
+    rdd.count()
+    // res6: Long = 10
+
+    /**
+      * 元素的平均值
+      */
+    rdd.mean()
+    // res7: Double = 5.5
+
+    /**
+      * 总和
+      */
+    rdd.sum()
+    // res8: Double = 55.0
+
+    /**
+      * 最大值
+      */
+    rdd.max()
+    // res9: Int = 10
+
+    /**
+      * 最小值
+      */
+    rdd.min()
+    // res10: Int = 1
+
+    /**
+      * 元素的方差
+      */
+    rdd.variance()
+    // res11: Double = 8.25
+
+    /**
+      * 从采样中计算出方差
+      */
+    rdd.sampleVariance()
+    // res12: Double = 9.166666666666666
+
+    /**
+      * 标准差
+      */
+    rdd.stdev()
+    // res13: Double = 2.8722813232690143
+
+    /**
+      * 采样的标准差
+      */
+    rdd.sampleStdev()
+    // res14: Double = 3.0276503540974917
   }
 }

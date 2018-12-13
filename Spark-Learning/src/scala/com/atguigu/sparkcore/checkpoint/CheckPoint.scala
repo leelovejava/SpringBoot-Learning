@@ -29,6 +29,7 @@ class CheckPoint {
     val conf = new SparkConf().setMaster("local[2]").setAppName("Transformation")
     // 创建SparkContext，该对象是提交spark App的入口
     val sc = new SparkContext(conf)
+    val data = sc.parallelize(1 to 10)
     sc.setCheckpointDir("hdfs://hadoop000:9000/checkpoint")
     data.checkpoint
     data.count

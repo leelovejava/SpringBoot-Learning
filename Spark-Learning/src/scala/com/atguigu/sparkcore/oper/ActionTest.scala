@@ -62,14 +62,14 @@ object ActionTest {
     * first()	返回RDD的第一个元素（类似于take(1)）
     */
   def first: Unit = {
-    var rdd = sc.parallelize(1 to 5)
+    val rdd = sc.parallelize(1 to 5)
     println(rdd.first())
   }
 
 
   def take: Unit = {
 
-    var rdd = sc.makeRDD(1 to 5)
+    val rdd = sc.makeRDD(1 to 5)
 
     /**
       * take(n)	返回一个由数据集的前n个元素组成的数组
@@ -93,7 +93,7 @@ object ActionTest {
 
 
   def save: Unit = {
-    var rdd = sc.parallelize(1 to 100)
+    val rdd = sc.parallelize(1 to 100)
 
     /**
       * saveAsTextFile(path)
@@ -117,11 +117,19 @@ object ActionTest {
     * foreach(func)	在数据集的每一个元素上，运行函数func进行更新。
     */
   def foreach: Unit = {
-    var rdd = sc.makeRDD(1 to 10)
-    var sum = sc.accumulator(0)
-    //sc.org.apache.spark.util.AccumulatorV2
-    rdd.foreach(sum += _)
+    val rdd = sc.makeRDD(1 to 10)
+
+    val sum = sc.longAccumulator
+    // res0: org.apache.spark.util.LongAccumulator = LongAccumulator(id: 0, name: None, value: 0)
+    //sc.longAccumulator("My Accumulator")
+
+    // 2.2.0之前
+    // sc.accumulable(0)
+    // rdd.foreach(sum += _)
+
+    rdd.foreach(x => sum.add(x))
     println(sum.value)
+    // res5: Long = 55
   }
 
 }
