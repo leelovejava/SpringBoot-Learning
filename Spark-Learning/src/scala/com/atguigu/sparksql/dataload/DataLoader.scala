@@ -168,12 +168,26 @@ object DataLoader {
     // [userId,movieId,tag,timestamp]
     val DATAFILE_TAGS = "D:\\workspace\\data\\RecommendSystem\\tags.csv"
 
+    /**
+      * mutable和immutable
+      * Scala collections systematically distinguish between mutable and immutable collections. A mutable collection can be updated or extended in place.
+      * This means you can change, add, or remove elements of a collection as a side effect. Immutable collections, by contrast, never change. You have still operations that simulate additions, removals, or updates,
+      * but those operations will in each case return a new collection and leave the old collection unchanged.
+      * scala中的集合分为两种，一种是可变的集合，另一种是不可变的集合
+      * 可变的集合可以更新或修改，添加、删除、修改元素将作用于原集合
+      * 不可变集合一量被创建，便不能被改变，添加、删除、更新操作返回的是新的集合，老集合保持不变
+      */
     // 创建全局配置
     val params = scala.collection.mutable.Map[String, Any]()
-    params += "spark.cores" -> "local[*]"
-    params += "mongo.uri" -> "mongodb://hadoop000:27017/recom3"
-    params += "mongo.db" -> "recom3"
-    params += "es.httpHosts" -> "localhost:9200"
+    /*  params += "spark.cores" -> "local[*]"
+      params += "mongo.uri" -> "mongodb://hadoop000:27017/recom3"
+      params += "mongo.db" -> "recom3"
+      params += "es.httpHosts" -> "localhost:9200"*/
+
+    params.put("spark.cores", "local[*]")
+    params.put("mongo.uri", "mongodb://hadoop000:27017/recom3")
+    params.put("mongo.db", "recom3")
+    params.put("es.httpHosts", "localhost:9200")
 
     /**
       * ES的通讯端口
