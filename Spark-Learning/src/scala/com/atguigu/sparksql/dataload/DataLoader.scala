@@ -1,11 +1,10 @@
-package com.atguigu.sparkstream.es
+package com.atguigu.sparksql.dataload
 
 import java.net.InetAddress
 
 import com.mongodb.casbah.commons.MongoDBObject
 import com.mongodb.casbah.{MongoClient, MongoClientURI}
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.catalyst.plans.LeftOuter
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest
@@ -13,8 +12,17 @@ import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsReques
 import org.elasticsearch.common.settings.Settings
 import org.elasticsearch.common.transport.InetSocketTransportAddress
 import org.elasticsearch.transport.client.PreBuiltTransportClient
+import org.slf4j.LoggerFactory
 
+/**
+  * 数据加载 es mongodb
+  * 错误:elasticsearch 9300 无法访问,解决:elasticsearch.yml 增加配置
+  * # 设置节点之间交互的tcp端口，默认是9300
+  * transport.tcp.port: 9300
+  */
 object DataLoader {
+
+  val logger = LoggerFactory.getLogger(DataLoader.getClass)
 
   // Moive在MongoDB中的Collection名称【表】
   val MOVIES_COLLECTION_NAME = "Movie"
@@ -97,10 +105,12 @@ object DataLoader {
     */
   private def storeDataInMongo(movies: DataFrame, ratings: DataFrame, tags: DataFrame)(implicit mongoConf: MongoConfig): Unit = {
 
-    // 创建到MongoDB的连接
+    // 1) 创建到MongoDB的连接
     val mongoClient = MongoClient(MongoClientURI(mongoConf.uri))
 
-    // 删除Movie的Collection
+    // collection table 数据库表/集合
+
+    // 2) 删除Movie的Collection
     mongoClient(mongoConf.db)(MOVIES_COLLECTION_NAME).dropCollection()
 
     // 删除Rating的Collection
@@ -109,6 +119,7 @@ object DataLoader {
     // 删除Tag的Collection
     mongoClient(mongoConf.db)(TAGS_COLLECTION_NAME).dropCollection()
 
+    // 3) Spark SQL提供的write方法进行数据的分布式插入
     // 将Movie数据集写入到MongoDB
     movies
       .write
@@ -122,6 +133,7 @@ object DataLoader {
     ratings
       .write.option("uri", mongoConf.uri)
       .option("collection", RATINGS_COLLECTION_NAME)
+      // 模式:覆盖
       .mode("overwrite")
       .format("com.mongodb.spark.sql")
       .save()
@@ -134,36 +146,45 @@ object DataLoader {
       .format("com.mongodb.spark.sql")
       .save()
 
-    // 创建索引
+    // 4) 创建索引
     mongoClient(mongoConf.db)(MOVIES_COLLECTION_NAME).createIndex(MongoDBObject("mid" -> 1))
     mongoClient(mongoConf.db)(RATINGS_COLLECTION_NAME).createIndex(MongoDBObject("mid" -> 1))
     mongoClient(mongoConf.db)(RATINGS_COLLECTION_NAME).createIndex(MongoDBObject("uid" -> 1))
     mongoClient(mongoConf.db)(TAGS_COLLECTION_NAME).createIndex(MongoDBObject("mid" -> 1))
     mongoClient(mongoConf.db)(TAGS_COLLECTION_NAME).createIndex(MongoDBObject("uid" -> 1))
 
-    // 关闭MongoDB的连接
+    // 5) 关闭MongoDB的连接
     mongoClient.close()
   }
 
   def main(args: Array[String]): Unit = {
 
     // [mid,name,descri,timelong,issue,shoot,language,genres,actors,directors]
-    val DATAFILE_MOVIES = "C:\\Users\\Administrator\\Desktop\\RecommendSystem\\3.code\\RecommendSystem\\recommender\\dataloader\\src\\main\\resources\\small\\movies.csv"
+    val DATAFILE_MOVIES = "D:\\workspace\\data\\RecommendSystem\\movies.csv"
 
     // [userId,movieId,rating,timestamp]
-    val DATAFILE_RATINGS = "C:\\Users\\Administrator\\Desktop\\RecommendSystem\\3.code\\RecommendSystem\\recommender\\dataloader\\src\\main\\resources\\small\\ratings.csv"
+    val DATAFILE_RATINGS = "D:\\workspace\\data\\RecommendSystem\\ratings.csv"
 
     // [userId,movieId,tag,timestamp]
-    val DATAFILE_TAGS = "C:\\Users\\Administrator\\Desktop\\RecommendSystem\\3.code\\RecommendSystem\\recommender\\dataloader\\src\\main\\resources\\small\\tags.csv"
+    val DATAFILE_TAGS = "D:\\workspace\\data\\RecommendSystem\\tags.csv"
 
     // 创建全局配置
     val params = scala.collection.mutable.Map[String, Any]()
     params += "spark.cores" -> "local[*]"
     params += "mongo.uri" -> "mongodb://hadoop000:27017/recom3"
     params += "mongo.db" -> "recom3"
-    params += "es.httpHosts" -> "hadoop000:9200"
-    params += "es.transportHosts" -> "hadoop000:9300"
+    params += "es.httpHosts" -> "localhost:9200"
+
+    /**
+      * ES的通讯端口
+      */
+    params += "es.transportHosts" -> "bin/mongod -config data/mongodb.conf"
     params += "es.index" -> "recom3"
+    params += "es.transportHosts" -> "localhost:9300"
+
+    /**
+      * es的集群名
+      */
     params += "es.cluster.name" -> "es-cluster"
 
     // 声明Spark的配置信息
@@ -205,12 +226,14 @@ object DataLoader {
       Rating(x(0).toInt, x(1).toInt, x(2).toDouble, x(3).toInt)
     }).toDF()
 
+
     // 将标签RDD转换为DataFrame
     val tagDF = tagRDD.map(line => {
       val x = line.split(",")
       Tag(x(0).toInt, x(1).toInt, x(2), x(3).toInt)
     }).toDF()
-
+    // 1240597180
+    // 1297398822
     // 缓存
     movieDF.cache()
     tagDF.cache()
@@ -222,10 +245,10 @@ object DataLoader {
     val tagCollectDF = tagDF.groupBy($"mid").agg(concat_ws("|", collect_set($"tag")).as("tags"))
 
     //将tags合并到movie数据集中产生新的movie数据集
-    val esMovieDF = movieDF.join(tagCollectDF,Seq("mid","mid"),"left").select("mid","name","descri","timelong","issue","shoot","language","genres","actors","directors","tags")
+    val esMovieDF = movieDF.join(tagCollectDF, Seq("mid", "mid"), "left").select("mid", "name", "descri", "timelong", "issue", "shoot", "language", "genres", "actors", "directors", "tags")
 
     // 将数据保存到ES
-    storeMoviesDataInES(esMovieDF);
+    storeMoviesDataInES(esMovieDF)
 
     // 将数据保存到MongoDB
     storeDataInMongo(movieDF, ratingDF, tagDF)

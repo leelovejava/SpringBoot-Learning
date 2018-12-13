@@ -1,4 +1,4 @@
-package com.atguigu.sparkstream.es
+package com.atguigu.sparksql.dataload
 
 /**
   * MongoDB 配置对象
