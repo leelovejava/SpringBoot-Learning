@@ -2,6 +2,7 @@ package com.atguigu.sparksql.dataload
 
 import java.net.InetAddress
 
+import com.atguigu.sparksql.dataload.util.PropertiesScalaUtils
 import com.mongodb.casbah.commons.MongoDBObject
 import com.mongodb.casbah.{MongoClient, MongoClientURI}
 import org.apache.spark.SparkConf
@@ -178,31 +179,29 @@ object DataLoader {
       * 不可变集合一量被创建，便不能被改变，添加、删除、更新操作返回的是新的集合，老集合保持不变
       */
     // 创建全局配置
-    val params = scala.collection.mutable.Map[String, Any]()
-    /*  params += "spark.cores" -> "local[*]"
-      params += "mongo.uri" -> "mongodb://hadoop000:27017/recom3"
-      params += "mongo.db" -> "recom3"
-      params += "es.httpHosts" -> "localhost:9200"*/
+    /* val params = scala.collection.mutable.Map[String, Any]()
+     params += "spark.cores" -> "local[*]"
+     params += "mongo.uri" -> "mongodb://hadoop000:27017/recom3"
+     params += "mongo.db" -> "recom3"
+     params += "es.httpHosts" -> "localhost:9200"
+     params += "es.index" -> "recom3"
+     params += "es.transportHosts" -> "localhost:9300"
+     params += "es.cluster.name" -> "es-cluster"*/
 
-    params.put("spark.cores", "local[*]")
-    params.put("mongo.uri", "mongodb://hadoop000:27017/recom3")
-    params.put("mongo.db", "recom3")
-    params.put("es.httpHosts", "localhost:9200")
+    //params.put("spark.cores", "local[*]")
 
-    /**
-      * ES的通讯端口
-      */
-    params += "es.transportHosts" -> "bin/mongod -config data/mongodb.conf"
-    params += "es.index" -> "recom3"
-    params += "es.transportHosts" -> "localhost:9300"
-
-    /**
-      * es的集群名
-      */
-    params += "es.cluster.name" -> "es-cluster"
+    val params = Map(
+      "spark.cores" -> PropertiesScalaUtils.loadProperties("spark.cores"),
+      "mongo.uri" -> PropertiesScalaUtils.loadProperties("mongo.uri"),
+      "mongo.db" -> PropertiesScalaUtils.loadProperties("mongo.db"),
+      "es.httpHosts" -> PropertiesScalaUtils.loadProperties("es.httpHosts"),
+      "es.index" -> PropertiesScalaUtils.loadProperties("es.index"),
+      "es.transportHosts" -> PropertiesScalaUtils.loadProperties("es.transportHosts"),
+      "es.cluster.name" -> PropertiesScalaUtils.loadProperties("es.cluster.name")
+    )
 
     // 声明Spark的配置信息
-    val conf = new SparkConf().setAppName("Dataloader").setMaster(params("spark.cores").asInstanceOf[String])
+    val conf = new SparkConf().setAppName("Dataloader").setMaster(params("spark.cores"))
 
     // 创建SparkSession
     val spark = SparkSession.builder()
