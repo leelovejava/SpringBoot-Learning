@@ -84,7 +84,7 @@
         </dependency>
         <!--spark stream kafka end-->
 
-        <!--spark es start 搜索-->
+        <!--spark es(搜索) start-->
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch-spark-20_2.11</artifactId>
@@ -102,6 +102,19 @@
             <version>${elasticsearch.version}</version>
         </dependency>
         <!--spark es end-->
+
+        <!--spark mongodb start-->
+        <dependency>
+            <groupId>org.mongodb.spark</groupId>
+            <artifactId>mongo-spark-connector_2.11</artifactId>
+            <version>${mongodb-spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>casbah-core_2.11</artifactId>
+            <version>${casbah.version}</version>
+        </dependency>
+        <!--spark mongodb end-->
 
         <!--spark stream flume-ng start 日志收集-->
         <dependency>
@@ -154,6 +167,11 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.11.1</version>
         </dependency>
         <!-- Logging End -->
     </dependencies>
