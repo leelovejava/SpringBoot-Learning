@@ -55,4 +55,14 @@ case class Tag(val uid: Int, val mid: Int, val tag: String, val timestamp: Int)
   */
 case class Rating(val uid: Int, val mid: Int, val score: Double, val timestamp: Int)
 
+/**
+  * Rating数据集，用户对于电影的评分数据集，用，分割
+  *
+  * 1,           用户的ID
+  * 31,          电影的ID
+  * 2.5,         用户对于电影的评分
+  * 1260759144   用户对于电影评分的时间
+  */
+case class MovieRating(val uid: Int, val mid: Int, val score: Double, val timestamp: Int)
+
 

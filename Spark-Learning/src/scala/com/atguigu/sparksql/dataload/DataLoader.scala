@@ -190,18 +190,9 @@ object DataLoader {
 
     //params.put("spark.cores", "local[*]")
 
-    val params = Map(
-      "spark.cores" -> PropertiesScalaUtils.loadProperties("spark.cores"),
-      "mongo.uri" -> PropertiesScalaUtils.loadProperties("mongo.uri"),
-      "mongo.db" -> PropertiesScalaUtils.loadProperties("mongo.db"),
-      "es.httpHosts" -> PropertiesScalaUtils.loadProperties("es.httpHosts"),
-      "es.index" -> PropertiesScalaUtils.loadProperties("es.index"),
-      "es.transportHosts" -> PropertiesScalaUtils.loadProperties("es.transportHosts"),
-      "es.cluster.name" -> PropertiesScalaUtils.loadProperties("es.cluster.name")
-    )
 
     // 声明Spark的配置信息
-    val conf = new SparkConf().setAppName("Dataloader").setMaster(params("spark.cores"))
+    val conf = new SparkConf().setAppName("Dataloader").setMaster(config.params("spark.cores"))
 
     // 创建SparkSession
     val spark = SparkSession.builder()
@@ -212,10 +203,10 @@ object DataLoader {
     import spark.implicits._
 
     // 定义MongoDB的配置对象
-    implicit val mongoConf = new MongoConfig(params("mongo.uri").asInstanceOf[String], params("mongo.db").asInstanceOf[String])
+    implicit val mongoConf = new MongoConfig(config.params("mongo.uri").asInstanceOf[String], config.params("mongo.db").asInstanceOf[String])
 
     // 定义ElasticSearch的配置对象
-    implicit val esConf = new ESConfig(params("es.httpHosts").asInstanceOf[String], params("es.transportHosts").asInstanceOf[String], params("es.index").asInstanceOf[String], params("es.cluster.name").asInstanceOf[String])
+    implicit val esConf = new ESConfig(config.params("es.httpHosts").asInstanceOf[String], config.params("es.transportHosts").asInstanceOf[String], config.params("es.index").asInstanceOf[String], config.params("es.cluster.name").asInstanceOf[String])
 
     // 加载Movie数据集
     val movieRDD = spark.sparkContext.textFile(DATAFILE_MOVIES)
@@ -274,5 +265,18 @@ object DataLoader {
     spark.close()
 
   }
+}
 
+object config {
+  val params = Map(
+    "spark.cores" -> PropertiesScalaUtils.loadProperties("spark.cores"),
+    "mongo.uri" -> PropertiesScalaUtils.loadProperties("mongo.uri"),
+    "mongo.db" -> PropertiesScalaUtils.loadProperties("mongo.db"),
+    "es.httpHosts" -> PropertiesScalaUtils.loadProperties("es.httpHosts"),
+    "es.index" -> PropertiesScalaUtils.loadProperties("es.index"),
+    "es.transportHosts" -> PropertiesScalaUtils.loadProperties("es.transportHosts"),
+    "es.cluster.name" -> PropertiesScalaUtils.loadProperties("es.cluster.name"),
+    "mongo.collection.Rating" -> "Rating",
+    "mongo.collection.Movie"-> "Movie"
+  )
 }
