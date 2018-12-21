@@ -18,6 +18,27 @@ import java.util.Date;
 @Mapping(mappingPath = "productIndex.json")
 public class ProductDocument implements Serializable {
 
+    /**
+     * Document
+     *  indexName        索引库的名称,个人建议以项目的名称命名
+     *  type             类型，个人建议以实体的名称命名
+     *  shards           默认分区数 5
+     *  replicas         每个分区默认的备份数 1
+     *  refreshInterval  刷新间隔 1s
+     *  indexStoreType   索引文件存储类型 fs
+     *
+     * Field
+     *  type             自动检测属性的类型  FieldType.Auto
+     *  index            默认情况下分词      FieldIndex.analyzed
+     *  format           DateFormat.none
+     *  pattern
+     *  store            默认情况下不存储原文 false
+     *  searchAnalyzer   指定字段搜索时使用的分词器
+     *  indexAnalyzer    指定字段建立索引时指定的分词器
+     *  ignoreFields     如果某个字段需要被忽略
+     *  includeInParent  false
+     */
+
     @Id
     private String id;
     //@Field(analyzer = "ik_max_word",searchAnalyzer = "ik_max_word")
