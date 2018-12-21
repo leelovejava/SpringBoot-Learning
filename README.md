@@ -178,14 +178,6 @@
 
 #### [教程整理地址](http://blog.didispace.com/)
 
-## 我的公众号
-
-![输入图片说明](http://git.oschina.net/uploads/images/2017/0105/082137_85109d07_437188.jpeg "在这里输入图片标题")
-
-## 推荐我的书
-
-![输入图片说明](https://git.oschina.net/uploads/images/2017/0416/233656_dd3bce94_437188.png "在这里输入图片标题")
-
 ## 开源项目推荐
 
 - 我的《Spring Cloud基础教程》：https://github.com/dyc87112/SpringCloud-Learning
