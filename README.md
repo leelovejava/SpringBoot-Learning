@@ -1,18 +1,16 @@
 # Spring Boot基础教程
 [spring boot 实践学习案例，是 spring boot 初学者及核心技术巩固的最佳实践](https://github.com/JeffLi1993/springboot-learning-example.git)
 
-本项目内容为Spring Boot教程程序样例。如您觉得该项目对您有用，欢迎点击右上方的**Star**按钮，给予支持！！
 
 - 我的博客：http://blog.didispace.com
 - **我的小密圈（深度交流与问答）：https://t.xiaomiquan.com/zfEiY3v**
 - GitHub：https://github.com/dyc87112/SpringBoot-Learning
+- GitHub: https://github.com/dyc87112/SpringCloud-Learning
 - Gitee：https://gitee.com/didispace/SpringBoot-Learning
 - Spring For All社区：http://spring4all.com/
 - Spring Boot基础教程：http://blog.didispace.com/Spring-Boot%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/
 - Spring Cloud基础教程：http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/
-
-**声明：本人已放弃"Spring Cloud中国社区"，该社区的任何行为均与本人无关。[Spring For All社区](http://spring4all.com/)是新组建的关于Spring的纯技术交流社区（涵盖Spring Boot、Spring Cloud等内容），集诸多开源爱好者和技术大牛贡献内容和交流问题。我们不夸大、不装逼、做最纯粹的技术分享！！！**
-
+- [Spring For All社区](http://spring4all.com/)
 ## Spring Boot 2.0 新特性学习
 
 **简介与概览**
@@ -140,10 +138,11 @@
 - chapter9-1-2：[Spring Cloud构建微服务架构（二）服务消费者](http://blog.didispace.com/springcloud1/)
 - chapter9-1-3：[Spring Cloud构建微服务架构（三）断路器](http://blog.didispace.com/springcloud3/)
 - chapter9-1-4：[Spring Cloud构建微服务架构（四）分布式配置中心](http://blog.didispace.com/springcloud4/)
+- chapter9-1-4：[Spring Cloud构建微服务架构（四）分布式配置中心（高可用与动态刷新）](http://blog.didispace.com/springcloud4-2/)
 - chapter9-1-5：[Spring Cloud构建微服务架构（五）服务网关](http://blog.didispace.com/springcloud5/)
-- chapter9-1-6：[Spring Cloud构建微服务架构（六）集群监控]
-- [Spring Cloud构建微服务架构（六）高可用服务注册中心](http://blog.didispace.com/springcloud6/)
-- [Spring Cloud构建微服务架构（七）消息总线](http://blog.didispace.com/springcloud7/)
+- chapter9-1-6：[Spring Cloud构建微服务架构（六）高可用服务注册中心](http://blog.didispace.com/springcloud6/)
+- [Spring Cloud构建微服务架构（七）消息总线(Rabbit)](http://blog.didispace.com/springcloud7/)
+- [Spring Cloud构建微服务架构（七）消息总线](http://blog.didispace.com/springcloud7-2/)
 
 #### [Spring Cloud基础教程](http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/)
 - [Spring Cloud构建微服务架构：服务注册与发现（Eureka、Consul）](http://blog.didispace.com/spring-cloud-starter-dalston-1/)
@@ -195,3 +194,73 @@
 ## 其他推荐
 
 - Spring Boot Reference Guide：http://blog.didispace.com/books/spring-boot-reference/
+
+
+[SpringBoot支持AJAX跨域请求](https://blog.battcn.com/2017/07/13/springboot/springboot-cors/)
+[编写自己的starter项目（battcn-starter-swagger）](https://blog.battcn.com/2017/07/13/springboot/springboot-starter-swagger/)
+[第一篇：构建第一个SpringBoot工程](https://blog.battcn.com/2018/04/20/springboot/v2-introducing/)
+[第二篇：SpringBoot配置详解](https://blog.battcn.com/2018/04/22/springboot/v2-config-properties/)
+[第三篇：SpringBoot日志配置](https://blog.battcn.com/2018/04/23/springboot/v2-config-logs/)
+[第四篇：整合Thymeleaf模板](https://blog.battcn.com/2018/04/28/springboot/v2-web-thymeleaf/)
+[第五篇：使用JdbcTemplate访问数据库](https://blog.battcn.com/2018/05/07/springboot/v2-orm-jdbc/)
+[第六篇：整合SpringDataJpa](https://blog.battcn.com/2018/05/08/springboot/v2-orm-jpa/)
+[第七篇：整合Mybatis](https://blog.battcn.com/2018/05/09/springboot/v2-orm-mybatis/)
+[第八篇：通用Mapper与分页插件的集成](https://blog.battcn.com/2018/05/10/springboot/v2-orm-mybatis-plugin/)
+[第九篇：整合Lettuce Redis](https://blog.battcn.com/2018/05/11/springboot/v2-nosql-redis/)
+[第十篇：使用Spring Cache集成Redis](https://blog.battcn.com/2018/05/13/springboot/v2-cache-redis/)
+[第十一篇：集成Swagger在线调试](https://blog.battcn.com/2018/05/22/springboot/v2-queue-rabbitmq/)
+[第十二篇：初探RabbitMQ消息队列](https://blog.battcn.com/2018/05/22/springboot/v2-queue-rabbitmq/)
+[第十三篇：RabbitMQ延迟队列](https://blog.battcn.com/2018/05/23/springboot/v2-queue-rabbitmq-delay/)
+[第十四篇：强大的 actuator 服务监控与管理](https://blog.battcn.com/2018/05/24/springboot/v2-actuator-introduce/)
+[第十五篇：actuator与spring-boot-admin 可以说的秘密](https://blog.battcn.com/2018/05/24/springboot/v2-actuator-monitor/)
+[第十六篇：定时任务详解](https://blog.battcn.com/2018/05/29/springboot/v2-other-scheduling/)
+[第十七篇：轻松搞定文件上传](https://blog.battcn.com/2018/05/31/springboot/v2-other-upload/)
+[第十八篇：轻松搞定全局异常](https://blog.battcn.com/2018/06/01/springboot/v2-other-exception/)
+[第十九篇：轻松搞定数据验证（一）](https://blog.battcn.com/2018/06/05/springboot/v2-other-validate1/)
+[第二十篇：轻松搞定数据验证（二）](https://blog.battcn.com/2018/06/06/springboot/v2-other-validate2/)
+[第二十一篇：轻松搞定数据验证（三）](https://blog.battcn.com/2018/06/07/springboot/v2-other-validate3/)
+[第二十二篇：轻松搞定重复提交（本地锁）](https://blog.battcn.com/2018/06/12/springboot/v2-cache-locallock/)
+[第二十三篇：轻松搞定重复提交（分布式锁）](https://blog.battcn.com/2018/06/13/springboot/v2-cache-redislock/)
+[第二十四篇：数据库管理与迁移（Liquibase）](https://blog.battcn.com/2018/06/20/springboot/v2-other-liquibase/)
+[第二十五篇：打造属于你的聊天室（WebSocket）](https://blog.battcn.com/2018/06/27/springboot/v2-other-websocket/)
+[第二十六篇：轻松搞定安全框架（Shiro）](https://blog.battcn.com/2018/07/03/springboot/v2-other-shiro/)
+[第二十七篇：优雅解决分布式限流](https://blog.battcn.com/2018/08/08/springboot/v2-cache-redislimter/)
+[第二十八篇：JDK8 日期格式化](https://blog.battcn.com/2018/10/01/springboot/v2-localdatetime/)
+
+[第一篇：认识Eureka](https://blog.battcn.com/2018/09/27/springcloud/finchley/finchley-learn-eureka/)
+[第二篇：Ribbon软负载](https://blog.battcn.com/2018/09/28/springcloud/finchley/finchley-lb-ribbon/)
+[第三篇：注解式HTTP请求Feign](https://blog.battcn.com/2018/09/30/springcloud/finchley/finchley-learn-feign/)
+[第四篇：Feign拦截器应用](https://blog.battcn.com/2018/10/22/springcloud/finchley/finchley-feign-interceptor/)
+[消息总线（Bus）](https://blog.battcn.com/2017/08/21/springcloud/dalston/spring-cloud-bus/)
+[优雅关闭服务下线（Jetty）](https://blog.battcn.com/2017/08/20/springcloud/dalston/spring-cloud-shutdown/)
+[服务认证（JWT）](https://blog.battcn.com/2017/08/15/springcloud/dalston/spring-cloud-security-jwt/)
+[路由网关（Zuul）](https://blog.battcn.com/2017/08/14/springcloud/dalston/spring-cloud-zuul/)
+[分布式配置中心（Native - Config）](https://blog.battcn.com/2017/08/11/springcloud/dalston/spring-cloud-config/)
+[断路器Hystrix（Feign）](https://blog.battcn.com/2017/08/07/springcloud/dalston/spring-cloud-feign-hystrix/)
+[断路器Hystrix（Ribbon）](https://blog.battcn.com/2017/08/02/springcloud/dalston/spring-cloud-ribbon-hystrix/)
+[高可用服务注册中心（Eureka-Cluster）](https://blog.battcn.com/2017/07/31/springcloud/dalston/spring-cloud-eureka-cluster/)
+[服务消费者（Feign-上）](https://blog.battcn.com/2017/07/28/springcloud/dalston/spring-cloud-feign-up/)
+[服务消费者（Feign-下）](https://blog.battcn.com/2017/07/29/springcloud/dalston/spring-cloud-feign-down/)
+[服务消费者（Ribbon）](https://blog.battcn.com/2017/07/26/springcloud/dalston/spring-cloud-ribbon/)
+[注册中心（Eureka/Consul）](https://blog.battcn.com/2017/07/25/springcloud/dalston/spring-cloud-discovery/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
