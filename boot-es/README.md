@@ -32,7 +32,7 @@ Springboot2.1.1+elasticsearch6.5.3搭建的企业级搜索平台，支持PB级�
 
 1. 修改```application.properties->spring.data.elasticsearch.cluster-nodes```  elasticsearch地址
 2. 修改```application.properties->spring.data.elasticsearch.cluster-name``` 集群名称，和上面配置的相对应
-3. 各种操作方式，请参考：``` /src/test/java/com/zhou/essearch/EssearchApplicationTests.java ```测试类
+3. 各种操作方式，请参考：``` /src/test/java/com/leelovejava/essearch/EssearchApplicationTests.java ```测试类
 4. 端口，文根等其他配置请可自行配置
 
 #### 五、搜索接口返回数据截图
