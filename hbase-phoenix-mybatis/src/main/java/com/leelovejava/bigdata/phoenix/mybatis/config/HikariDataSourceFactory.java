@@ -1,4 +1,4 @@
-package com.leelovejava.bigdata.phoenix.mybatis.test.mybatis;
+package com.leelovejava.bigdata.phoenix.mybatis.config;
 
 import org.apache.ibatis.datasource.unpooled.UnpooledDataSourceFactory;
 

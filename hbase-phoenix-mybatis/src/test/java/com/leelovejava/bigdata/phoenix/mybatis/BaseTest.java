@@ -1,7 +1,8 @@
-package com.leelovejava.bigdata.phoenix.mybatis.test;
+package com.leelovejava.bigdata.phoenix.mybatis;
 
 import java.util.List;
 
+import com.leelovejava.bigdata.phoenix.mybatis.config.PhoenixDataSourceConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
@@ -11,8 +12,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.leelovejava.bigdata.phoenix.mybatis.test.dao.UserInfoMapper;
-import com.leelovejava.bigdata.phoenix.mybatis.test.mybatis.PhoenixDataSourceConfig;
+import com.leelovejava.bigdata.phoenix.mybatis.dao.UserInfoMapper;
 
 /**
  * Created by jixin on 18-3-11.
@@ -20,12 +20,12 @@ import com.leelovejava.bigdata.phoenix.mybatis.test.mybatis.PhoenixDataSourceCon
 @RunWith(SpringJUnit4ClassRunner.class)
 @Import(PhoenixDataSourceConfig.class)
 @PropertySource("classpath:application.properties")
-@ComponentScan("com.leelovejava.bigdata.**")
+@ComponentScan("com.imooc.bigdata.phoenix.**")
 @MapperScan("com.imooc.bigdata.**")
 public class BaseTest {
 
     @Autowired
-    UserInfoMapper userInfoMapper;
+    private UserInfoMapper userInfoMapper;
 
     @Test
     public void addUser() {

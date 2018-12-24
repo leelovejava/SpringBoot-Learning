@@ -1,15 +1,14 @@
-package com.leelovejava.bigdata.phoenix.mybatis.test.dao;
+package com.leelovejava.bigdata.phoenix.mybatis.dao;
 
 import java.util.List;
 
+import com.leelovejava.bigdata.phoenix.mybatis.UserInfo;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
-
-import com.leelovejava.bigdata.phoenix.mybatis.test.UserInfo;
 
 /**
  * Created by jixin on 18-3-11.

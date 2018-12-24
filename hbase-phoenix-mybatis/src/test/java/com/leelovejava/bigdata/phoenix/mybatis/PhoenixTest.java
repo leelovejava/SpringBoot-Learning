@@ -1,4 +1,4 @@
-package com.leelovejava.phoenix.test;
+package com.leelovejava.bigdata.phoenix.mybatis;
 
 import java.sql.*;
 

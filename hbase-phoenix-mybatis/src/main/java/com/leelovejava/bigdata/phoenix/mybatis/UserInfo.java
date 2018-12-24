@@ -1,4 +1,4 @@
-package com.leelovejava.bigdata.phoenix.mybatis.test;
+package com.leelovejava.bigdata.phoenix.mybatis;
 
 /**
  * Created by jixin on 18-3-11.
