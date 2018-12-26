@@ -97,7 +97,7 @@
 
 - chapter4-4-1：[注解配置与EhCache使用](http://blog.didispace.com/springbootcache1/)
 - chapter4-4-2：[使用Redis做集中式缓存](http://blog.didispace.com/springbootcache2/)
-- springSession+redis
+- [springSession+redis](https://blog.csdn.net/zl18310999566/article/details/54290994)
 
 #### 邮件发送
 
@@ -109,7 +109,7 @@
 - [JMS 在 SpringBoot 中的使用](https://www.cnblogs.com/niit-soft-518/p/6957384.html)
 - chapter5-2-1：[Spring Boot中使用RabbitMQ](http://blog.didispace.com/spring-boot-rabbitmq/)
 - MQTT
-- Kafka Stream
+- Kafka Stream:[Spring Cloud Stream如何消费自己生产的消息](https://github.com/dyc87112/SpringCloud-Learning/tree/master/4-Finchley/stream-consumer-self)
 
 #### 文件上传
 - [Spring Boot文件上传](https://www.javazhiyin.com/16281.html)
@@ -119,6 +119,7 @@
 
 #### 搜索
 - boot-es：[SpringBoot整合elasticsearch](https://www.cnblogs.com/dalaoyang/p/8990989.html)
+- springboot-solr：[springboot-solr](https://gitee.com/11230595/springboot-solr)
 
 #### 其他功能
 
