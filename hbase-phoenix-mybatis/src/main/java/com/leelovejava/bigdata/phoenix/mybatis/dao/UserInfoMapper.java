@@ -2,7 +2,7 @@ package com.leelovejava.bigdata.phoenix.mybatis.dao;
 
 import java.util.List;
 
-import com.leelovejava.bigdata.phoenix.mybatis.UserInfo;
+import com.leelovejava.bigdata.phoenix.mybatis.entity.UserInfo;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,7 +18,7 @@ public interface UserInfoMapper {
 
     /**
      * 插入
-     *
+     * 存在id,即更新
      * @param userInfo
      */
     @Insert("upsert into USER_INFO (ID,NAME) VALUES (#{user.id},#{user.name})")
@@ -60,4 +60,15 @@ public interface UserInfoMapper {
     @Select("select * from USER_INFO")
     @ResultMap("userResultMap")
     List<UserInfo> getUsers();
+
+    /**
+     * 分页查询用户信息
+     *
+     * @param page     页码
+     * @param pageSize 每页显示的记录数
+     * @return
+     */
+    @Select("select * from USER_INFO limit #{pageSize} OFFSET #{page}")
+    @ResultMap("userResultMap")
+    List<UserInfo> getUsersByPage(@Param("page") int page, @Param("pageSize") int pageSize);
 }

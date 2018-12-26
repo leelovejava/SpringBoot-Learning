@@ -4,6 +4,7 @@ import java.sql.*;
 
 /**
  * Created by jixin on 18-2-25.
+ * JDBC连接phoenix
  */
 public class PhoenixTest {
     // com.mysql.jdbc.Driver
@@ -19,7 +20,7 @@ public class PhoenixTest {
 
         Class.forName(driver);
 
-        Connection connection = DriverManager.getConnection("jdbc:phoenix:192.168.109.130:2181");
+        Connection connection = DriverManager.getConnection("jdbc:phoenix:hadoop001:2181");
 
         PreparedStatement statement = connection.prepareStatement("select * from PERSON");
 
