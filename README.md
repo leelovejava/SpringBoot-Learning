@@ -52,6 +52,7 @@
 - chapter3-2-2：[使用Spring-data-jpa简化数据访问层（推荐）](http://blog.didispace.com/springbootdata2/)
 - chapter3-2-3：[多数据源配置（一）：JdbcTemplate](http://blog.didispace.com/springbootmultidatasource/)
 - chapter3-2-4：[多数据源配置（二）：Spring-data-jpa](http://blog.didispace.com/springbootmultidatasource/)
+- chapter3-2-4-1：[多数据源配置（三）：springboot-mybatis](https://www.cnblogs.com/java-zhao/p/5413845.html)
 - chapter3-2-5：[使用NoSQL数据库（一）：Redis](http://blog.didispace.com/springbootredis/)
 - chapter3-2-6：[使用NoSQL数据库（二）：MongoDB](http://blog.didispace.com/springbootmongodb/)
 - chapter3-2-7：[整合MyBatis](http://blog.didispace.com/springbootmybatis/)
@@ -59,6 +60,7 @@
 - chapter3-2-9：[使用Flyway来管理数据库版本](http://blog.didispace.com/spring-boot-flyway-db-version/)
 - chapter3-2-10：[使用LDAP来统一管理用户信息](http://blog.didispace.com/spring-boot-ldap-user/)
 - chapter3-2-11：[Spring Boot中增强对MongoDB的配置（连接池等）](http://blog.didispace.com/springbootmongodb-plus/)
+- hbase-phoenix-mybatis：[mybatis通过phoenix操作hbase](https://blog.csdn.net/tototuzuoquan/article/details/81506285)
 
 #### 事务管理
 
@@ -95,6 +97,7 @@
 
 - chapter4-4-1：[注解配置与EhCache使用](http://blog.didispace.com/springbootcache1/)
 - chapter4-4-2：[使用Redis做集中式缓存](http://blog.didispace.com/springbootcache2/)
+- springSession+redis
 
 #### 邮件发送
 
@@ -115,7 +118,7 @@
 - [Netty与Spring Boot的整合](https://www.cnblogs.com/tdg-yyx/p/8376842.html)
 
 #### 搜索
-- [SpringBoot整合elasticsearch](https://www.cnblogs.com/dalaoyang/p/8990989.html)
+- boot-es：[SpringBoot整合elasticsearch](https://www.cnblogs.com/dalaoyang/p/8990989.html)
 
 #### 其他功能
 
