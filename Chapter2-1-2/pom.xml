@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>Chapter2-1-2</name>
-    <description>Spring Boot 2.0 features : Application Events and Listeners</description>
+    <description>Spring Boot 2.0 features : org.spring.springboot.Application Events and Listeners</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
