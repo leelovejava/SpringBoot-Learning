@@ -37,6 +37,9 @@
 - chapter2-1-2：[2.0 新特性（一）：配置绑定全解析](http://blog.didispace.com/Spring-Boot-2-0-feature-1-relaxed-binding-2/)
 - chapter2-2-1：[2.0 新特性（二）：新增事件ApplicationStartedEvent](http://blog.didispace.com/Spring-Boot-2-0-feature-2-ApplicationStartedEvent/)
 
+-[Spring Boot应用迁移到Java最新版（Java 11）](https://mp.weixin.qq.com/s/avhIEa0mSzj4qepai-hJcA)
+-[译：在生产中使用Java 11：需要了解的重要事项](https://mp.weixin.qq.com/s/b0eTuv0DhMseeRzYhyx-Rg)
+
 #### Web开发
 
 - chapter3-1-1：[构建一个较为复杂的RESTful API以及单元测试](http://blog.didispace.com/springbootrestfulapi/)
@@ -45,6 +48,7 @@
 - chapter3-1-4：[使用Velocity模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
 - chapter3-1-5：[使用Swagger2构建RESTful API](http://blog.didispace.com/springbootswagger2/)
 - chapter3-1-6：[统一异常处理](http://blog.didispace.com/springbootexception/)
+- [SpringBoot WebFlux 入门案例](https://mp.weixin.qq.com/s/apN1alRBccj-LoVjVM__uA)
 
 #### 数据访问
 
@@ -55,12 +59,13 @@
 - chapter3-2-4-1：[多数据源配置（三）：springboot-mybatis](https://www.cnblogs.com/java-zhao/p/5413845.html)
 - chapter3-2-5：[使用NoSQL数据库（一）：Redis](http://blog.didispace.com/springbootredis/)
 - chapter3-2-6：[使用NoSQL数据库（二）：MongoDB](http://blog.didispace.com/springbootmongodb/)
+- [使用Spring Boot为MongoDb自动生成字段](https://mp.weixin.qq.com/s/zACTJjvYlPcCuq6a6ZdNdg)
 - chapter3-2-7：[整合MyBatis](http://blog.didispace.com/springbootmybatis/)
 - chapter3-2-8：[MyBatis注解配置详解](http://blog.didispace.com/mybatisinfo/)
+- hbase-phoenix-mybatis：[mybatis通过phoenix操作hbase](https://blog.csdn.net/tototuzuoquan/article/details/81506285)
 - chapter3-2-9：[使用Flyway来管理数据库版本](http://blog.didispace.com/spring-boot-flyway-db-version/)
 - chapter3-2-10：[使用LDAP来统一管理用户信息](http://blog.didispace.com/spring-boot-ldap-user/)
 - chapter3-2-11：[Spring Boot中增强对MongoDB的配置（连接池等）](http://blog.didispace.com/springbootmongodb-plus/)
-- hbase-phoenix-mybatis：[mybatis通过phoenix操作hbase](https://blog.csdn.net/tototuzuoquan/article/details/81506285)
 
 #### 事务管理
 
@@ -75,6 +80,8 @@
 - chapter4-1-4：[使用@Async实现异步调用：资源优雅关闭](http://blog.didispace.com/springbootasync-3/)
 - chapter4-1-5：[使用@Async实现异步调用：使用Future以及定义超时](http://blog.didispace.com/springbootasync-4/)
 
+- 创建同步任务:[Spring ShedLock指南](https://mp.weixin.qq.com/s/0HUri5RO_gT5YSOwSMzsWw)
+
 #### 日志管理
 
 - chapter4-2-1：[默认日志的配置](http://blog.didispace.com/springbootlog/)
@@ -88,10 +95,11 @@
 
 - chapter4-3-1：[使用Spring Security](http://blog.didispace.com/springbootsecurity/)
 - [从源码看Spring Security之采坑笔记（Spring Boot篇）](https://www.javazhiyin.com/4582.html)
+- [在SpringBoot中优雅的使用Spring Security OAuth 2](https://mp.weixin.qq.com/s/gG-4Wl07Gl1lNXzuROhI0w)
 - chapter4-3-2：[使用Spring Session（未完成）]
 - [教你 Shiro 整合 SpringBoot，避开各种坑](https://www.javazhiyin.com/452.html)
 - [教你 Shiro + SpringBoot 整合 JWT](https://www.javazhiyin.com/464.html)
-- [SpringBoot+Shiro+MyBatisPlus搭建前后端分离的多模块项目(附源码)](https://www.javazhiyin.com/16396.html)
+- [SpringBoot+Shiro+MyBatisPlus搭建前后端分离的多模块项目](https://www.javazhiyin.com/16396.html)
 
 #### 缓存支持
 
@@ -215,6 +223,7 @@
 - [第十九篇：轻松搞定数据验证（一）](https://blog.battcn.com/2018/06/05/springboot/v2-other-validate1/)
 - [第二十篇：轻松搞定数据验证（二）](https://blog.battcn.com/2018/06/06/springboot/v2-other-validate2/)
 - [第二十一篇：轻松搞定数据验证（三）](https://blog.battcn.com/2018/06/07/springboot/v2-other-validate3/)
+- [SpringBoot全局异常与数据校验](https://mp.weixin.qq.com/s/hW_YHdmHdAxHaUwn6XHeJw)
 - [第二十二篇：轻松搞定重复提交（本地锁）](https://blog.battcn.com/2018/06/12/springboot/v2-cache-locallock/)
 - [第二十三篇：轻松搞定重复提交（分布式锁）](https://blog.battcn.com/2018/06/13/springboot/v2-cache-redislock/)
 - [第二十四篇：数据库管理与迁移（Liquibase）](https://blog.battcn.com/2018/06/20/springboot/v2-other-liquibase/)
@@ -222,6 +231,7 @@
 - [第二十六篇：轻松搞定安全框架（Shiro）](https://blog.battcn.com/2018/07/03/springboot/v2-other-shiro/)
 - [第二十七篇：优雅解决分布式限流](https://blog.battcn.com/2018/08/08/springboot/v2-cache-redislimter/)
 - [第二十八篇：JDK8 日期格式化](https://blog.battcn.com/2018/10/01/springboot/v2-localdatetime/)
+
 
 - [第一篇：认识Eureka](https://blog.battcn.com/2018/09/27/springcloud/finchley/finchley-learn-eureka/)
 - [第二篇：Ribbon软负载](https://blog.battcn.com/2018/09/28/springcloud/finchley/finchley-lb-ribbon/)
