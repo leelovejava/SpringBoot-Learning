@@ -46,6 +46,7 @@
 - chapter3-1-2：[使用Thymeleaf模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
 - chapter3-1-3：[使用Freemarker模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
 - chapter3-1-4：[使用Velocity模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
+- [Spring Boot 集成 FreeMarker 详解案例](http://www.bysocket.com/?p=1666)
 - chapter3-1-5：[使用Swagger2构建RESTful API](http://blog.didispace.com/springbootswagger2/)
 - chapter3-1-6：[统一异常处理](http://blog.didispace.com/springbootexception/)
 - [SpringBoot WebFlux 入门案例](https://mp.weixin.qq.com/s/apN1alRBccj-LoVjVM__uA)
@@ -62,7 +63,9 @@
 - [使用Spring Boot为MongoDb自动生成字段](https://mp.weixin.qq.com/s/zACTJjvYlPcCuq6a6ZdNdg)
 - chapter3-2-7：[整合MyBatis](http://blog.didispace.com/springbootmybatis/)
 - chapter3-2-8：[MyBatis注解配置详解](http://blog.didispace.com/mybatisinfo/)
+- springboot-mybatis-mutil-datasource：[Spring Boot 整合 Mybatis 实现 Druid 多数据源详解](https://www.bysocket.com/?p=1712)
 - hbase-phoenix-mybatis：[mybatis通过phoenix操作hbase](https://blog.csdn.net/tototuzuoquan/article/details/81506285)
+- springboot_hbase_kafka:[封装hbase基础操作,dao层注入](https://gitee.com/susonglin/springboot_hbase_kafka/)
 - chapter3-2-9：[使用Flyway来管理数据库版本](http://blog.didispace.com/spring-boot-flyway-db-version/)
 - chapter3-2-10：[使用LDAP来统一管理用户信息](http://blog.didispace.com/spring-boot-ldap-user/)
 - chapter3-2-11：[Spring Boot中增强对MongoDB的配置（连接池等）](http://blog.didispace.com/springbootmongodb-plus/)
@@ -94,9 +97,13 @@
 #### 安全管理
 
 - chapter4-3-1：[使用Spring Security](http://blog.didispace.com/springbootsecurity/)
+- springboot-restful：[http://www.bysocket.com/?p=1080](http://www.bysocket.com/?p=1080)
 - [从源码看Spring Security之采坑笔记（Spring Boot篇）](https://www.javazhiyin.com/4582.html)
 - [在SpringBoot中优雅的使用Spring Security OAuth 2](https://mp.weixin.qq.com/s/gG-4Wl07Gl1lNXzuROhI0w)
 - chapter4-3-2：[使用Spring Session（未完成）]
+
+shiro
+- [springboot-shiro](https://gitee.com/yadong.zhang/shiro)
 - [教你 Shiro 整合 SpringBoot，避开各种坑](https://www.javazhiyin.com/452.html)
 - [教你 Shiro + SpringBoot 整合 JWT](https://www.javazhiyin.com/464.html)
 - [SpringBoot+Shiro+MyBatisPlus搭建前后端分离的多模块项目](https://www.javazhiyin.com/16396.html)
@@ -126,8 +133,24 @@
 - [Netty与Spring Boot的整合](https://www.cnblogs.com/tdg-yyx/p/8376842.html)
 
 #### 搜索
+
+##### elasticsearch
 - boot-es：[SpringBoot整合elasticsearch](https://www.cnblogs.com/dalaoyang/p/8990989.html)
+- springboot-elasticsearch：[Spring Boot 整合 Elasticsearch，实现 function score query 权重分查询] (http://www.bysocket.com/?p=1829)
+- spring-data-elasticsearch-crud：[Spring Data Elasticsearch - 基本案例](http://spring4all.com/article/70)
+- spring-data-elasticsearch-query：[spring-data-elasticsearch - 实战案例详解]()
+
+##### solr
 - springboot-solr：[springboot-solr](https://gitee.com/11230595/springboot-solr)
+
+#### 项目实战
+
+#### 秒杀
+- spring-boot-seckill：[spring-boot-seckill](https://gitee.com/52itstyle/spring-boot-seckill)
+
+#### 脚手架
+
+- [lenos](https://gitee.com/bweird/lenosp)
 
 #### 其他功能
 
@@ -137,6 +160,8 @@
 - [Spring Boot应用的后台运行配置](http://blog.didispace.com/spring-boot-run-backend/)
 - [Spring Boot自定义Banner](http://blog.didispace.com/spring-boot-banner/)
 - [Springboot webSocket（一）](https://www.javazhiyin.com/20712.html)
+
+- 工作流 [springboot-activiti](https://gitee.com/wyy396731037/springboot-activiti)
 
 #### Dubbo进行服务治理
 
