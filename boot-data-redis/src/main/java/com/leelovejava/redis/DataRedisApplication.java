@@ -1,0 +1,32 @@
+package com.leelovejava.redis;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.data.redis.core.StringRedisTemplate;
+
+import java.util.concurrent.TimeUnit;
+
+/**
+ * https://blog.csdn.net/weixin_40969748/article/details/79593808
+ */
+@SpringBootApplication
+public class DataRedisApplication {
+
+
+    public static void main(String[] args) {
+        ApplicationContext ctx = SpringApplication.run(DataRedisApplication.class, args);
+        StringRedisTemplate redisTemplate2 = ctx.getBean(StringRedisTemplate.class);
+        redisTemplate2.opsForValue().set("expire:order:1", "1");
+        redisTemplate2.expire("expire:order:1", 20, TimeUnit.SECONDS);
+
+        redisTemplate2.opsForValue().set("expire:order:2", "1");
+        redisTemplate2.expire("expire:order:2", 30, TimeUnit.SECONDS);
+
+        try {
+            Thread.sleep(1000000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
