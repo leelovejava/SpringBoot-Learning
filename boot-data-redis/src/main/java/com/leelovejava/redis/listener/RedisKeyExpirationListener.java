@@ -1,12 +1,13 @@
 package com.leelovejava.redis.listener;
 
 import org.springframework.data.redis.connection.Message;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.listener.KeyExpirationEventMessageListener;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 监听器,监听redis过期的key
@@ -17,6 +18,9 @@ public class RedisKeyExpirationListener extends KeyExpirationEventMessageListene
     public RedisKeyExpirationListener(RedisMessageListenerContainer listenerContainer) {
         super(listenerContainer);
     }
+
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
     /**
      *
@@ -41,13 +45,18 @@ public class RedisKeyExpirationListener extends KeyExpirationEventMessageListene
     @Override
     public void onMessage(Message message, byte[] pattern) {
         // 用户做自己的业务处理即可,注意message.toString()可以获取失效的key
-        String expiredKey = message.toString();
-        if (expiredKey.startsWith("expire:order")) {
-            //如果是expire:order开头的key，进行处理
-            String expireKey = message.toString();
-            System.out.println(expireKey);
-            String key = expireKey.substring(expiredKey.indexOf(":")+1);
-            System.out.println("key:"+key);
+        String expireKey = message.toString();
+        if (expireKey.startsWith("expire:order:start")) {
+            //如果是expire:order:start开头的key，进行处理
+            System.out.println(expireKey+" "+stringRedisTemplate.opsForValue().get(expireKey.replace("expire:","")));
+            String key = expireKey.split(":")[3];
+            key="expire:order:end:"+key;
+            System.out.println("key "+key);
+            
+            stringRedisTemplate.opsForValue().set(key,"1");
+            stringRedisTemplate.expire(key,30, TimeUnit.SECONDS);
+        } else if(expireKey.startsWith("expire:order:end")){
+            System.out.println("end key "+message.toString());
         }
     }
 }

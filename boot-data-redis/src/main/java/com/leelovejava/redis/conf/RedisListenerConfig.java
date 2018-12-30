@@ -9,7 +9,8 @@ import javax.annotation.Resource;
 
 /**
  * redis配置
- * @author  tianhao
+ *
+ * @author tianhao
  * @date 2018/10/27 20:56
  */
 @Configuration
@@ -19,11 +20,11 @@ public class RedisListenerConfig {
 
     /**
      * 订阅
+     *
      * @return
      */
     @Bean
     RedisMessageListenerContainer container() {
-
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         ///container.addMessageListener(messageListener(), new PatternTopic("__keyevent@0__:expired"));
