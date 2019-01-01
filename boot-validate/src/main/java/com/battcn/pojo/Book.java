@@ -35,12 +35,24 @@ public class Book {
      */
 
     private Integer id;
+
     @NotBlank(message = "name 不允许为空")
     @Length(min = 2, max = 10, message = "name 长度必须在 {min} - {max} 之间")
     private String name;
+
+    //@NotEmpty(message="密码不能为空")
+    //@Length(min=6,message="密码长度不能小于6位")
+    //private String passWord;
+
     @NotNull(message = "price 不允许为空")
     @DecimalMin(value = "0.1", message = "价格不能低于 {value}")
     private BigDecimal price;
+
+    //@Email(message="请输入正确的邮箱")
+    //private String email;
+
+    //@Pattern(regexp = "^(\\d{18,18}|\\d{15,15}|(\\d{17,17}[x|X]))$", message = "身份证格式错误")
+    //private String idCard;
 
     public Integer getId() {
         return id;
