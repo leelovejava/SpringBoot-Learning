@@ -1,0 +1,3 @@
+- [Swagger规范RESTful API 设计指南](http://blog.720ui.com/2016/restful_swagger_api/)
+- [良好的 API 设计指南](http://blog.720ui.com/2017/restful_api/)
+- [SpringBoot使用Swagger2实现Restful API,加在model](https://www.dalaoyang.cn/article/21)

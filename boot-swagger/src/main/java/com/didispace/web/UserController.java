@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * @author 程序猿DD
  * @version 1.0.0
  * @blog http://blog.didispace.com
+ * 官网教程 https://swagger.io/docs/specification/api-host-and-base-path/
  *
  */
 @RestController
@@ -19,6 +20,23 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
+
+    /**
+     * swagger通过注解表明该接口会生成文档，包括接口名、请求方法、参数、返回信息的等等。
+     *
+     * @Api：修饰整个类，描述Controller的作用
+     * @ApiOperation：描述一个类的一个方法，或者说一个接口
+     * @ApiParam：单个参数描述
+     * @ApiModel：用对象来接收参数
+     * @ApiProperty：用对象接收参数时，描述对象的一个字段
+     * @ApiResponse：HTTP响应其中1个描述
+     * @ApiResponses：HTTP响应整体描述
+     * @ApiIgnore：使用该注解忽略这个API
+     * @ApiError ：发生错误返回的信息
+     * @ApiParamImplicitL：一个请求参数
+     * @ApiParamsImplicit 多个请求参数
+     * @return
+     */
 
     @ApiOperation(value="获取用户列表", notes="")
     @RequestMapping(value={""}, method=RequestMethod.GET)
@@ -62,6 +80,17 @@ public class UserController {
     public String deleteUser(@PathVariable Long id) {
         users.remove(id);
         return "success";
+    }
+
+    /**
+     * 不需要某接口生成文档
+     * @ApiIgnore 使用该注解忽略这个API
+     * @return
+     */
+    @ApiIgnore
+    @RequestMapping(value = "/hi", method = RequestMethod.GET)
+    public String  jsonTest() {
+        return " hi you!";
     }
 
 }

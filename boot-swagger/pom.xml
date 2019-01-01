@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.didispace</groupId>
-	<artifactId>SpringBootWithSwagger</artifactId>
+	<artifactId>boot-swagger</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>SpringBootWithSwagger</name>
-	<description>SpringBootWithSwagger</description>
+	<name>boot-swagger</name>
+	<description>boot-swagger</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

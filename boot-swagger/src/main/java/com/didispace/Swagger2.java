@@ -19,6 +19,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class Swagger2 {
+    /**
+     * swagger2开启用户认证
+     * https://blog.csdn.net/github_39939645/article/details/80114248
+     * @return
+     */
 
     @Bean
     public Docket createRestApi() {
