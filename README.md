@@ -73,6 +73,7 @@
 - chapter3-2-8：[MyBatis注解配置详解](http://blog.didispace.com/mybatisinfo/)
 - [SpringBoot使用Mybatis-PageHelper](https://www.dalaoyang.cn/article/65)
 - springboot-mybatis-mutil-datasource：[Spring Boot 整合 Mybatis 实现 Druid 多数据源详解](https://www.bysocket.com/?p=1712)
+- [Spring Boot整合Mybatis通用Mapper插件](http://tengj.top/2017/12/20/springboot11/)
 - hbase-phoenix-mybatis：[mybatis通过phoenix操作hbase](https://blog.csdn.net/tototuzuoquan/article/details/81506285)
 - springboot_hbase_kafka:[封装hbase基础操作,dao层注入](https://gitee.com/susonglin/springboot_hbase_kafka/)
 - chapter3-2-9：[使用Flyway来管理数据库版本](http://blog.didispace.com/spring-boot-flyway-db-version/)
