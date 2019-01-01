@@ -1,5 +1,11 @@
 # springboot-elasticsearch
 
+### 参考
+
+[JavaWeb项目架构之Elasticsearch日志处理系统](https://blog.52itstyle.com/archives/2339/)
+
+[dalaoyang-SpringBoot整合elasticsearch](https://www.dalaoyang.cn/article/65)
+
 #### 一、项目介绍
 Springboot2.1.1+elasticsearch6.5.3搭建的企业级搜索平台，支持PB级数据（需要elasticsearch分布式部署），目前已经支持中文分词，检索关键词高亮操作
 
