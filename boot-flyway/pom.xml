@@ -8,8 +8,8 @@
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>Chapter3-2-9</name>
-	<description>Spring Boot with JDBCTemplate</description>
+	<name>boot-flyway</name>
+	<description>Spring Boot with flyway</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
