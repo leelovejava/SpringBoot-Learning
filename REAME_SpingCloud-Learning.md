@@ -74,3 +74,18 @@
 - [注册中心（Eureka/Consul）](https://blog.battcn.com/2017/07/25/springcloud/dalston/spring-cloud-discovery/)
 
 - [Spring Cloud for Alibaba 发布](https://blog.battcn.com/2018/10/31/other/spring-cloud-alibaba/)
+
+
+## Spring Cloud Stream
+
+[Spring Cloud Stream快速入门](https://mp.weixin.qq.com/s/bGJOStb-noU-oc2JpSulMw)
+[Spring Cloud Stream 核心概念](https://mp.weixin.qq.com/s/HNwY9zqRXeCjcFGX8X2GIQ)
+[Spring Cloud Stream 消费组](https://mp.weixin.qq.com/s/9g8FNYO05zp4e3Bwi1OGMg)
+[Spring Cloud Stream 消费分区](https://mp.weixin.qq.com/s/rUfxZuK5WpthZCY4Vhb28Q)
+[Spring Cloud Stream如何处理消息重复消费？](https://mp.weixin.qq.com/s/ujz1GUsqiBWjaeKQypTngg)
+[Spring Cloud Stream如何消费自己生产的消息？](https://mp.weixin.qq.com/s/9JR0pb4oE674TOCMu-Hzqg)
+[Spring Cloud Stream同一通道根据消息内容分发不同的消费逻辑](https://mp.weixin.qq.com/s/6dU_18t1SmFT2zy8TSf6bg)
+[Spring Cloud Stream消费失败后的处理策略（一）：自动重试](https://mp.weixin.qq.com/s/c6ApWokv4tAMpTZPBztdFQ)
+[Spring Cloud Stream消费失败后的处理策略（二）：自定义错误处理逻辑](https://mp.weixin.qq.com/s/7sILItNKJ_i9bCZ68vhErg)
+[Spring Cloud Stream消费失败后的处理策略（三）：使用DLQ队列（RabbitMQ）](https://mp.weixin.qq.com/s/-54zlPaa4HGDArzPWu1Kog)
+[Spring Cloud Stream消费失败后的处理策略（四）：重新入队（RabbitMQ）](https://mp.weixin.qq.com/s/bUQf5ZsUTbt3KSVu44uwXg)
