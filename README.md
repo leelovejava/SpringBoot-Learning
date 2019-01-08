@@ -41,6 +41,7 @@
 -[Spring Boot应用迁移到Java最新版（Java 11）](https://mp.weixin.qq.com/s/avhIEa0mSzj4qepai-hJcA)
 -[译：在生产中使用Java 11：需要了解的重要事项](https://mp.weixin.qq.com/s/b0eTuv0DhMseeRzYhyx-Rg)
 - [Spring Boot 如何解决项目启动时初始化资源](http://www.ityouknow.com/springboot/2018/05/03/spring-boot-commandLineRunner.html)
+- [Spring容器初始化完成后执行初始化数据方法](https://blog.csdn.net/honghailiang888/article/details/73333821)
 - [Spring Boot 定制 Banner 示例](https://github.com/ityouknow/spring-boot-examples/tree/master/spring-boot-banner)
 - [Spring Boot自定义Banner](http://blog.didispace.com/spring-boot-banner/)
 - [Spring Boot应用的后台运行配置](http://blog.didispace.com/spring-boot-run-backend/)
@@ -168,6 +169,7 @@ shiro
 ##### 部署
 - [使用Jenkins部署Spring Boot](http://www.ityouknow.com/springboot/2017/11/11/springboot-jenkins.html)
 - [Springboot如何测试打包部署](http://www.ityouknow.com/springboot/2017/05/09/springboot-deploy.html)
+- [maven-assembly-plugin打包tar.gz或zip](https://mp.weixin.qq.com/s/K1g_6fn31NdkJO1Vr76YkA)
 - [开发热部署](http://blog.720ui.com/2017/springboot_08_deploy_autoload/)
 - [远程调试](http://blog.720ui.com/2017/springboot_08_remote_debug/)
 
