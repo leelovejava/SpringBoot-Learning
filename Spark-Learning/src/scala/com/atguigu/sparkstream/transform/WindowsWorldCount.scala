@@ -1,8 +1,7 @@
-package com.atguigu.sparkstream
+package com.atguigu.sparkstream.transform
 
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
-
 
 /**
   * Created by wuyufei on 06/09/2017.
@@ -50,25 +49,3 @@ object WindowsWorldCount {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

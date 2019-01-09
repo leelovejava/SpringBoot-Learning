@@ -11,7 +11,7 @@ import org.apache.spark.streaming.receiver.Receiver
 
 /**
   * Created by wuyufei on 06/09/2017.
-  * Spark Stream基本数据源之自定义数据源
+  * Spark Stream基本数据源之自定义接收器
   */
 class CustomReceiver(host: String, port: Int) extends Receiver[String](StorageLevel.MEMORY_AND_DISK_2) {
   /**

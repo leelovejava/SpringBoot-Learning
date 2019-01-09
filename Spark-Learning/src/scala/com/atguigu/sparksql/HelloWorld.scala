@@ -1,8 +1,7 @@
-package com.atguigu
+package com.atguigu.sparksql
 
 import org.apache.spark.sql.SparkSession
 import org.slf4j.LoggerFactory
-
 
 /**
   * Created by wuyufei on 31/07/2017.
