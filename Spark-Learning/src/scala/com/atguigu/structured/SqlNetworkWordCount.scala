@@ -49,19 +49,14 @@ object SqlNetworkWordCount {
     // trigger interval：触发的间隔时间，如果前一个batch处理超时了，那么不会立即执行下一个batch，而是等下一个trigger时间在执行
     // checkpoint location：为保证数据的可靠性，可以设置检查点保存输出的结果
 
-    /**
-      * 输出
-      *
-      * +--------------------+-----+
-      * |               value|count|
-      * +--------------------+-----+
-      * |      ssssssssssssss|    3|
-      * |sssssssssssssssss...|    1|
-      * |       sssssssssssss|    1|
-      * |              111111|    2|
-      * |   sssssssssssssssss|    1|
-      * +--------------------+-----+
-      */
+    // +--------------------+-----+
+    // |               value|count|
+    // +--------------------+-----+
+    // |      ssssssssssssss|    3|
+    // |       sssssssssssss|    1|
+    // |              111111|    2|
+    // |   sssssssssssssssss|    1|
+    // +--------------------+-----+
     query.awaitTermination()
 
     // spark-submit --class com.atguigu.structured.WorldCount  --master yarn structuredstreaming_wordCount.jar
