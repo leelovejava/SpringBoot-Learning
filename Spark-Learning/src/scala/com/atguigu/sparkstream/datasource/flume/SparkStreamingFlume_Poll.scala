@@ -1,4 +1,4 @@
-package com.atguigu.sparkstream
+package com.atguigu.sparkstream.datasource.flume
 
 import java.net.InetSocketAddress
 
