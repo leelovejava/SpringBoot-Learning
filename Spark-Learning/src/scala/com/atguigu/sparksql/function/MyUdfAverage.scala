@@ -45,12 +45,12 @@ object MyAverage extends Aggregator[Employee, Average, Double] {
       .getOrCreate()
 
     // For implicit conversions like converting RDDs to DataFrames
-    val ds = spark.read.json("examples/src/main/resources/employees.json").as[Employee]
-    ds.show()
+    //val ds = spark.read.json("examples/src/main/resources/employees.json").as[Employee]
+    //ds.show()
 
-    val averageSalary = MyAverage.toColumn.name("average_salary")
-    val result = ds.select(averageSalary)
-    result.show()
+    //val averageSalary = MyAverage.toColumn.name("average_salary")
+    //val result = ds.select(averageSalary)
+    //result.show()
 
     spark.stop()
   }
