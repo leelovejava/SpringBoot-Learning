@@ -142,6 +142,9 @@ shiro
 - chapter4-5-1：[实现邮件发送：简单邮件、附件邮件、嵌入资源的邮件、模板邮件](http://blog.didispace.com/springbootmailsender/)
 - spring-boot-mail:[邮件发送服务，文本、附件、模版多种实现，队列，线程定时任务功能](https://gitee.com/52itstyle/spring-boot-mail)
 
+#### 定时任务
+- spring-boot-task:[SpringBoot几种定时任务的实现方式](http://www.wanqhblog.top/2018/02/01/SpringBootTaskSchedule/)
+
 #### 消息服务
 
 - chapter5-1-1：[JMS（未完成）]
@@ -154,6 +157,7 @@ shiro
 #### 文件上传
 - [Spring Boot文件上传](https://www.javazhiyin.com/16281.html)
 - [Spring Boot -FastDFS](https://github.com/ityouknow/spring-boot-examples/tree/master/spring-boot-fastDFS)
+- [使用nginx代理访问FastDFS上传的文件](http://www.wanqhblog.top/2017/12/29/%E4%BD%BF%E7%94%A8nginx%E4%BB%A3%E7%90%86%E8%AE%BF%E9%97%AEFastDFS%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/)
 - [Spring Boot -HDFS]()
 
 #### 网络
