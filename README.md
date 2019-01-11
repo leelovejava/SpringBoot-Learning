@@ -151,7 +151,7 @@ shiro
 - [JMS 在 SpringBoot 中的使用](https://www.cnblogs.com/niit-soft-518/p/6957384.html)
 - chapter5-2-1：[Spring Boot中使用RabbitMQ](http://blog.didispace.com/spring-boot-rabbitmq/)
 - rabbitMQ:[spring-boot-rabbitmq](https://github.com/ityouknow/spring-boot-examples/tree/master/spring-boot-rabbitmq)
-- MQTT
+- MQTT:[mqtt](https://blog.csdn.net/qq_41018959/article/details/80592444)
 - Kafka Stream:[Spring Cloud Stream如何消费自己生产的消息](https://github.com/dyc87112/SpringCloud-Learning/tree/master/4-Finchley/stream-consumer-self)
 
 #### 文件上传
