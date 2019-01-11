@@ -10,6 +10,7 @@
 - chapter9-1-6：[Spring Cloud构建微服务架构（六）高可用服务注册中心](http://blog.didispace.com/springcloud6/)
 - [Spring Cloud构建微服务架构（七）消息总线(Rabbit)](http://blog.didispace.com/springcloud7/)
 - [Spring Cloud构建微服务架构（七）消息总线](http://blog.didispace.com/springcloud7-2/)
+- [使用Spring Cloud Netflix Eureka进行安全发现](https://mp.weixin.qq.com/s/PSw64FqTphXTSn3QxNxV2g)
 
 #### [Spring Cloud基础教程](http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/)
 - [Spring Cloud构建微服务架构：服务注册与发现（Eureka、Consul）](http://blog.didispace.com/spring-cloud-starter-dalston-1/)
