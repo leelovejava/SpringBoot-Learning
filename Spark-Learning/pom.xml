@@ -188,7 +188,7 @@
     </dependencies>
 
     <build>
-        <finalName>networdcount</finalName>
+        <finalName>spark-learning</finalName>
         <plugins>
             <!--maven编译插件-->
             <plugin>
