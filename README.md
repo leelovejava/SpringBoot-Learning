@@ -48,6 +48,7 @@
 - [ 配置文件 - 有哪些很棒的特性](http://blog.720ui.com/2016/springboot_04_properties/)
 - [Spring Boot Web 静态文件缓存处理](http://cxytiandi.com/blog/detail/17217)
 - [SpringBoot拦截器](https://www.dalaoyang.cn/article/43)
+- [Spring Boot：自定义starter](https://mp.weixin.qq.com/s/LVOGjCi-xBrEnPezi9JyiA)
 
 #### Web开发
 
