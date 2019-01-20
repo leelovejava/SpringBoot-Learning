@@ -4,7 +4,11 @@ import com.atguigu.stream.Godness;
 
 import java.util.Optional;
 
-//注意：Optional 不能被序列化
+
+/**
+ * Optional 的实体类
+ * 注意：Optional 不能被序列化
+ */
 public class NewMan {
 
 	private Optional<Godness> godness = Optional.empty();
