@@ -7,7 +7,7 @@ import com.atguigu.stream.Godness;
 import com.atguigu.stream.Man;
 import org.junit.Test;
 
-/*
+/**
  * 一、Optional 容器类：用于尽量避免空指针异常
  * 	Optional.of(T t) : 创建一个 Optional 实例
  * 	Optional.empty() : 创建一个空的 Optional 实例

@@ -83,23 +83,29 @@ public class TestLambda {
         Predicate<String> predicate = (s) -> s.length() > 0;
 
         // 检查给定参数的谓词
-        Boolean a = predicate.test("foo"); // true
+        Boolean a = predicate.test("foo");
+        // true
         // 逻辑上相反的谓词
-        Boolean b = predicate.negate().test("foo"); // false
+        Boolean b = predicate.negate().test("foo");
+        // false
 
         // 引用静态方法
         Predicate<Boolean> nonNull = Objects::nonNull;
         Predicate<Boolean> isNull = Objects::isNull;
 
-        System.out.println(nonNull.test(null)); // false
-        System.out.println(isNull.test(null)); // true
+        System.out.println(nonNull.test(null));
+        // false
+        System.out.println(isNull.test(null));
+        // true
 
         // 引用普通方法
         Predicate<String> isEmpty = String::isEmpty;
         Predicate<String> isNotEmpty = isEmpty.negate();
 
-        System.out.println(isEmpty.test("")); // true
-        System.out.println(isNotEmpty.test("")); // false
+        System.out.println(isEmpty.test(""));
+        // true
+        System.out.println(isNotEmpty.test(""));
+        // false
     }
 
     /**
@@ -118,7 +124,8 @@ public class TestLambda {
         Function<String, String> backToString = toInteger.andThen(String::valueOf);
 
 
-        backToString.apply("123"); // "123"
+        backToString.apply("123");
+        // "123"
 
 
         // 这个函数式接口的函数方法是apply, 把函数应用在指定的参数上
@@ -126,29 +133,33 @@ public class TestLambda {
         System.out.println(toInteger.apply("123"));
 
         Function<String, Integer> f1 = (t) -> Integer.valueOf(t) * 10;
-        System.out.println(f1.apply("3"));    // 30 
+        System.out.println(f1.apply("3"));
+        // 30 
 
         // 返回自身
-        System.out.println(Function.identity().apply("3"));// 3
+        System.out.println(Function.identity().apply("3"));
+        // 3
 
         // 先执行 apply 在执行andThen
-        System.out.println(f1.andThen((r) -> String.valueOf(r) + ".....").apply("4"));// 40..... 
+        System.out.println(f1.andThen((r) -> String.valueOf(r) + ".....").apply("4"));
+        // 40..... 
 
         // 先执行compose里面的函数 再执行本函数的apply
         System.out.println(f1.compose((String r) -> r.substring(1)).apply("a5"));
     }
 
-    /*
+    /**
      * Suppliers
-        Suppliers produce a result of a given generic type. Unlike Functions, Suppliers don't accept arguments.
-
-        supplier 产生指定类型的一个结果。不同于function，supplier 不接受参数。 类似 一个使用默认构造器的工厂方法
+     * Suppliers produce a result of a given generic type. Unlike Functions, Suppliers don't accept arguments.
+     * supplier 产生指定类型的一个结果。不同于function，supplier 不接受参数。 类似 一个使用默认构造器的工厂方法
      */
     @Test
     public void test6() {
         Supplier<Employee> personSupplier = Employee::new;
-        Employee employee = personSupplier.get(); // new Employee
-        System.out.println(employee);// Employee [id=0, name=null, age=0, salary=0.0]
+        Employee employee = personSupplier.get();
+        // new Employee
+        System.out.println(employee);
+        // Employee [id=0, name=null, age=0, salary=0.0]
     }
 
     /**
@@ -187,8 +198,10 @@ public class TestLambda {
         Employee p1 = new Employee("John", 1);
         Employee p2 = new Employee("Alice", 2);
 
-        comparator.compare(p1, p2); // > 0
-        comparator.reversed().compare(p1, p2); // < 0
+        comparator.compare(p1, p2);
+        // > 0
+        comparator.reversed().compare(p1, p2);
+        // < 0
     }
 
     /**
@@ -201,10 +214,14 @@ public class TestLambda {
     public void test9() {
         Optional<String> optional = Optional.of("bam");
 
-        optional.isPresent();           // true
-        optional.get();                 // "bam"
-        optional.orElse("fallback");    // "bam"
+        optional.isPresent();
+        // true
+        optional.get();
+        // "bam"
+        optional.orElse("fallback");
+        // "bam"
 
-        optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
+        optional.ifPresent((s) -> System.out.println(s.charAt(0)));
+        // "b"
     }
 }

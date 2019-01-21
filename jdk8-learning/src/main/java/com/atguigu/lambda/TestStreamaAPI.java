@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-/*
+/**
  * 一、Stream API 的操作步骤：
  * 
  * 1. 创建 Stream
@@ -56,7 +56,7 @@ public class TestStreamaAPI {
 			new Employee(105, "田七", 38, 5555.55)
 	);
 	
-	/*
+	/**
 	  筛选与切片
 		filter——接收 Lambda ， 从流中排除某些元素。
 		limit——截断流，使其元素不超过给定数量。
@@ -92,7 +92,8 @@ public class TestStreamaAPI {
 	public void test4(){
 		emps.stream()
 			.filter((e) -> {
-				System.out.println("短路！"); // &&  ||
+				System.out.println("短路！");
+				// &&  ||
 				return e.getSalary() >= 5000;
 			}).limit(3)
 			.forEach(System.out::println);

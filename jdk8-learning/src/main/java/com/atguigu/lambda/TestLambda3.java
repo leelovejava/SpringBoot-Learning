@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 import org.junit.Test;
 
-/*
+/**
  * Java8 内置的四大核心函数式接口
  * 
  * Consumer<T> : 消费型接口
