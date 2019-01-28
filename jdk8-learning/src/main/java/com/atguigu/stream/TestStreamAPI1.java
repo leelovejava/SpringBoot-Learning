@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import com.atguigu.stream.model.Employee;
 import org.junit.Test;
 
 /**

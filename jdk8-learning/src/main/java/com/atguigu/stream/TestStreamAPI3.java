@@ -3,9 +3,10 @@ package com.atguigu.stream;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import com.atguigu.stream.model.Employee;
 import org.junit.Test;
 
-import com.atguigu.stream.Employee.Status;
+import com.atguigu.stream.model.Employee.Status;
 
 public class TestStreamAPI3 {
 	

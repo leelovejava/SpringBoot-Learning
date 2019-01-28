@@ -1,4 +1,4 @@
-package com.atguigu.stream.exercise;
+package com.atguigu.stream.exec.model;
 
 /**
  * 交易员类

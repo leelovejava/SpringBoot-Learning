@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import com.atguigu.stream.model.Employee;
 import org.junit.Test;
 
-import com.atguigu.stream.Employee.Status;
+import com.atguigu.stream.model.Employee.Status;
 
 /**
  * 一、 Stream 的操作步骤
