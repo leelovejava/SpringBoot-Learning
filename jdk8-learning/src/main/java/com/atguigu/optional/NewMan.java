@@ -1,6 +1,6 @@
 package com.atguigu.optional;
 
-import com.atguigu.stream.Godness;
+import com.atguigu.stream.model.Godness;
 
 import java.util.Optional;
 
