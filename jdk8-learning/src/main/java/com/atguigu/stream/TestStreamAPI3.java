@@ -1,12 +1,6 @@
 package com.atguigu.stream;
 
-import java.util.Arrays;
-import java.util.DoubleSummaryStatistics;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
@@ -26,7 +20,7 @@ public class TestStreamAPI3 {
 	);
 	
 	//3. 终止操作
-	/*
+	/**
 		归约
 		reduce(T identity, BinaryOperator) / reduce(BinaryOperator) ——可以将流中元素反复结合起来，得到一个值。
 	 */
@@ -55,16 +49,19 @@ public class TestStreamAPI3 {
 			.map(Employee::getName)
 			.flatMap(TestStreamAPI1::filterCharacter)
 			.map((ch) -> {
-				if(ch.equals('六'))
+				if(ch.equals('六')) {
 					return 1;
-				else 
+				} else {
 					return 0;
+				}
 			}).reduce(Integer::sum);
 		
 		System.out.println(sum.get());
 	}
-	
-	//collect——将流转换为其他形式。接收一个 Collector接口的实现，用于给Stream中元素做汇总的方法
+
+	/**
+	 * collect——将流转换为其他形式。接收一个 Collector接口的实现，用于给Stream中元素做汇总的方法
+	 */
 	@Test
 	public void test3(){
 		List<String> list = emps.stream()
@@ -92,6 +89,19 @@ public class TestStreamAPI3 {
 	
 	@Test
 	public void test4(){
+		// 1).
+		IntSummaryStatistics intSummaryStatistics=emps.stream().mapToInt(person-> person.getAge()).summaryStatistics();
+		// 最大值
+		int max2=intSummaryStatistics.getMax();
+		// 最小值
+		intSummaryStatistics.getMin();
+		intSummaryStatistics.getSum();
+		// 总数
+		intSummaryStatistics.getCount();
+		// 平均值
+		intSummaryStatistics.getAverage();
+
+		// 2).
 		Optional<Double> max = emps.stream()
 			.map(Employee::getSalary)
 			.collect(Collectors.maxBy(Double::compare));
@@ -134,8 +144,10 @@ public class TestStreamAPI3 {
 		
 		System.out.println(map);
 	}
-	
-	//多级分组
+
+	/**
+	 * 多级分组
+	 */
 	@Test
 	public void test6(){
 		Map<Status, Map<String, List<Employee>>> map = emps.stream()
