@@ -8,6 +8,9 @@ import org.apache.spark.mllib.regression.LabeledPoint
 import org.apache.spark.mllib.regression.LinearRegressionModel
 import org.apache.spark.mllib.regression.LinearRegressionWithSGD
 
+/**
+  * 线性回归
+  */
 object LinearRegression {
 
   def main(args: Array[String]): Unit = {
