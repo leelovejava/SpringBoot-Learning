@@ -15,7 +15,7 @@ object FPGrowth extends App{
   val sc = new SparkContext(conf)
 
   //加载数据样本
-  val path = "C:\\Users\\Administrator\\Desktop\\Spark\\3.code\\spark\\sparkMLlib\\sparkmllib_fpgrowth\\src\\main\\resources\\fpgrowth.txt";
+  val path = "Spark-Learning/src/resources/ml/fpgrowth/fpgrowth.txt";
   //创建交易样本
   val transactions = sc.textFile(path).map(_.split(" ")).cache()
 

@@ -36,7 +36,7 @@ object RecommendationExample {
     val sc = new SparkContext(conf)
 
     //加载数据
-    val path = "C:\\Users\\Administrator\\Desktop\\Spark\\3.code\\spark\\sparkMLlib\\sparkmllib_collaborative_filtering\\src\\main\\resources\\test.data"
+    val path = "Spark-Learning/src/resources/ml/collaborative_filtering/test.data"
     val data = sc.textFile(path)
     val ratings = data.map(_.split(',') match { case Array(user, item, rate) =>
       Rating(user.toInt, item.toInt, rate.toDouble)

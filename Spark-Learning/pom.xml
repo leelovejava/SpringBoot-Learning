@@ -70,12 +70,14 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--机器学习-->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-mllib_2.11</artifactId>
             <version>${spark.version}</version>
             <!--<scope>provided</scope>-->
         </dependency>
+        <!--机器学习-->
 
         <!--mysql驱动包-->
         <dependency>

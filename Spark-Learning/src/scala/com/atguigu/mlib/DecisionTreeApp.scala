@@ -6,6 +6,9 @@ import org.apache.spark.mllib.tree.model.DecisionTreeModel
 import org.apache.spark.mllib.util.MLUtils
 import org.apache.spark.{SparkConf, SparkContext}
 
+/**
+  * 决策树
+  */
 object DecisionTreeApp extends App{
   //屏蔽日志
   Logger.getLogger("org.apache.spark").setLevel(Level.ERROR)
@@ -15,7 +18,7 @@ object DecisionTreeApp extends App{
   val conf = new SparkConf().setMaster("local[4]").setAppName("DecisionTree")
   val sc = new SparkContext(conf)
 
-  val path = "C:\\Users\\Administrator\\Desktop\\Spark\\3.code\\spark\\sparkMLlib\\sparkmllib_decision_tree\\src\\main\\resources\\data.txt"
+  val path = "Spark-Learning/src/resources/ml/decision_tree/data.txt"
   //加载数据文件
   val data = MLUtils.loadLibSVMFile(sc, path)
   //将数据集切分为70%的训练数据集和30%的测试数据集

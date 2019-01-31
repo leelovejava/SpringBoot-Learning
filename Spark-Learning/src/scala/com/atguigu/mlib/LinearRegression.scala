@@ -21,7 +21,7 @@ object LinearRegression {
     val sc = new SparkContext(conf)
 
     //加载数据样本
-    val path = "C:\\Users\\Administrator\\Desktop\\Spark\\3.code\\spark\\sparkMLlib\\sparkmllib_linear_regression\\src\\main\\resources\\data.txt";
+    val path = "Spark-Learning/src/resources/ml/linear_regression/data.txt";
 
     //通过提供的工具类加载样本文件
     val data = MLUtils.loadLibSVMFile(sc,path).cache()
@@ -36,7 +36,7 @@ object LinearRegression {
     val numIterations = 100
     //梯度下降步长
     val stepSize = 0.00000001
-    //训练模型
+    //训练模型: 线性回归算法
     val model = LinearRegressionWithSGD.train(data, numIterations, stepSize)
 
     //模型评估
