@@ -1,0 +1,70 @@
+Spark RPC通信层设计原理分析:
+Spark一开始使用 Akka, 2版本以后完全抛弃akka:最主要原因:spark对akka没有维护,需要akka更新,受到了牵制,akka版本之间无法通信,akka兼容性
+通信:
+在spark中抽象RPCEnv(是RPC环境对象,RPC上下文环境,NettyRpcEnv实现),由NettyRPCFactory创建,由RpcEndPoint是特征值,有RpcEndPointref进行实现
+源码入口：NettyRpcEnv
+包括dispatcher 消息分发器：相当于rpc远程的信息 相当于context 会创建 Inbox:储存消息,发送消息，线程安全,匹配不同的消息类型：单向OneWayMessage，双向RpcMessage,单线程消息OnStop,线程安全线程OnStart
+NettyRpcEnvFactory 工厂,创建nettyEnv
+其中存储的参数信息是通过LinkHashMap 和ConcurrentMap 
+比如:注册rpc使用是ConcurrentMap 存储的是ip,port,内部包括多个分组,在多个线程的时候 把特定的ip,port锁住,还没有影响其他ip,port的效率,防止了同一个ip注册的情况
+启动服务的时候,会判断是否为空,是否存在,将配置参数存储起来 使用线程安全+LinkedHashMap
+等等
+
+SPARK启动调用:
+启动spark:脚本中我们启动的时候是通过 spark-all.sh 调用配置参数 start-master.sh start-slaves.sh 方法
+源码入口Master:
+启动main方法:主要的事情是 创建通信RpcEnv,注册Master节点，进行通讯:接收receive,启动onstart,停止onstop 等基本方法
+创建通信RpcEnv: 获取配置文件:sparkconf 和spark-shell 命令行的配置 建立与Rpc的通信  
+Master继承了ThreadSafeRpcEndpoint  最终继承了RpcEndpoint
+接收：Master的状态:STANDBY, ALIVE, RECOVERING, COMPLETING_RECOVERY 每次进行操作前要先检查状态类型
+	 比如:重新选举:先从持久化数据中获取app,works,drivers 若状态是RECOVERING 要进行全部恢复
+	  注册RegisterApplication的时候 有一个ToDo--待编写:阻止重复注册 根据Rpc实例,appid等等在Master中创建application对应的app 注册--持久化引擎中增加application（hashMap查看是否存在key值）,并向Rpc实例发送注册消息
+		最后调用schedule():调用资源---调用worker,有个判断条件:活着的works的内存大于driver要的内存 并且core数(线程数)大于driver要的核数 启动对应的worker(使用了一个flag,进行优化)
+		调用startExecutorsOnWorkers():分配了executor 和资源(过滤掉没有资源的worker,获取application需要的资源最后调用scheduleExecutorsOnWorkers 分配资源启动executor) ---FIFO scheduler队列 
+
+源码work入口:都是继承了ThreadSafeRpcEndpoint  最终继承了RpcEndpoint
+调用的都是接收receive,启动onstart,停止onstop 等基本方法 
+Worker的主要功能是 创建了通信架构中的RpcEnv，并注册了Worker成为端点，并且获取了Master的端点代理,监控Executors
+创建通信RpcEnv: 获取配置文件:sparkconf 和spark-shell 命令行的配置 建立与Rpc的通信  和Master调用的方式一样，只不过实例不同一个是Master,一个是worker
+在onStart的时候进行了对所有的Master(包括ha)的节点注册调用:registerWithMaster(),由于网络的原因，使用线程池调用会调用多次
+
+spark-submit提交jar包:入口：SparkSubmit.scala
+SparkSubmit的main方法:
+准备环境返回四元组:确定模式,确定语言
+
+部署模式包括两种:client客户端(在client上启动driver),cluster集群模式(选择一台worker启动Driver)
+代码中master ur设置cluster集群模式包括:mesos,STANDALONE,yarn 
+
+ClentEndPoint
+
+Driver启动:
+代码源头:Master.scala---RequestSubmitDriver
+
+SparkContext启动：
+入口：SparkContext
+
+
+
+
+=================shuffle================
+hadoop map阶段shuffle
+以k,v写到环形缓冲区(kvbuffer),写到时候记录了:kvmeta（元数据信息，包括分区等等）,k v 信息 对头开始写 
+当写到20%的时候，从另一头开始写,启动sortAndSpillt线程,对kvmeta 中的信息进行排序(同一partition内的按照key有序):只是移动了索引信息,通过spill产生一个新的索引文件 最后进行merge
+
+spark shuffle阶段:Hash Shuffle--实现了一个资源的复用的过程
+一个shuffleMapTask将数据写入ResultTask的本地文件,当下一个shuffleMapTask运行的时候,复用shuffleMapTask的内存缓存，磁盘文件的资源，
+直接将数据写入之前shuffleMapTask的本地文件，相当于多个shuffleMapTask的输出进行了合并，大大减少了本地的磁盘数量
+Sort Shuffle--使用byPass机制，reduce数量少于bypass数值，自动回采用hash shuffle
+===============内存=============
+spark内存管理包括两部分:堆内,堆外
+总体都不足存储到硬盘,部分不足占用其他人的内存,用完归还
+堆内包括:storage，exeution，other三个大部分比例为622,每个部分都有预留不会造成内存溢出的情况,storage主要处理RDD和broadcast数据，exeution处理shuffle的数据,other管理的是元数据
+堆外包括:storage，exeution比例为55
+
+
+		
+
+
+
+
+
