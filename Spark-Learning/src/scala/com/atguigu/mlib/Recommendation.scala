@@ -45,6 +45,7 @@ object RecommendationExample {
     //训练模型
     val rank = 10
     val numIterations = 10
+    // ALS(Alternating Least Square)交替最小二乘算法
     val model = ALS.train(ratings, rank, numIterations, 0.01)
 
     //准备用户数据
