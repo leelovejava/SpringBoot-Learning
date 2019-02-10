@@ -11,26 +11,28 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 /**
   * Created by wuyufei on 06/09/2017.
-  * Spark Stream高级数据源之kafka
+  * Spark Stream高级数据源之kafka,Direct方式
+  *
+  * @see https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/streaming/DirectKafkaWordCount.scala
   */
 object createKafkaProducerPool {
   /**
     *
     * pom依赖:
     * <dependency>
-    *   <groupId>org.apache.commons</groupId>
-    *   <artifactId>commons-pool2</artifactId>
-    *   <version>2.4.2</version>
+    * <groupId>org.apache.commons</groupId>
+    * <artifactId>commons-pool2</artifactId>
+    * <version>2.4.2</version>
     * </dependency>
     * <dependency>
-    *   <groupId>org.apache.kafka</groupId>
-    *   <artifactId>kafka-clients</artifactId>
-    *   <version>0.10.2.1</version>
+    * <groupId>org.apache.kafka</groupId>
+    * <artifactId>kafka-clients</artifactId>
+    * <version>0.10.2.1</version>
     * </dependency>
     * <dependency>
-    *   <groupId>org.apache.spark</groupId>
-    *   <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
-    *   <version>${spark.version}</version>
+    * <groupId>org.apache.spark</groupId>
+    * <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+    * <version>${spark.version}</version>
     * </dependency>
     *
     * @param brokerList
@@ -59,14 +61,16 @@ object KafkaStreaming {
     val conf = new SparkConf().setMaster("local[4]").setAppName("NetworkWordCount")
     val ssc = new StreamingContext(conf, Seconds(1))
 
-    //创建topic
+    // 创建topic
     val brobrokers = "172.16.148.150:9092,172.16.148.151:9092,172.16.148.152:9092"
-    val sourcetopic = "source";
-    val targettopic = "target";
 
-    //创建消费者组
-    var group = "con-consumer-group"
-    //消费者配置
+    val sourcetopic = "source"
+
+    val targettopic = "target"
+
+    // 创建消费者组
+    val group = "con-consumer-group"
+    // 消费者配置
     val kafkaParam = Map(
       "bootstrap.servers" -> brobrokers, //用于初始化链接到集群的地址
       "key.deserializer" -> classOf[StringDeserializer],
@@ -78,14 +82,18 @@ object KafkaStreaming {
       "auto.offset.reset" -> "latest",
       //如果是true，则这个消费者的偏移量会在后台自动提交
       "enable.auto.commit" -> (false: java.lang.Boolean)
-    );
+    )
 
 
 
     //ssc.sparkContext.broadcast(pool)
 
-    //创建DStream，返回接收到的输入数据
-    var stream = KafkaUtils.createDirectStream[String, String](ssc, LocationStrategies.PreferConsistent, ConsumerStrategies.Subscribe[String, String](Array(sourcetopic), kafkaParam))
+    // 创建DStream，返回接收到的输入数据
+    // Direct 直连方式拉取数据，不会修改数据的偏移量，需要手动的更新
+    val stream = KafkaUtils.createDirectStream[String, String](
+      ssc, LocationStrategies.PreferConsistent,
+      ConsumerStrategies.Subscribe[String, String](Array(sourcetopic), kafkaParam)
+    )
 
 
     //每一个stream都是一个ConsumerRecord
