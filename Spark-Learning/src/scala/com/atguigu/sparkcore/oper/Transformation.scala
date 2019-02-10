@@ -30,6 +30,8 @@ object Transformation {
 
     //orderTest
 
+    //groupBy
+
     // 停止sc，结束该任务
     sc.stop()
   }
@@ -185,6 +187,18 @@ object Transformation {
     // res13: Array[(String, Iterable[Int])] = Array((bbb,CompactBuffer(1)), (ccc,CompactBuffer(1)), (aaa,CompactBuffer(1)))
   }
 
+  /**
+    * 分组
+    * def groupBy[K: ClassTag](f: T => K): RDD[(K, Iterable[T])]
+    * def groupBy[K: ClassTag](f: T => K, numPartitions: Int): RDD[(K, Iterable[T])]
+    * def groupBy[K: ClassTag](f: T => K, p: Partitioner): RDD[(K, Iterable[T])]
+    */
+  def groupBy:Unit={
+    val a = sc.parallelize(1 to 9, 3)
+    // 接收一个函数，将函数返回的值作为key，根据key进行分组
+    print(a.groupBy(x => { if (x % 2 == 0) "even" else "odd" }).collect)
+    // res0: Array[(String, Iterable[Int])] = Array((even,CompactBuffer(2, 4, 6, 8)), (odd,CompactBuffer(1, 3, 5, 7, 9)))
+  }
 
   /**
     * 排序
