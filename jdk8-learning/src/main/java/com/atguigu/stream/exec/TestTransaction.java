@@ -1,4 +1,4 @@
-package com.atguigu.stream.exercise;
+package com.atguigu.stream.exec;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import com.atguigu.stream.exec.model.Trader;
+import com.atguigu.stream.exec.model.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 

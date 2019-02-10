@@ -2,9 +2,9 @@ package com.atguigu.optional;
 
 import java.util.Optional;
 
-import com.atguigu.stream.Employee;
-import com.atguigu.stream.Godness;
-import com.atguigu.stream.Man;
+import com.atguigu.stream.model.Employee;
+import com.atguigu.stream.model.Godness;
+import com.atguigu.stream.model.Man;
 import org.junit.Test;
 
 /**

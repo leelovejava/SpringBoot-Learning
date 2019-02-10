@@ -1,4 +1,4 @@
-package com.atguigu.stream;
+package com.atguigu.stream.model;
 
 public class Man {
 

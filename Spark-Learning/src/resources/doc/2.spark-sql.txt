@@ -1,0 +1,111 @@
+SPARK SQL
+可以执行sql语句,执行Hql(Hive)语句,将运行的结果作为Dataset和DataFrame（将查询出来的结果转换成RDD，类似于hive将sql语句转换成mapreduce）
+
+Spark SQL的计算速度(Spark-SQL比Hive快了至少一个数量级，尤其是在Tungsten成熟以后会更加无可匹敌)，Spark SQL推出的DataFrame可以让数据仓库直接使用机器学习，图计算等复杂的算法库来对数据仓库进行复杂深度数据价值的挖掘。
+
+老版本中有hivecontext 现在使用sparksession
+spark sql例子：
+ val spark=SparkSession.builder().master("local").appName("hehe")
+     .config("spark.some.config.option","some-value")
+        .getOrCreate()
+    import  spark.implicits._ //隐式转换
+    val df = spark.read.json("hdfs://hadoop100:8020/spark/0917/wxf.json")
+    df.show()
+    df.filter($"age">21).show()
+    df.createGlobalTempView("perpson")
+    spark.sql("SELECT * FROM persons where age > 21").show()
+    spark.stop()
+
+RDD,DataFrame,DataSet关系
+DataSet 包括RDD,DataFrame(RDD),两者是并列的
+Dataframe与RDD相比:Dataframe比较高级
+1.具有表结构信息的，即schema。
+2.DataFrame比RDD执行效率更高、减少数据读取以及执行计划的优化
+3.DataFrame比RDD性能更高:RDD存在于JVM上，可以非常精准的控制内存
+定制化内存管理
+数据以二进制的方式存在于非堆内存，节省了大量空间之外，还摆脱了GC的限制。
+查询计划通过Spark catalyst optimiser进行优化：可以是不太会使用RDD的工程师写出相对高效的代码
+
+DataSet:分布式数据集
+DataSet是强类型的,DataFrame=Dataset[Row],Dataframe是Dataset的特列 ROW实际是定长的字符串
+
+一句话表示RDD是怎么做,DataFrame,DataSet做什么
+执行路线先map先filter 你随意
+DataFrame,DataSet 是目标导向的,它的catalyst会帮你进行优化,也可以写出性能比较高的程序
+sparksession---spark sparkcontex---sc
+sc=sparksession.sparkcontex()
+
+细节：
+show------表格
+collect------rdd打印
+
+转换:
+转成RDD---xx.rdd
+转成DataFrame---ToDF
+转成DataSet---{
+DataFrame-->DataSet:as[person]
+RDD-->DataSet:toDS
+}
+RDD转成DataFrame(主要的三种):
+rdd.map(para=>(para(0).trim(),para(1).trim().toInt)).toDF("name","age")
+//通过反射来设置case class 中定义了列名
+rdd.map(attributes => Person(attributes(0), attributes(1).trim.toInt)).toDF()    
+                             
+//通过编程方式来设置Schema，适合于编译期不能确定列的情况
+schemaString.map(fieldName => StructField(fieldName, StringType, nullable = true))  
+val schema = StructType(fields)
+val rdd[Row] = rdd.map(attributes => Row(attributes(0), attributes(1).trim))
+val peopeDF = spark.createDataFrame(rdd[Row],schema)
+
+sql编程：通过case class 定义表的schema,case class使用反射成为列的名字
+1.获取DataFrame/Dataset
+val peopleRdd = sc.textFile("examples/src/main/resources/people.txt")
+val peopleDF3 = peopleRdd.map(_.split(",")).map(paras => (aras(),paras(1).trim().toInt)).toDF("name","age")
+
+2.DataFrame注册
+df.createOrReplaceTempView("people")
+
+3.执行sql
+val sqlDF = spark.sql("SELECT * FROM people")
+
+4.展示：
+sqlDF.show()
+
+不同方式：
+val usersDF = spark.read.load("examples/src/main/resources/users.parquet")
+usersDF.select("name", "favorite_color").write.save("namesAndFavColors.parquet")
+
+val sqlDF = spark.sql("SELECT * FROM parquet.`examples/src/main/resources/users.parquet`")
+
+val sqlDF = spark.sql("SELECT * FROM parquet.`examples/src/main/resources/users.parquet`")
+
+外部hive：spark内置有Hive,但我们使用外部的Hive
+hive,spark,hdfs关系:
+spark 文件中有两个文件夹：spark-warehouse,metastore_db
+当我们copy hive-site.xml文件到spark后,会读取Hive中的warehouse文件 获取到hive中的表格数据
+
+
+Spark SQL的输入输出:spark默认parquet是默认格式，可以通过sparkSession.read.load 进行设置
+输入:
+sparkSession.read.format("json").load("path")  支持类型：parquet、json、text、csv、orc、jdbc
+sparkSession.read.json、 csv
+输出：
+dataFrame.write.format("json").save("path")  支持类型：parquet、json、text、csv、orc、  
+dataFrame.write.csv("path")
+
+
+应用UDF函数
+//*************  UDAF 用户自定义聚合函数
+弱类型:
+1、弱类型用户自定义聚合函数继承UserDefinedAggregateFunction
+2、注册：spark.udf.resigter函数。
+3、调用：select UDAF(列名) 
+强类型：
+强类型的用户自定义聚合函数：继承Aggregator[Employee, Average, Double]
+
+隐式转换：import spark.implicit._  RDD转成Dataframe
+
+
+
+
+

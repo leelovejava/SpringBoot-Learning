@@ -5,11 +5,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import com.atguigu.stream.model.Employee;
 import org.junit.Test;
 
-import com.atguigu.stream.Employee.Status;
+import com.atguigu.stream.model.Employee.Status;
 
-/*
+/**
  * 一、 Stream 的操作步骤
  * 
  * 1. 创建 Stream
@@ -31,7 +32,7 @@ public class TestStreamAPI2 {
 	);
 	
 	//3. 终止操作
-	/*
+	/**
 		allMatch——检查是否匹配所有元素
 		anyMatch——检查是否至少匹配一个元素
 		noneMatch——检查是否没有匹配的元素
