@@ -1,12 +1,12 @@
 package com.atguigu.stream;
 
+import com.atguigu.stream.model.Employee;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
-
-import com.atguigu.stream.model.Employee;
-import org.junit.Test;
 
 /**
  * 一、 Stream 的操作步骤
@@ -75,7 +75,7 @@ public class TestStreamAPI1 {
 	}
 	
 	/**
-		sorted()——自然排序
+			sorted()——自然排序
 		sorted(Comparator com)——定制排序
 	 */
 	@Test
@@ -86,7 +86,12 @@ public class TestStreamAPI1 {
 			.forEach(System.out::println);
 		
 		System.out.println("------------------------------------");
-		
+
+		///emps.stream().sorted(Comparator.comparing(Employee::getAge));
+
+		// 逆序
+		///emps.stream().sorted(Comparator.comparing(Employee::getAge).reversed());
+
 		emps.stream()
 			.sorted((x, y) -> {
 				if(x.getAge() == y.getAge()){
