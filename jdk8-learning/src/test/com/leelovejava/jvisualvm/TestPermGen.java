@@ -11,6 +11,8 @@ import java.util.List;
 /**
  * 永久保留区域PermGen
  * @author tianhao
+ * @description 性能分析神器VisualVM
+ * @see 'http://www.cnblogs.com/wade-xu/p/4369094.html'
  */
 public class TestPermGen {
     
