@@ -1,8 +1,9 @@
-package com.leelovejava.jvisualvm;
+package com.leelovejava.gc;
 
 /**
  * 如何判断java对象已经死亡？
  * 引用计数算法:给对象添加一个引用计数器,每当有一个地方引用到他，就加1;引用失效就减1
+ *
  * @author tianhao
  */
 public class ReferenceCountingGC {
@@ -33,9 +34,11 @@ public class ReferenceCountingGC {
      * debug，通过VisualVM发现，内存仍然被回收了
      * 所以JVM不是通过引用计数的方式来确定是否回收对象的。
      * 因为,引用计数从上面的例子看出来会有一个问题就是，虽然还有引用，但这两个对象都是不可达对象（无法被访问的）
+     *
      * @param second
      */
     public static void sleep(int second) {
+        // 问题:无法解决循环引用的问题
         try {
             Thread.sleep(second * 1000);
         } catch (InterruptedException e) {
