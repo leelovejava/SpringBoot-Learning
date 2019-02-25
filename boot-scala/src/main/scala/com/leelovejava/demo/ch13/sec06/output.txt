@@ -1,0 +1,14 @@
+total 52
+drwx------ 13 cay cay 4096 Jun  3 11:45 .
+drwx------ 24 cay cay 4096 Jun 13 11:04 ..
+drwx------  2 cay cay 4096 Jun  3 11:45 sec01
+drwx------  2 cay cay 4096 Jun 12 10:02 sec02
+drwx------  2 cay cay 4096 Jun 12 10:02 sec03
+drwx------  2 cay cay 4096 Jun 12 07:17 sec04
+drwx------  2 cay cay 4096 Jun 12 07:13 sec05
+drwx------  2 cay cay 4096 Jun  3 11:45 sec06
+drwx------  2 cay cay 4096 Jun  3 11:45 sec07
+drwx------  2 cay cay 4096 Jun  3 11:45 sec08
+drwx------  2 cay cay 4096 Jun 15 21:12 sec09
+drwx------  2 cay cay 4096 Jun  3 11:45 sec10
+drwx------  2 cay cay 4096 Jun  3 11:45 sec11
