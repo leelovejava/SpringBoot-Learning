@@ -1,4 +1,4 @@
-package com.leelovejava.essearch.page;
+package com.leelovejava.jvisualvm.essearch.page;
 
 public class SimplePage implements Paginable {
     private static final long serialVersionUID = 1L;

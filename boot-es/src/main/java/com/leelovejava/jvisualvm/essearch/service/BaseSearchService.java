@@ -1,4 +1,4 @@
-package com.leelovejava.essearch.service;
+package com.leelovejava.jvisualvm.essearch.service;
 
 import com.leelovejava.essearch.page.Page;
 

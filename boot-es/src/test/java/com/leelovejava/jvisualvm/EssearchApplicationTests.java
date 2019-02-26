@@ -1,4 +1,4 @@
-package com.leelovejava;
+package com.leelovejava.jvisualvm;
 
 import com.alibaba.fastjson.JSON;
 import com.leelovejava.essearch.EssearchApplication;

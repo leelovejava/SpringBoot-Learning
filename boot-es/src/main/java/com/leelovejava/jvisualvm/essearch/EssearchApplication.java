@@ -1,4 +1,4 @@
-package com.leelovejava.essearch;
+package com.leelovejava.jvisualvm.essearch;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

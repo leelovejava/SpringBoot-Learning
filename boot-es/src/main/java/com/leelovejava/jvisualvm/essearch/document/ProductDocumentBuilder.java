@@ -1,4 +1,4 @@
-package com.leelovejava.essearch.document;
+package com.leelovejava.jvisualvm.essearch.document;
 
 import java.util.Date;
 
