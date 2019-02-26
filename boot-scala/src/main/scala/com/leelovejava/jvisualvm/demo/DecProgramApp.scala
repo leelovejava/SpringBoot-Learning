@@ -1,4 +1,4 @@
-package com.leelovejava.demo
+package com.leelovejava.jvisualvm.demo
 
 /**
   * 声明式编程

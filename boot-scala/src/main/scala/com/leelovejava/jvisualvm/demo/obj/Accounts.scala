@@ -1,4 +1,4 @@
-package com.leelovejava.demo.obj
+package com.leelovejava.jvisualvm.demo.obj
 
 /**
   * Scala对象之单例对象
