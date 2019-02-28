@@ -1,4 +1,4 @@
-package com.leelovejava.jvisualvm.essearch.service;
+package com.leelovejava.essearch.service;
 
 import com.leelovejava.essearch.document.ProductDocument;
 

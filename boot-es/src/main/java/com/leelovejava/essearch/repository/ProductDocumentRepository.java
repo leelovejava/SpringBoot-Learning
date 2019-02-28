@@ -1,4 +1,4 @@
-package com.leelovejava.jvisualvm.essearch.repository;
+package com.leelovejava.essearch.repository;
 
 
 import com.leelovejava.essearch.document.ProductDocument;
