@@ -1,4 +1,4 @@
-package com.leelovejava;
+package com.leelovejava.es;
 
 import com.leelovejava.essearch.EssearchApplication;
 import com.leelovejava.essearch.document.ProductDocument;
