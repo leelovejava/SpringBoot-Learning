@@ -172,6 +172,10 @@ public class BaseSearchServiceImpl<T> implements BaseSearchService<T> {
         return list;
     }
 
+    /**
+     * 删除索引
+     * @param indexName 索引名
+     */
     @Override
     public void deleteIndex(String indexName) {
         elasticsearchTemplate.deleteIndex(indexName);
