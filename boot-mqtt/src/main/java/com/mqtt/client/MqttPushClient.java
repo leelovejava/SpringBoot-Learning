@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 
 /**
  * mqtt消息推送或订阅客户端
+ *
  * @author Administrator
  */
 @Component
@@ -45,13 +46,13 @@ public class MqttPushClient {
         connect();
     }
 
-    private String username="admin";
-    private String password="password";
-    private String hostUrl="tcp://127.0.0.1:61613";
-    private String clientId="mqttId";
-    private String defaultTopic="topic";
-    private Integer timeOut=10;
-    private Integer keepAlive=20;
+    private String username = "admin";
+    private String password = "password";
+    private String hostUrl = "tcp://127.0.0.1:61613";
+    private String clientId = "mqttId";
+    private String defaultTopic = "topic";
+    private Integer timeOut = 10;
+    private Integer keepAlive = 20;
 
     private void connect() {
         try {
@@ -73,6 +74,15 @@ public class MqttPushClient {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * 断线重连
+     */
+    public void reConnect() {
+        if (null != client) {
+            connect();
         }
     }
 
