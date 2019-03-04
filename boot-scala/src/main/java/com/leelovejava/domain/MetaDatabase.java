@@ -1,4 +1,4 @@
-package com.leelovejava.jvisualvm.domain;
+package com.leelovejava.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

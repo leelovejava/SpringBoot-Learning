@@ -1,4 +1,4 @@
-package com.leelovejava.jvisualvm.demo.obj
+package com.leelovejava.obj.obj
 
 /**
   * Scala对象之伴生对象
