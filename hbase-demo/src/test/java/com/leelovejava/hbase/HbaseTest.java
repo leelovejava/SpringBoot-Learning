@@ -2,6 +2,8 @@ package com.leelovejava.hbase;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HColumnDescriptor;
+import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
 import org.apache.hadoop.hbase.client.Table;
@@ -36,6 +38,10 @@ public class HbaseTest {
         config = HBaseConfiguration.create();
         config.set("hbase.zookeeper.quorum", "192.168.109.131:2181");
     }
+
+    /**
+     * 创建表
+     */
     @Test
     public void creatTable(){
         TableName tableName = TableName.valueOf("test");
@@ -51,6 +57,12 @@ public class HbaseTest {
             System.out.println("admin start");
             //System.out.println(admin.balance());
             System.out.println("tableExists:"+admin.tableExists(tableName));
+            // 表描述
+            HTableDescriptor desc=new HTableDescriptor(tableName);
+            // 列族
+            HColumnDescriptor cf = new HColumnDescriptor("cf".getBytes());
+            desc.addFamily(cf);
+            admin.createTable(desc);
             System.out.println("admin end");
         } catch (Exception e) {
             e.printStackTrace();
