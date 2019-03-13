@@ -60,6 +60,7 @@ public class HBaseUtil {
      */
     public static boolean deleteTable(String tableName) {
         try (HBaseAdmin admin = (HBaseAdmin) HBaseConn.getHBaseConn().getAdmin()) {
+            // 删除表时，必须先禁用
             admin.disableTable(tableName);
             admin.deleteTable(tableName);
         } catch (Exception e) {
@@ -90,6 +91,12 @@ public class HBaseUtil {
         return true;
     }
 
+    /**
+     * 插入多行数据
+     * @param tableName
+     * @param puts
+     * @return
+     */
     public static boolean putRows(String tableName, List<Put> puts) {
         try (Table table = HBaseConn.getTable(tableName)) {
             table.put(puts);
