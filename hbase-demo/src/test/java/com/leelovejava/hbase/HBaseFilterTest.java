@@ -40,11 +40,32 @@ public class HBaseFilterTest {
     /**
      * rowKey过滤器—RowFilter
      * 通过正则，过滤rowKey值
+     *
+     * 　SingleColumnValueFilter
+     *
+     * 　　参数：列族、列名、操作符、列值
+     *
+     * 　　操作符可以为：
+     *
+     * 　　CompareOp.LESS：小于
+     *
+     * 　　CompareOp.LESS_OR_EQUAL：小于或者等于
+     *
+     * 　　CompareOp.EQUAL：等于
+     *
+     * 　　CompareOp.NOT_EQUAL：不等于
+     *
+     * 　　CompareOp.GREATER_OR_EQUAL：大于或者等于
+     *
+     * 　　CompareOp.GREATER：大于
+     *
+     * 　　CompareOp.NO_OP：不比较
      */
-    /*@Test
+    @Test
     public void rowFilterTest() {
+        // 列值过滤器 对列值进行过滤
         // CompareOperator op, ByteArrayComparable rowComparator
-        Filter filter = new RowFilter(CompareOperator.EQUAL, new BinaryComparator(Bytes.toBytes("rowkey1")));
+        Filter filter = new RowFilter(CompareFilter.CompareOp.EQUAL, new BinaryComparator(Bytes.toBytes("rowkey1")));
 
         FilterList filterList = new FilterList(Operator.MUST_PASS_ONE, Arrays.asList(filter));
 
@@ -52,7 +73,7 @@ public class HBaseFilterTest {
                 .getScanner("FileTable", "rowkey1", "rowkey3", filterList);
 
         print(scanner);
-    }*/
+    }
 
     /**
      * 前缀过滤器:过滤指定列名
