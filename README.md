@@ -11,6 +11,8 @@
 - Spring Boot基础教程：http://blog.didispace.com/Spring-Boot%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/
 - Spring Cloud基础教程：http://blog.didispace.com/Spring-Cloud%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/
 - [Spring For All社区](http://spring4all.com/)
+- [springBoot官方示例](https://github.com/spring-projects/spring-boot/blob/master/spring-boot-samples/)
+
 ## Spring Boot 2.0 新特性学习
 
 **简介与概览**
