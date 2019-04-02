@@ -20,6 +20,7 @@
 - [Spring Boot 2.0 正式发布，升还是不升呢？](http://blog.didispace.com/spring-boot-2-release/)
 - [Spring Boot 2.0 新特性和发展方向](http://blog.didispace.com/Spring-Boot-2-0-%E6%96%B0%E7%89%B9%E6%80%A7%E5%92%8C%E5%8F%91%E5%B1%95%E6%96%B9%E5%90%91/)
 - [Spring Boot 2.0 与 Java 9](http://blog.didispace.com/Spring-Boot-2.0%E4%B8%8EJava-9/)
+- [Spring Boot 最流行的 16 条实践解读](https://mp.weixin.qq.com/s/zFzUZPJ-ib2zbDYWN26iuA)
 
 **新特性详解**
 
