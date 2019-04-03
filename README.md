@@ -53,6 +53,7 @@
 - [Spring Boot Web 静态文件缓存处理](http://cxytiandi.com/blog/detail/17217)
 - [SpringBoot拦截器](https://www.dalaoyang.cn/article/43)
 - [Spring Boot：自定义starter](https://mp.weixin.qq.com/s/LVOGjCi-xBrEnPezi9JyiA)
+- [在Spring Boot中格式化JSON日期](https://mp.weixin.qq.com/s/pozvVFS6g1mnLD7TKrSugg)
 
 #### Web开发
 
