@@ -35,6 +35,7 @@
 
 - chapter1：[基本项目构建（可作为工程脚手架），引入web模块，完成一个简单的RESTful API](http://blog.didispace.com/spring-boot-learning-1/)
 - [使用Intellij中的Spring Initializr来快速构建Spring Boot/Cloud工程](http://blog.didispace.com/spring-initializr-in-intellij/)
+- [5种运行Spring Boot应用的方法](https://mp.weixin.qq.com/s/1Cgk_GBazypBs9C5o9hVjg)
 
 #### 工程配置
 
@@ -81,6 +82,7 @@
 - [Spring Boot整合Mybatis通用Mapper插件](http://tengj.top/2017/12/20/springboot11/)
 - hbase-phoenix-mybatis：[mybatis通过phoenix操作hbase](https://blog.csdn.net/tototuzuoquan/article/details/81506285)
 - springboot_hbase_kafka:[封装hbase基础操作,dao层注入](https://gitee.com/susonglin/springboot_hbase_kafka/)
+- spring-boot-starter-hbase: [集成 HBase的新姿势](https://mp.weixin.qq.com/s/1Cgk_GBazypBs9C5o9hVjg)
 - boot-flyway：[使用Flyway来管理数据库版本](http://blog.didispace.com/spring-boot-flyway-db-version/)
 - chapter3-2-10：[使用LDAP来统一管理用户信息](http://blog.didispace.com/spring-boot-ldap-user/)
 - [JPA整合](http://blog.720ui.com/2017/springboot_02_data_jpa/)
