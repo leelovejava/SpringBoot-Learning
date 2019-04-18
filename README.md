@@ -53,12 +53,13 @@
 - [Spring Boot Web 静态文件缓存处理](http://cxytiandi.com/blog/detail/17217)
 - [SpringBoot拦截器](https://www.dalaoyang.cn/article/43)
 - [Spring Boot：自定义starter](https://mp.weixin.qq.com/s/LVOGjCi-xBrEnPezi9JyiA)
+- [深入 Spring Boot如何自定义Starter](https://mp.weixin.qq.com/s/-O2cFg_3WOUq555mmEpuMw)
 - [在Spring Boot中格式化JSON日期](https://mp.weixin.qq.com/s/pozvVFS6g1mnLD7TKrSugg)
 
 #### Web开发
 
 - chapter3-1-1：[构建一个较为复杂的RESTful API以及单元测试](http://blog.didispace.com/springbootrestfulapi/)
-- springboot-restful：[http://www.bysocket.com/?p=1080](http://www.bysocket.com/?p=1080)
+- springboot-restful：[Spring Boot 之 RESRful API 权限控制](http://www.bysocket.com/?p=1080)
 - chapter3-1-2：[使用Thymeleaf模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
 - chapter3-1-3：[使用Freemarker模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
 - chapter3-1-4：[使用Velocity模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
@@ -275,7 +276,7 @@ shiro
 - [第二十八篇：JDK8 日期格式化](https://blog.battcn.com/2018/10/01/springboot/v2-localdatetime/)
 
 
-#### http://www.cnblogs.com/GoodHelper/tag/spring%20boot/default.html
+#### [刘东的博客](http://www.cnblogs.com/GoodHelper/tag/spring%20boot/default.html)
 * spring boot高性能实现二维码扫码登录(下)——订阅与发布机制版
 * spring boot高性能实现二维码扫码登录(上)——单服务器版
 * spring boot + vue + element-ui全栈开发入门——项目部署
