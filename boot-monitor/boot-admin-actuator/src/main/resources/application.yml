@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: prometheus-test
+management:
+  endpoints:
+    web:
+      exposure:
+        # 将 Actuator 的 /actuator/prometheus 端点暴露出来
+        include: 'prometheus'
+  metrics:
+    # 为指标设置一个名为application="prometheus-test" 的Tag，Tag是Prometheus提供的一种能力，从而实现更加灵活的筛选
+    tags:
+      application: ${spring.application.name}
