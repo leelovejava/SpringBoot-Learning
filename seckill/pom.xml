@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.leelovejava.boot</groupId>
+    <artifactId>seckill</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.1.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <validation.version>1.0.0.GA</validation.version>
+        <spring.version>4.3.10.RELEASE</spring.version>
+        <spring-boot.version>1.5.6.RELEASE</spring-boot.version>
+        <spring-data-commons.version>1.12.2.RELEASE</spring-data-commons.version>
+        <springside.version>4.2.3-GA</springside.version>
+        <spring-data-mongodb.version>1.9.2.RELEASE</spring-data-mongodb.version>
+        <spring-dao.version>2.0.8</spring-dao.version>
+        <tomcat-jdbc.version>8.0.33</tomcat-jdbc.version>
+        <druid.version>1.0.29</druid.version>
+        <sitemesh.version>2.4.2</sitemesh.version>
+        <shiro.version>1.2.3</shiro.version>
+        <jackson.version>2.7.9</jackson.version>
+        <aspectj.version>1.7.4</aspectj.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.2.3</logback.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <commons-io.version>2.5</commons-io.version>
+        <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <guava.version>23.0</guava.version>
+        <junit.version>4.12</junit.version>
+        <assertj.version>2.2.0</assertj.version>
+        <selenium.version>2.42.2</selenium.version>
+        <powermock.version>1.6.6</powermock.version>
+        <javasimon.version>4.1.0</javasimon.version>
+        <solar.version>3.0.0</solar.version>
+        <httpclient.version>4.5.3</httpclient.version>
+        <httpcore.version>4.4.6</httpcore.version>
+        <mysql.driver.version>6.0.6</mysql.driver.version>
+        <zookeeper.version>3.4.6</zookeeper.version>
+        <netty.version>4.0.36.Final</netty.version>
+        <resteasy.version>3.0.16.Final</resteasy.version>
+        <activemq.version>5.13.4</activemq.version>
+        <springboot.version>2.1.1.RELEASE</springboot.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+
