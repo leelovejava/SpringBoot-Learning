@@ -1,0 +1,2 @@
+# # 指定刚刚创建的 GirlFriendAutoConfiguration 的全路径名
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=site.exception.GirlFriendAutoConfiguration
