@@ -60,9 +60,9 @@
 
 - chapter3-1-1：[构建一个较为复杂的RESTful API以及单元测试](http://blog.didispace.com/springbootrestfulapi/)
 - springboot-restful：[Spring Boot 之 RESRful API 权限控制](http://www.bysocket.com/?p=1080)
-- chapter3-1-2：[使用Thymeleaf模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
-- chapter3-1-3：[使用Freemarker模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
-- chapter3-1-4：[使用Velocity模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
+- boot-thymeleaf：[使用Thymeleaf模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
+- boot-freemarker：[使用Freemarker模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
+- boot-velocity：[使用Velocity模板引擎渲染web视图](http://blog.didispace.com/springbootweb/)
 - [Spring Boot 集成 FreeMarker 详解案例](http://www.bysocket.com/?p=1666)
 - boot-swagger：[使用Swagger2构建RESTful API](http://blog.didispace.com/springbootswagger2/)
 - chapter3-1-6：[统一异常处理](http://blog.didispace.com/springbootexception/)

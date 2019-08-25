@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Thymeleaf之变量</title>
+</head>
+<body>
+<h1>
+    <!--Thymeleaf通过`${}`来获取model中的变量，注意这不是el表达式，而是ognl表达式，但是语法非常像-->
+    欢迎您：<span th:text="${user.name}">请登录</span>
+    <!--感觉跟el表达式几乎是一样的。不过区别在于，我们的表达式写在一个名为：`th:text`的标签属性中，这个叫做`指令`-->
+
+
+    <h1>非h5,向下兼容</h1>
+    <span data-th-text="${user.name}">请登录</span>
+
+    <!--获取变量
+        对象.属性名
+        属性本身是变量  ${user['name']}
+    -->
+    <h1>ognl表达式的语法糖</h1>
+    <span data-th-text="${user['name']}">请登录</span>
+
+    <h1>自定义变量前</h1>
+    <h2>
+        <p>Name: <span th:text="${user.name}">Jack</span>.</p>
+        <p>Age: <span th:text="${user.age}">21</span>.</p>
+        <p>friend: <span th:text="${user.friend.name}">Rose</span>.</p>
+    </h2>
+
+    <h1>自定义变量后</h1>
+    <!--首先在 `h2`上 用 `th:object="${user}"`获取user的值，并且保存-->
+    <h2 th:object="${user}">
+        <!--然后，在`h2`内部的任意元素上，可以通过 `*{属性名}`的方式，来获取user中的属性，这样就省去了大量的`user.`前缀了-->
+        <p>Name: <span th:text="*{name}">Jack</span>.</p>
+        <p>Age: <span th:text="*{age}">21</span>.</p>
+        <p>friend: <span th:text="*{friend.name}">Rose</span>.</p>
+    </h2>
+
+    <h1>方法</h1>
+
+    <!--本身支持ognl表达式中的方法调用-->
+    <h2 th:object="${user}">
+        <p>FirstName: <span th:text="*{name.split(' ')[0]}">Jack</span>.</p>
+        <p>LastName: <span th:text="*{name.split(' ')[1]}">Li</span>.</p>
+    </h2>
+    <!--调用name（是一个字符串）的split方法-->
+
+    <!-- Thymeleaf提供的全局对象
+    `#dates`         处理java.util.date的工具对象
+    `#calendars`     处理java.util.calendar的工具对象
+    `#numbers`       用来对数字格式化的方法
+    `#strings`       用来处理字符串的方法
+    `#bools`         用来判断布尔值的方法
+    `#arrays`        用来护理数组的方法
+    `#lists`         用来处理List集合的方法
+    `#sets`          用来处理set集合的方法
+    `#maps`          用来处理map集合的方法
+    -->
+</h1>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Thymeleaf</title>
+</head>
+<body>
+<p>
+    今天是: <span th:text="${#dates.format(today,'yyyy-MM-dd')}">2019-08-25</span>
+</p>
+
+<br/>
+
+<!--4.4 字面值:指令中填写基本类型如：字符串、数值、布尔等，并不希望被Thymeleaf解析为变量-->
+<!--4.4.1.字符串字面值
+
+使用一对`'`引用的内容就是字符串字面值了-->
+<p>
+    你正在观看 <span th:text="'thymeleaf'">template</span> 的字符串常量值.
+</p>
+
+<!--
+4.4.2.数字字面值
+
+数字不需要任何特殊语法， 写的什么就是什么，而且可以直接进行算术运算
+-->
+<p>今年是 <span th:text="2018">1900</span>.</p>
+<p>两年后将会是 <span th:text="2019 + 2">1902</span>.</p>
+
+<!--
+4.4.3.布尔字面值
+
+布尔类型的字面值是true或false
+-->
+<div th:if="true">
+    你填的是true
+</div>
+
+
+<!--4.5 拼接-->
+<span th:text="'欢迎您:' + ${user.name} + '!'"></span>
+<!--简化后-->
+<span th:text="|欢迎您:${user.name}|"></span>
+
+
+<!--4.6 运算-->
+<!--注意: ${}`内部的是通过OGNL表达式引擎解析的，
+    外部的才是通过Thymeleaf的引擎解析，
+    因此运算符尽量放在`${}`外进行
+-->
+<!--4.6.1 算术运算
+
+支持的算术运算符：`+ - * / %`-->
+<span th:text="${user.age}"></span>
+<span th:text="${user.age}%2 == 0"></span>
+
+<!--
+4.6.2 比较运算
+
+支持的比较运算：`>`, `<`, `>=` and `<=`  ，但是`>`, `<`不能直接使用，因为xml会解析为标签，要使用别名。
+
+注意 `==` and `!=`不仅可以比较数值，类似于equals的功能。
+
+可以使用的别名：`gt (>), lt (<), ge (>=), le (<=), not (!). Also eq (==), neq/ne (!=)
+-->
+
+<!--4.6.3 条件运算
+
+- 三元运算
+
+三元运算符的三个部分：conditon ? then : else
+
+​	condition：条件
+
+​	then：条件成立的结果
+
+​	else：不成立的结果
+
+其中的每一个部分都可以是Thymeleaf中的任意表达式
+-->
+<span th:text="${user.sex} ? '男':'女'"></span>
+
+<!--默认值
+
+有的时候，我们取一个值可能为空，这个时候需要做非空判断，可以使用 `表达式 ?: 默认值`简写-->
+<span th:text="${user.name} ?: '二狗'"></span>
+<!--当前面的表达式值为null时，就会使用后面的默认值。
+
+注意：`?:`之间没有空格-->
+
+
+<!--4.7 循环-->
+<tr th:each="user : ${users}">
+    <td th:text="${user.name}">Onions</td>
+    <td th:text="${user.age}">2.41</td>
+</tr>
+<!--${users} 是要遍历的集合，可以是以下类型：
+
+- Iterable，实现了Iterable接口的类
+- Enumeration，枚举
+- Interator，迭代器
+- Map，遍历得到的是Map.Entry
+- Array，数组及其它一切符合数组结果的对象-->
+
+<!--迭代的同时，获取迭代的状态对象-->
+<tr th:each="user,stat : ${users}">
+    <td th:text="${user.name}">Onions</td>
+    <td th:text="${user.age}">2.41</td>
+</tr>
+<!--
+stat对象包含以下属性：
+
+- index，从0开始的角标
+- count，元素的个数，从1开始
+- size，总元素个数
+- current，当前遍历到的元素
+- even/odd，返回是否为奇偶，boolean值
+- first/last，返回是否为第一或最后，boolean值
+-->
+
+<!--4.8 逻辑判断-->
+<!--Thymeleaf中使用`th:if` 或者 `th:unless` ，两者的意思恰好相反-->
+<span th:if="${user.age} < 24">小鲜肉</span>
+<!--
+如果表达式的值为true，则标签会渲染到页面，否则不进行渲染。
+
+以下情况被认定为true：
+
+- 表达式值为true
+- 表达式值为非0数值
+- 表达式值为非0字符
+- 表达式值为字符串，但不是`"false"`,`"no"`,`"off"`
+- 表达式不是布尔、字符串、数字、字符中的任何一种
+
+其它情况包括null都被认定为false
+-->
+
+<!--4.9 分支控制switch-->
+<!--两个指令 `th:switch` 和 `th:case`-->
+<div th:switch="${user.role}">
+    <p th:case="'admin'">用户是管理员</p>
+    <p th:case="'manager'">用户是经理</p>
+    <!--`th:case="*"`表示默认，放最后-->
+    <p th:case="*">用户是别的玩意</p>
+</div>
+
+
+<!--4.10.JS模板-->
+<!--模板引擎不仅可以渲染html，也可以对JS中的进行预处理。
+而且为了在纯静态环境下可以运行，其Thymeleaf代码可以被注释起来-->
+<!--在script标签中通过`th:inline="javascript"`来声明这是要特殊处理的js脚本-->
+<script th:inline="javascript">
+    // const user = /*[[Thymeleaf表达式]]*/ "静态环境下的默认值";
+    // 因为Thymeleaf被注释起来，因此即便是静态环境下， js代码也不会报错，而是采用表达式后面跟着的默认值。
+    const user = /*[[${user}]]*/ {};
+    const age = /*[[${user.age}]]*/ 20;
+    console.log(user);
+    console.log(age)
+</script>
+</body>
+</html>
