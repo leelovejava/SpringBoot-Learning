@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      # 命名策略
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    url: jdbc:mysql://node01:8066/mycats?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&rewriteBatchedStatements=true
+    username: mycat
+    password: mycat

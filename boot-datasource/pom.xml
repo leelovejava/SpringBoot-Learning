@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>sharding-database-table</module>
+        <module>mysql-mycat</module>
     </modules>
 
     <parent>
