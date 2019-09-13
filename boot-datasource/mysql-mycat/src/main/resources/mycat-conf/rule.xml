@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mycat:rule SYSTEM "rule.dtd">
 <mycat:rule xmlns:mycat="http://io.mycat/">
-	<tableRule name="mod-long"> <!-- 对应表的分片规则 -->
+    <!-- 对应表的分片规则 -->
+    <tableRule name="mod-long">
         <rule>
-            <columns>id</columns><!-- 对应数据表要取模的字段名称 -->
-            <algorithm>mod-long</algorithm><!-- 对应function的名称 -->
+            <!-- 对应数据表要取模的字段名称 -->
+            <columns>id</columns>
+            <!-- 对应function的名称 -->
+            <algorithm>mod-long</algorithm>
         </rule>
     </tableRule>
-    
-    <function name="mod-long" class="io.mycat.route.function.PartitionByMod"><!-- name：对应tableRule的名称；class：切分规则对应的切分类 -->
+
+    <!-- name：对应tableRule的名称；class：切分规则对应的切分类 -->
+    <function name="mod-long" class="io.mycat.route.function.PartitionByMod">
         <!--  scheme.xml中有多少个dataNode就改成多少个 -->
         <property name="count">2</property>
     </function>

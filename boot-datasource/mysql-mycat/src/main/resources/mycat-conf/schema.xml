@@ -1,18 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE mycat:schema SYSTEM "schema.dtd">
 <mycat:schema xmlns:mycat="http://io.mycat/">
-	<schema name="mycats" checkSQLschema="false" sqlMaxLimit="100">
+    <schema name="mycats" checkSQLschema="false" sqlMaxLimit="100">
         <!-- 逻辑表配置 -->
-        <table name="tb_user" dataNode="dn1,dn2" rule="mod-long" /><!--name：实际物理库的数据表名；dataNode：表对应的分片；rule：分片规则名称，具体配置在rule.xml中-->
+        <!--name：实际物理库的数据表名；dataNode：表对应的分片；rule：分片规则名称，具体配置在rule.xml中-->
+        <table name="tb_user" dataNode="dn1,dn2"
+               rule="mod-long"/>
     </schema>
- 
-    <dataNode name="dn1" dataHost="host1" database="mycat1" /><!--name：分片名称；database：实际物理库的数据库名-->
-    <dataNode name="dn2" dataHost="host1" database="mycat2" />
- 
+
+    <!--name：分片名称；database：实际物理库的数据库名-->
+    <dataNode name="dn1" dataHost="host1" database="mycat1"/>
+    <dataNode name="dn2" dataHost="host1" database="mycat2"/>
+
     <dataHost name="host1" maxCon="100" minCon="10" balance="0" writeType="0" dbType="mysql" dbDriver="native">
         <!--mysql心跳检测命令-->
-       <heartbeat>select user()</heartbeat>
+        <heartbeat>select user()</heartbeat>
         <!--实际物理库的配置信息-->
-       <writeHost host="hostM1" url="localhost:3306" user="root" password="123456" />
+        <writeHost host="hostM1" url="localhost:3306" user="root" password="123456"/>
     </dataHost>
 </mycat:schema>
