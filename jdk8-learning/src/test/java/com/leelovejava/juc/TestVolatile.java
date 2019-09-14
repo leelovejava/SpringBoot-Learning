@@ -11,7 +11,7 @@ package com.leelovejava.juc;
 public class TestVolatile {
 	
 	public static void main(String[] args) {
-		ThreadDemo td = new ThreadDemo();
+		VolatileThreadDemo td = new VolatileThreadDemo();
 		new Thread(td).start();
 		
 		while(true){
@@ -25,7 +25,7 @@ public class TestVolatile {
 
 }
 
-class ThreadDemo implements Runnable {
+class VolatileThreadDemo implements Runnable {
 
 	private volatile boolean flag = false;
 
