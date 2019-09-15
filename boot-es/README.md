@@ -34,7 +34,8 @@ Springboot2.1.1+elasticsearch6.5.3搭建的企业级搜索平台，支持PB级�
     ```bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.5.3/elasticsearch-analysis-ik-6.5.3.zip```
 3. essearch <br/>
     标准springboot项目，导入IDE运行即可。
-#### 四、essearch配置说明
+    
+#### 四、elasticsearch配置说明
 
 1. 修改```application.properties->spring.data.elasticsearch.cluster-nodes```  elasticsearch地址
 2. 修改```application.properties->spring.data.elasticsearch.cluster-name``` 集群名称，和上面配置的相对应
@@ -51,3 +52,12 @@ Springboot2.1.1+elasticsearch6.5.3搭建的企业级搜索平台，支持PB级�
 1. 数据库数据同步，可自行安装插件。
 2. 如需mq、接口方式同步数据，请查看项目中的save接口模块。
 
+#### Springboot整合Elasticsearch报错
+```
+/**
+ * Springboot整合Elasticsearch 在项目启动前设置一下的属性，防止报错
+ * 解决netty冲突后初始化client时还会抛出异常
+ * java.lang.IllegalStateException: availableProcessors is already set to [4], rejecting [4]
+ */
+System.setProperty("es.set.netty.runtime.available.processors", "false");
+```
