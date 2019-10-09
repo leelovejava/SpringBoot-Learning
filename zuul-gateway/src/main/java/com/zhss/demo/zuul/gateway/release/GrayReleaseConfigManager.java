@@ -1,4 +1,4 @@
-package com.zhss.demo.zuul.gateway;
+package com.zhss.demo.zuul.gateway.release;
 
 import java.util.List;
 import java.util.Map;
@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 灰度配置管理类
+ *
  * @author leelovejava
  */
 @Component

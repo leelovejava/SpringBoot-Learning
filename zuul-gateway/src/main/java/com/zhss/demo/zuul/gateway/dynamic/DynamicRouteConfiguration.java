@@ -1,4 +1,4 @@
-package com.zhss.demo.zuul.gateway;
+package com.zhss.demo.zuul.gateway.dynamic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;

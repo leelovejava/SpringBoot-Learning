@@ -1,4 +1,4 @@
-package com.zhss.demo.zuul.gateway;
+package com.zhss.demo.zuul.gateway.dynamic;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.cloud.netflix.zuul.filters.RefreshableRouteLocator;

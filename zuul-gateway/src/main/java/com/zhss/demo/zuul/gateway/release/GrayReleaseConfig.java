@@ -1,4 +1,4 @@
-package com.zhss.demo.zuul.gateway;
+package com.zhss.demo.zuul.gateway.release;
 
 /**
  * 灰度发布配置对象

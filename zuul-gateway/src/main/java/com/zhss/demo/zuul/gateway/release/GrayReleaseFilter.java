@@ -1,4 +1,4 @@
-package com.zhss.demo.zuul.gateway;
+package com.zhss.demo.zuul.gateway.release;
 
 import org.springframework.context.annotation.Configuration;
 
