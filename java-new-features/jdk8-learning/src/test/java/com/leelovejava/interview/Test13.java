@@ -1,4 +1,4 @@
-﻿package com.leelovejava.interview;
+package com.leelovejava.interview;
 
 /**
  * 已知有一个数列：f(0) = 1,f(1) = 4,

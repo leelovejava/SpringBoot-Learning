@@ -1,4 +1,4 @@
-﻿package com.leelovejava.interview;
+package com.leelovejava.interview;
 
 /**
  * 金额转换，阿拉伯数字的金额转换成中国传统的形式

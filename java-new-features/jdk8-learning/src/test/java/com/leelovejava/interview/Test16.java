@@ -1,4 +1,4 @@
-﻿package com.leelovejava.interview;
+package com.leelovejava.interview;
 
 /**
  * 1.Java中的“==”和equals()方法有什么区别？

@@ -1,4 +1,4 @@
-﻿package com.leelovejava.interview;
+package com.leelovejava.interview;
 
 import org.junit.Test;
 

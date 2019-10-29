@@ -1,4 +1,4 @@
-﻿package com.leelovejava.interview;
+package com.leelovejava.interview;
 
 /**
  * 输入一个整形数组，数组里有正数也有负数。数组中连续的一个或多个整数组成一个子数组，每个子数组都有一个和。

@@ -1,4 +1,4 @@
-﻿package com.leelovejava.interview;
+package com.leelovejava.interview;
 
 /**
  * 题目1：一个数组，让数组的每个元素去除第一个元素，得到的商作为被除数所在位置的新值。

@@ -1,4 +1,4 @@
-﻿package com.leelovejava.interview;
+package com.leelovejava.interview;
 
 /**
  * 输入两个正整数m和n，求其最大公约数和最小公倍数。
