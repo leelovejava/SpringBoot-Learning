@@ -26,7 +26,7 @@ import org.junit.Test;
  * 		boolean test(T t);
  * 
  */
-public class TestLambda3 {
+public class Lambda3Test {
 	
 	//Predicate<T> 断言型接口：
 	@Test
