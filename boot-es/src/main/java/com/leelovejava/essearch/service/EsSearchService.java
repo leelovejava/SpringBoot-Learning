@@ -15,6 +15,7 @@ public interface EsSearchService extends BaseSearchService<ProductDocument> {
      *
      * @auther: zhoudong
      * @date: 2018/12/13 16:02
+     * @param productDocuments
      */
     void save(ProductDocument... productDocuments);
 

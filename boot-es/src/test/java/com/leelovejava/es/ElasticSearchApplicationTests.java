@@ -20,7 +20,7 @@ import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EssearchApplication.class)
-public class EssearchApplicationTests {
+public class ElasticSearchApplicationTests {
     private Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired

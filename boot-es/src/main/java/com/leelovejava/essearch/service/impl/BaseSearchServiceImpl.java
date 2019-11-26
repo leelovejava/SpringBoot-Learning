@@ -2,6 +2,8 @@ package com.leelovejava.essearch.service.impl;
 
 import com.leelovejava.essearch.page.Page;
 import com.leelovejava.essearch.service.BaseSearchService;
+import com.leelovejava.essearch.vo.HouseData;
+import com.leelovejava.essearch.vo.SearchResult;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.text.Text;
 import org.elasticsearch.index.query.Operator;
@@ -13,7 +15,9 @@ import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.aggregation.AggregatedPage;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Service;
@@ -43,6 +47,10 @@ public class BaseSearchServiceImpl<T> implements BaseSearchService<T> {
                 .withQuery(new QueryStringQueryBuilder(keyword))
                 .withSort(SortBuilders.scoreSort().order(SortOrder.DESC))
                 // .withSort(new FieldSortBuilder("createTime").order(SortOrder.DESC))
+
+                // 设置高亮
+                ///.withHighlightFields(new HighlightBuilder.Field("title"))
+
                 .build();
 
         return elasticsearchTemplate.queryForList(searchQuery, clazz);
@@ -106,9 +114,35 @@ public class BaseSearchServiceImpl<T> implements BaseSearchService<T> {
         Long totalCount = hits.getTotalHits();
         Page<Map<String, Object>> page = new Page<>(pageNo, pageSize, totalCount.intValue());
         page.setList(getHitList(hits));
+
+
         return page;
     }
 
+    /**
+     * 高亮分页
+     * @param pageNo
+     * @param pageSize
+     * @param keyWord
+     * @return
+     */
+    public SearchResult queryHitByPage(int pageNo, int pageSize,String keyWord){
+        //设置分页参数
+        PageRequest pageRequest = PageRequest.of(pageNo - 1, pageSize);
+
+        SearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withQuery(QueryBuilders.matchQuery("title",
+                        // match查询
+                        keyWord).operator(Operator.AND))
+                .withPageable(pageRequest)
+                // 设置高亮
+                .withHighlightFields(new HighlightBuilder.Field("title"))
+                .build();
+        AggregatedPage<HouseData> housePage =
+                this.elasticsearchTemplate.queryForPage(searchQuery,
+                        HouseData.class);
+        return new SearchResult(housePage.getTotalPages(), housePage.getContent());
+    }
     /**
      * 构造查询条件
      *
