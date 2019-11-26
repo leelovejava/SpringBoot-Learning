@@ -189,6 +189,7 @@ shiro
 
 #### 监控
 - boot-monitor
+- cat
 
 #### 服务器
 - [内嵌的服务器 Tomcat剖析](http://blog.720ui.com/2016/springboot_05_server_tomcat/)
