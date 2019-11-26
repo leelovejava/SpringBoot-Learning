@@ -1,8 +1,8 @@
 package com.atguigu.statisfunction;
 
-import com.atguigu.statisfunction.MyFun;
-import com.atguigu.statisfunction.MyInterface;
-
+/**
+ * @author y.x
+ */
 public class SubClass /*extends MyClass*/ implements MyFun, MyInterface {
 
     @Override

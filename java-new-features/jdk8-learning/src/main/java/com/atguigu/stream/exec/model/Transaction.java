@@ -2,50 +2,52 @@ package com.atguigu.stream.exec.model;
 
 /**
  * 交易类
+ *
+ * @author y.x
  */
 public class Transaction {
 
-	private Trader trader;
-	private int year;
-	private int value;
+    private Trader trader;
+    private int year;
+    private int value;
 
-	public Transaction() {
-	}
+    public Transaction() {
+    }
 
-	public Transaction(Trader trader, int year, int value) {
-		this.trader = trader;
-		this.year = year;
-		this.value = value;
-	}
+    public Transaction(Trader trader, int year, int value) {
+        this.trader = trader;
+        this.year = year;
+        this.value = value;
+    }
 
-	public Trader getTrader() {
-		return trader;
-	}
+    public Trader getTrader() {
+        return trader;
+    }
 
-	public void setTrader(Trader trader) {
-		this.trader = trader;
-	}
+    public void setTrader(Trader trader) {
+        this.trader = trader;
+    }
 
-	public int getYear() {
-		return year;
-	}
+    public int getYear() {
+        return year;
+    }
 
-	public void setYear(int year) {
-		this.year = year;
-	}
+    public void setYear(int year) {
+        this.year = year;
+    }
 
-	public int getValue() {
-		return value;
-	}
+    public int getValue() {
+        return value;
+    }
 
-	public void setValue(int value) {
-		this.value = value;
-	}
+    public void setValue(int value) {
+        this.value = value;
+    }
 
-	@Override
-	public String toString() {
-		return "Transaction [trader=" + trader + ", year=" + year + ", value="
-				+ value + "]";
-	}
+    @Override
+    public String toString() {
+        return "Transaction [trader=" + trader + ", year=" + year + ", value="
+                + value + "]";
+    }
 
 }

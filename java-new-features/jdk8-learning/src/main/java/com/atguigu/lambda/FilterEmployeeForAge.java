@@ -1,10 +1,13 @@
 package com.atguigu.lambda;
 
-public class FilterEmployeeForAge implements MyPredicate<Employee>{
+/**
+ * @author y.x
+ */
+public class FilterEmployeeForAge implements MyPredicate<Employee> {
 
-	@Override
-	public boolean test(Employee t) {
-		return t.getAge() <= 35;
-	}
+    @Override
+    public boolean test(Employee t) {
+        return t.getAge() <= 35;
+    }
 
 }

@@ -2,6 +2,7 @@ package com.atguigu.statisfunction;
 
 /**
  * 6-接口中的默认方法与静态方法
+ * @author y.x
  */
 public interface MyInterface {
 	
