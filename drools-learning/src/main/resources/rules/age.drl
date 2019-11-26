@@ -1,0 +1,10 @@
+import com.lrq.wechatDemo.domain.User               // 导入类
+
+dialect  "mvel"
+
+rule "age"                                      // 规则名，唯一
+    when
+        $user : User(age<15 || age>60)     //规则的条件部分
+    then
+        System.out.println("年龄不符合要求！");
+end
