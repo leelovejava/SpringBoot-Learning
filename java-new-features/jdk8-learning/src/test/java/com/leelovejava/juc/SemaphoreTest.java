@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * @author leelovejava
  * @see 'https://www.cnblogs.com/itermis/p/9004041.html'
  */
-public class SemaphoreDemo {
+public class SemaphoreTest {
     /**
      * 1) 观察Semaphore类的基本定义
      * public class Semaphore extends Object implements Serializable
