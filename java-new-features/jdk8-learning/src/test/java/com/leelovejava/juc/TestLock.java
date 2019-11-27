@@ -3,7 +3,7 @@ package com.leelovejava.juc;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/*
+/**
  * 一、用于解决多线程安全问题的方式：
  * 
  * synchronized:隐式锁

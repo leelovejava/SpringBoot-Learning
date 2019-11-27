@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/*
+/**
  * 生产者消费者案例：
  */
 public class TestProductorAndConsumerForLock {

@@ -63,16 +63,15 @@ public class TestForkJoinPool {
 }
 
 class ForkJoinSumCalculate extends RecursiveTask<Long>{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -259195479995561737L;
 	
 	private long start;
 	private long end;
-	
-	private static final long THURSHOLD = 10000L;  //临界值
+
+	/**
+	 * 临界值
+	 */
+	private static final long THURSHOLD = 10000L;
 	
 	public ForkJoinSumCalculate(long start, long end) {
 		this.start = start;

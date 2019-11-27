@@ -1,6 +1,6 @@
 package com.leelovejava.juc;
 
-/*
+/**
  * 一、volatile 关键字：当多个线程进行操作共享数据时，可以保证内存中的数据可见。
  * 					  相较于 synchronized 是一种较为轻量级的同步策略。
  * 

@@ -1,6 +1,6 @@
 package com.leelovejava.juc;
 
-/*
+/**
  * 题目：判断打印的 "one" or "two" ？
  * 
  * 1. 两个普通同步方法，两个线程，标准打印， 打印? //one  two

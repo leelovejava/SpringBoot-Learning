@@ -1,6 +1,6 @@
 package com.leelovejava.juc;
 
-/*
+/**
  * 模拟 CAS 算法
  */
 public class TestCompareAndSwap {
