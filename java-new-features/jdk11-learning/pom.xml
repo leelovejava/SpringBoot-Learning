@@ -9,11 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jdk12-learning</artifactId>
+    <artifactId>jdk11-learning</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jdk.version>12</jdk.version>
+        <jdk.version>11</jdk.version>
         <!--单元测试-->
         <junit.verson>4.12</junit.verson>
     </properties>

@@ -13,7 +13,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jdk.version>1.13</jdk.version>
+        <jdk.version>13</jdk.version>
         <!--单元测试-->
         <junit.verson>4.12</junit.verson>
     </properties>
