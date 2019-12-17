@@ -1,6 +1,7 @@
 package com.atguigu.stream;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -63,7 +64,7 @@ public class TestStreamAPI2 {
 	@Test
 	public void test2(){
 		Optional<Employee> op = emps.stream()
-			.sorted((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary()))
+			.sorted(Comparator.comparingDouble(Employee::getSalary))
 			.findFirst();
 		
 		System.out.println(op.get());
