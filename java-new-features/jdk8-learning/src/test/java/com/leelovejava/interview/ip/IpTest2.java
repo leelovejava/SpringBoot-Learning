@@ -224,11 +224,12 @@ public class IpTest2 {
     /**
      * 找出map中最大访问次数的ip
      *
-     * @param pMap      需计算的map
+     * @param pMap      需计算的map key:ip,value: 访问次数
      * @param resultMap ip和最多访问次数的结果集
      */
     private static void count(Map<String, Integer> pMap, Map<String, Integer> resultMap) {
         Iterator<Map.Entry<String, Integer>> it = pMap.entrySet().iterator();
+        // ip最大访问次数
         int max = 0;
         String resultIp = "";
         while (it.hasNext()) {
