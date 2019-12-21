@@ -126,7 +126,7 @@ public class IpTest2 {
      */
     private static void divideIpsFile() {
         File file = new File(FILE_PATH);
-        Map<String, StringBuilder> map = new HashMap<>();
+        Map<String, StringBuilder> map = new HashMap<>(1024);
         int count = 0;
         try {
             if (!file.exists()) {
@@ -178,7 +178,7 @@ public class IpTest2 {
      * 3）文件拆分了之后，接下来我们就要分别读取这1000个小文件，统计其中每个IP出现的次数。
      **/
     private static void calculate() {
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>(1024);
         File folder = new File(FOLDER);
         File[] files = folder.listFiles();
         FileReader fileReader;
@@ -189,7 +189,7 @@ public class IpTest2 {
                 fileReader = new FileReader(file);
                 br = new BufferedReader(fileReader);
                 String ip;
-                Map<String, Integer> tmpMap = new HashMap<>();
+                Map<String, Integer> tmpMap = new HashMap<>(1024);
                 while ((ip = br.readLine()) != null) {
                     if (tmpMap.containsKey(ip)) {
                         int count = tmpMap.get(ip);
@@ -208,7 +208,7 @@ public class IpTest2 {
                 e.printStackTrace();
             }
         }
-        Map<String, Integer> finalMap = new HashMap<>();
+        Map<String, Integer> finalMap = new HashMap<>(1024);
         // 3.2）当1000个文件都读取完之后，我们就会产生一个有1000条记录的map，里面存储了每个文件中访问次数最多的ip，我们再调用count()方法，找出这个map中访问次数最大的ip,
         // 即这1000个文件中，哪个文件中的最高访问量的IP，才是真正最高的，好像小组赛到决赛一样。。。。
         count(map, finalMap);
