@@ -153,12 +153,13 @@ public class TestStreamAPI3 {
 	public void test6(){
 		Map<Status, Map<String, List<Employee>>> map = emps.stream()
 			.collect(Collectors.groupingBy(Employee::getStatus, Collectors.groupingBy((e) -> {
-				if(e.getAge() >= 60)
+				if(e.getAge() >= 60) {
 					return "老年";
-				else if(e.getAge() >= 35)
+				} else if(e.getAge() >= 35) {
 					return "中年";
-				else
+				} else {
 					return "成年";
+				}
 			})));
 		
 		System.out.println(map);
