@@ -7,6 +7,9 @@ import java.util.stream.LongStream;
 import com.atguigu.forkjoin.ForkJoinCalculate;
 import org.junit.Test;
 
+/**
+ * @author leelovejava
+ */
 public class TestForkJoin {
 	
 	@Test
