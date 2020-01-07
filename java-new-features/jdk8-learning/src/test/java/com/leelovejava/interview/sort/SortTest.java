@@ -1,7 +1,8 @@
 package com.leelovejava.interview.sort;
 
 /**
- * 冒泡排序
+ * 十大排序算法
+ * 文档 十大经典排序算法(java实现+动画) https://blog.csdn.net/meibenxiang/article/details/92796909
  *
  * @author y.x
  * @date 2019/12/21
@@ -12,11 +13,11 @@ public class SortTest {
      *
      * @param array
      */
-    private static void bubbleSort(int[] array) {
-        int temp = 0;
-        //第一个 for 循环控制排序要走多少趟， 最多做 n-1 趟排序
+    private static int[] bubbleSort(int[] array) {
+        int temp;
+        // 第一个 for 循环控制排序要走多少趟， 最多做 n-1 趟排序
         for (int i = 0; i < array.length - 1; i++) {
-            //第 2 个 for 循环控制每趟比较多少次
+            // 第 2 个 for 循环控制每趟比较多少次
             for (int j = 0; j < array.length - 1 - i; j++) {
                 if (array[j + 1] < array[j]) {
                     temp = array[j];
@@ -24,6 +25,15 @@ public class SortTest {
                     array[j + 1] = temp;
                 }
             }
+        }
+        return array;
+    }
+
+    public static void main(String[] args) {
+        int[] array = new int[]{3, 2, 1, 3};
+        int[] array2 = bubbleSort(array);
+        for (int i = 0; i < array2.length; i++) {
+            System.out.println(array2[i]);
         }
     }
 
@@ -156,6 +166,100 @@ public class SortTest {
         }
         array[hi] = key;
         return hi;
+    }
+
+    /**
+     * 堆排序
+     * 基本思想:
+     * 堆的概念：
+     * n个元素的序列{k1，k2，…,kn}当且仅当满足下列关系之一时，称之为堆。
+     * 　　情形1：ki <= k2i 且ki <= k2i+1 （最小堆）
+     * 　　情形2：ki >= k2i 且ki >= k2i+1 （最大堆）
+     * 　　其中i=1,2,…,n/2向下取整;
+     * 堆排序：
+     * 把待排序的序列看作是一棵顺序存储的二叉树，调整它们的存储顺序，使之成为一个最大堆，这时堆的根节点数最大。然后，将根节点与堆的最后一个节点交换，并对前面n-1个数重新调整使之成为堆，依此类推，最后得到有n个节点的有序序列。
+     * 从算法描述来看，堆排序需要两个过程，一是建立堆，二是堆结果。
+     * 说明：若想得到升序序列，则建立最大堆，若想得到降序序列，则建立最小堆。
+     *
+     * @param element
+     */
+    public static void heapSort(int[] element) {
+        // step1:建堆
+        int length = element.length;
+        for (int i = length / 2 - 1; i >= 0; i--) {
+            adjustHeap(element, i, length - 1);
+        }
+        // step2:交换位置,调整堆结构
+        int tmp;
+        for (int j = length - 1; j >= 0; j--) {
+            tmp = element[j];
+            element[j] = element[0];
+            element[0] = tmp;
+            adjustHeap(element, 0, j - 1);
+        }
+    }
+
+    public static void adjustHeap(int[] element, int start, int end) {
+        int tmp = element[start];
+        for (int i = 2 * start + 1; i <= end; i = 2 * i + 1) {
+            //定位父节点的左右孩子值较大的节点
+            if (i < end && element[i] < element[i + 1]) {
+                i++;
+            }
+            //父节点比左右孩子值都大,则跳出循环
+            if (tmp > element[i]) {
+                break;
+            }
+            //进行下一轮的筛选
+            element[start] = element[i];
+            start = i;
+        }
+        element[start] = tmp;
+    }
+
+    /**
+     * 归并排序
+     * 是把待排序序列分为若干个子序列，每个子序列是有序的，然后再把有序子序列合并为整体有序序列。
+     *
+     * @param element
+     * @param left
+     * @param right
+     */
+    public static void mergeSort(int[] element, int left, int right) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+            //左边进行递归排序
+            mergeSort(element, left, mid);
+            //右边进行递归排序
+            mergeSort(element, mid + 1, right);
+            //左右两部分进行合并处理
+            merge(element, left, mid, right);
+        }
+    }
+
+
+    public static void merge(int[] element, int left, int middle, int right) {
+        int[] tmpElement = new int[element.length];
+        int index = left;
+        int mid = middle + 1;
+        int tmpIndex = left;
+        while (left <= middle && mid <= right) {
+            if (element[left] < element[mid]) {
+                tmpElement[index++] = element[left++];
+            } else {
+                tmpElement[index++] = element[mid++];
+            }
+        }
+        while (left <= middle) {
+            tmpElement[index++] = element[left++];
+        }
+        while (mid <= right) {
+            tmpElement[index++] = element[mid++];
+        }
+
+        while (tmpIndex <= right) {
+            element[tmpIndex] = tmpElement[tmpIndex++];
+        }
     }
 
     public static void sort(int[] array, int lo, int hi) {
