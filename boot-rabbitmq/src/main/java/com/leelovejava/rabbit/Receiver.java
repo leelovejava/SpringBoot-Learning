@@ -1,11 +1,9 @@
-package com.didispace.rabbit;
+package com.leelovejava.rabbit;
 
+import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
 
 /**
  * @author 翟永超
@@ -13,7 +11,7 @@ import java.util.Date;
  * @blog http://blog.didispace.com
  */
 @Component
-@RabbitListener(queues = "hello")
+@RabbitListener(queuesToDeclare = @Queue("hello"))
 public class Receiver {
 
     @RabbitHandler

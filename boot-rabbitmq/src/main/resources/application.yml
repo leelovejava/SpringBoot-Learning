@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: boot-rabbitmq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    # 地址
+    #virtual-host: /admin_toov5
+    # 开启消息确认机制 confirms
+    publisher-confirms: true
+    publisher-returns: true
+    # 消费者
+    listener:
+      simple:
+        retry:
+          # 开启消费者（程序出现异常的情况下会）进行重试
+          enabled: true
+          # 最大重试次数
+          max-attempts: 5
+          # 重试间隔次数
+          initial-interval: 3000
+        # 开启手动ack
+        acknowledge-mode: manual
+  datasource:
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/rabbitmq?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+server:
+  port: 8081

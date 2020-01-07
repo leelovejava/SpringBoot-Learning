@@ -1,14 +1,15 @@
-package com.didispace;
+package com.leelovejava;
 
-import com.didispace.rabbit.Sender;
+import com.leelovejava.rabbit.BootRabbitmqApplication;
+import com.leelovejava.rabbit.Sender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = HelloApplication.class)
+@SpringBootTest(classes = BootRabbitmqApplication.class)
 public class HelloApplicationTests {
 
 	@Autowired
