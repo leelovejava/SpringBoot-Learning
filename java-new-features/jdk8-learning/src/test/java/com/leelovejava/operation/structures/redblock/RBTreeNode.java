@@ -4,6 +4,7 @@ package com.leelovejava.operation.structures.redblock;
  * 节点
  *
  * @author leelovejava
+ * 文档 红黑树理解以及Java实现 https://blog.csdn.net/qq_41854763/article/details/82694873
  */
 public class RBTreeNode {
     private final boolean RED = false;
