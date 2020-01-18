@@ -1,3 +1,5 @@
+package com.leelovejava.redis.test;
+
 import redis.clients.jedis.Jedis;
 
 import java.util.Collections;
