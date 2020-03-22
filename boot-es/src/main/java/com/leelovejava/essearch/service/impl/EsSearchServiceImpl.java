@@ -7,6 +7,7 @@ import com.leelovejava.essearch.service.EsSearchService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.query.IndexQuery;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,6 +17,7 @@ import java.util.List;
 
 /**
  * elasticsearch 搜索引擎 service实现
+ *
  * @author zhoudong
  * @version 0.1
  * @date 2018/12/13 15:33
@@ -29,14 +31,33 @@ public class EsSearchServiceImpl extends BaseSearchServiceImpl<ProductDocument> 
     private ProductDocumentRepository productDocumentRepository;
 
     @Override
-    public void save(ProductDocument ... productDocuments) {
+    public void save(ProductDocument... productDocuments) {
         elasticsearchTemplate.putMapping(ProductDocument.class);
-        if(productDocuments.length > 0){
+        if (productDocuments.length > 0) {
             /*Arrays.asList(productDocuments).parallelStream()
                     .map(productDocumentRepository::save)
                     .forEach(productDocument -> log.info("【保存数据】：{}", JSON.toJSONString(productDocument)));*/
-            log.info("【保存索引】：{}",JSON.toJSONString(productDocumentRepository.saveAll(Arrays.asList(productDocuments))));
+            log.info("【保存索引】：{}", JSON.toJSONString(productDocumentRepository.saveAll(Arrays.asList(productDocuments))));
         }
+    }
+
+    /**
+     * 批量保存
+     *
+     * @param productDocuments
+     */
+    @Override
+    public void bulkIndex(ProductDocument... productDocuments) {
+        List<IndexQuery> queries = new ArrayList<>();
+        IndexQuery indexQuery;
+
+        for (ProductDocument document : productDocuments) {
+            indexQuery = new IndexQuery();
+            indexQuery.setObject(document);
+            queries.add(indexQuery);
+        }
+        elasticsearchTemplate.bulkIndex(queries);
+        queries.clear();
     }
 
     @Override

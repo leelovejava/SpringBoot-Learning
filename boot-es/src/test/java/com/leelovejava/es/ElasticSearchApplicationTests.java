@@ -1,17 +1,21 @@
 package com.leelovejava.es;
 
 import com.alibaba.fastjson.JSON;
-import com.leelovejava.essearch.EssearchApplication;
+import com.leelovejava.essearch.ElasticSearchApplication;
 import com.leelovejava.essearch.document.ProductDocument;
 import com.leelovejava.essearch.document.ProductDocumentBuilder;
 import com.leelovejava.essearch.page.Page;
 import com.leelovejava.essearch.service.EsSearchService;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.elasticsearch.core.aggregation.AggregatedPage;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
@@ -19,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = EssearchApplication.class)
+@SpringBootTest(classes = ElasticSearchApplication.class)
 public class ElasticSearchApplicationTests {
     private Logger log = LoggerFactory.getLogger(getClass());
 
@@ -112,6 +116,41 @@ public class ElasticSearchApplicationTests {
     public void deleteIndex() {
         log.info("【删除索引库】");
         esSearchService.deleteIndex("orders");
+    }
+
+    /**
+     * 聚合查询
+     */
+    @Test
+    public void testAgg() {
+        log.info("【聚合查询】");
+        // 创建一个查询条件对象
+        BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
+        // 拼接查询条件
+        queryBuilder.should(QueryBuilders.termQuery("字段", "值"));
+
+        // 1、添加一个新的聚合，聚合类型为terms，聚合名称为brands，聚合字段为brand
+        // 2、查询,需要把结果强转为AggregatedPage类型
+        // AggregatedPage在Page功能的基础上，拓展了与聚合相关的功能
+        // boolean hasAggregations(); 判断结果中是否有聚合
+        // Aggregations getAggregations(); 获取所有聚合形成的map,key是聚合名称
+        // Aggregation getAggregation(String var1); 根据聚合名称,获取指定集合
+        AggregatedPage<ProductDocument> aggPage = esSearchService.queryAggregation(queryBuilder, ProductDocument.class);
+        // 3、解析
+        // 3.1、从结果中取出名为brands的那个聚合，
+        // 因为是利用String类型字段来进行的term聚合，所以结果要强转为StringTerm类型
+        // brands: 定义的聚合名称
+        StringTerms agg = (StringTerms) aggPage.getAggregation("brands");
+        // 3.2、获取桶
+        List<StringTerms.Bucket> buckets = agg.getBuckets();
+        // 3.3、遍历
+        for (StringTerms.Bucket bucket : buckets) {
+            // 3.4、获取桶中的key，即品牌名称
+            System.out.println(bucket.getKeyAsString());
+            // 3.5、获取桶中的文档数量
+            System.out.println(bucket.getDocCount());
+        }
+
     }
 
 }

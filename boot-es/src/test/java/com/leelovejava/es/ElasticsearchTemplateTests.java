@@ -1,13 +1,12 @@
 package com.leelovejava.es;
 
-import com.leelovejava.essearch.EssearchApplication;
+import com.leelovejava.essearch.ElasticSearchApplication;
 import com.leelovejava.essearch.document.ProductDocument;
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,16 +16,17 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = EssearchApplication.class)
+@SpringBootTest(classes = ElasticSearchApplication.class)
 public class ElasticsearchTemplateTests {
     private Logger log = LoggerFactory.getLogger(getClass());
 
-    @Autowired
+    @Resource
     private ElasticsearchTemplate elasticsearchTemplate;
 
     // https://blog.csdn.net/tianyaleixiaowu/article/details/77965257

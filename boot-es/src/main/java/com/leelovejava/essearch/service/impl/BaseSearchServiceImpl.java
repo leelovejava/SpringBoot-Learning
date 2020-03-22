@@ -12,6 +12,8 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.QueryStringQueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
@@ -40,6 +42,29 @@ public class BaseSearchServiceImpl<T> implements BaseSearchService<T> {
     @Resource
     private ElasticsearchTemplate elasticsearchTemplate;
 
+    /**
+     * 聚合查询
+     *
+     * @param queryBuilder
+     * @param clazz
+     * @return
+     */
+    @Override
+    public AggregatedPage<T> queryAggregation(QueryBuilder queryBuilder, Class<T> clazz) {
+        // 创建聚合查询条件
+        // size是查询聚合出来的条数
+        TermsAggregationBuilder agg = AggregationBuilders.terms("聚合名称，自定义，取出时会用到").field("聚合字段").size(100);
+        SearchQuery build = new NativeSearchQueryBuilder()
+                //添加查询条件
+                .withQuery(queryBuilder)
+                // 添加聚合条件
+                .addAggregation(agg)
+                //符合查询条件的文档分页（不是聚合的分页）
+                .withPageable(PageRequest.of(0, 1))
+                .build();
+
+        return elasticsearchTemplate.queryForPage(build, clazz);
+    }
 
     @Override
     public List<T> query(String keyword, Class<T> clazz) {
@@ -121,12 +146,13 @@ public class BaseSearchServiceImpl<T> implements BaseSearchService<T> {
 
     /**
      * 高亮分页
+     *
      * @param pageNo
      * @param pageSize
      * @param keyWord
      * @return
      */
-    public SearchResult queryHitByPage(int pageNo, int pageSize,String keyWord){
+    public SearchResult queryHitByPage(int pageNo, int pageSize, String keyWord) {
         //设置分页参数
         PageRequest pageRequest = PageRequest.of(pageNo - 1, pageSize);
 
@@ -143,6 +169,7 @@ public class BaseSearchServiceImpl<T> implements BaseSearchService<T> {
                         HouseData.class);
         return new SearchResult(housePage.getTotalPages(), housePage.getContent());
     }
+
     /**
      * 构造查询条件
      *
@@ -208,6 +235,7 @@ public class BaseSearchServiceImpl<T> implements BaseSearchService<T> {
 
     /**
      * 删除索引
+     *
      * @param indexName 索引名
      */
     @Override

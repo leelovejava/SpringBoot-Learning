@@ -1,6 +1,8 @@
 package com.leelovejava.essearch.service;
 
 import com.leelovejava.essearch.page.Page;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.springframework.data.elasticsearch.core.aggregation.AggregatedPage;
 
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,15 @@ public interface BaseSearchService<T> {
      * @return
      */
     List<T> query(String keyword, Class<T> clazz);
+
+    /**
+     * 聚合查询
+     *
+     * @param queryBuilder
+     * @param clazz
+     * @return
+     */
+    AggregatedPage<T> queryAggregation(QueryBuilder queryBuilder, Class<T> clazz);
 
     /**
      * 搜索高亮显示

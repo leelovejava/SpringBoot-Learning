@@ -13,11 +13,18 @@ public interface EsSearchService extends BaseSearchService<ProductDocument> {
     /**
      * 保存
      *
+     * @param productDocuments
      * @auther: zhoudong
      * @date: 2018/12/13 16:02
-     * @param productDocuments
      */
     void save(ProductDocument... productDocuments);
+
+    /**
+     * 批量保存
+     *
+     * @param productDocuments
+     */
+    void bulkIndex(ProductDocument... productDocuments);
 
     /**
      * 删除
