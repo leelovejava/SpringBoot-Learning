@@ -111,6 +111,16 @@ pom：
 
 ## 3.2.默认配置
 
+```yaml
+# 关闭Thymeleaf的缓存
+spring:
+  # - 默认前缀：`classpath:/templates/`
+  # - 默认后缀：`.html`
+  thymeleaf:
+    # 关闭Thymeleaf的缓存
+    cache : false
+```
+
 不需要做任何配置，启动器已经帮我们把Thymeleaf的视图器配置完成：
 
  ![1526435647041](assets/1526435647041.png)

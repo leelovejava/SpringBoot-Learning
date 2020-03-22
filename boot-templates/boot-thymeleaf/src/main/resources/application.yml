@@ -1,7 +1,0 @@
-# 关闭Thymeleaf的缓存
-spring:
-  # - 默认前缀：`classpath:/templates/`
-  # - 默认后缀：`.html`
-  thymeleaf:
-    # 关闭Thymeleaf的缓存
-    cache : false

@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 ///@RunWith(SpringJUnit4ClassRunner.class)
 ///@SpringApplicationConfiguration(classes = MockServletContext.class)
 ///@WebAppConfiguration
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = ThymeleafApplication.class)
 public class ApplicationTests {
 
     private MockMvc mvc;
