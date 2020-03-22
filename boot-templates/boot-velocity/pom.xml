@@ -12,10 +12,9 @@
 	<description>Spring Boot boot-velocity project</description>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.2.RELEASE</version>
-		<relativePath/>
+		<groupId>com.leelovejava.boot</groupId>
+		<artifactId>boot-templates</artifactId>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 
 	<properties>
@@ -25,22 +24,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-velocity</artifactId>

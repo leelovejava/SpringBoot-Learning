@@ -12,10 +12,9 @@
     <description>Spring Boot with Thymeleaf</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.2.RELEASE</version>
-        <relativePath/>
+        <groupId>com.leelovejava.boot</groupId>
+        <artifactId>boot-templates</artifactId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <properties>
@@ -27,18 +26,8 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
 
 </project>
