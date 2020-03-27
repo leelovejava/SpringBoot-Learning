@@ -1,6 +1,8 @@
 package com.didispace.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author 程序猿DD
@@ -8,11 +10,14 @@ import org.springframework.data.annotation.Id;
  * @date 16/4/27 下午10:04.
  * @blog http://blog.didispace.com
  */
+///@Document(collation = "user")
 public class User {
 
     @Id
     private Long id;
 
+    // 索引
+    // @Indexed
     private String username;
     private Integer age;
 

@@ -9,6 +9,7 @@ import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.spi.LoggingEvent;
 
 /**
+ * SpringBoot 使用 Log4j2 结合 Mongodb记录日志
  * 日志插入MongoDB
  *
  * @author 程序猿DD

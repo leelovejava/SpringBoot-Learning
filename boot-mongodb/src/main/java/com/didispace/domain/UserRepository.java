@@ -1,5 +1,7 @@
 package com.didispace.domain;
 
+import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.UpdateResult;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
@@ -10,6 +12,11 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface UserRepository extends MongoRepository<User, Long> {
 
+    /**
+     * 查询
+     *
+     * @param username
+     * @return
+     */
     User findByUsername(String username);
-
 }

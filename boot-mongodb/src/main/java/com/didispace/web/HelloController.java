@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class HelloController {
 
+    /**
+     * http://localhost:8080/hello?name=zhangsan
+     *
+     * @param name
+     * @return
+     */
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
     public String hello(@RequestParam String name) {
