@@ -1,0 +1,15 @@
+# 端口号
+server:
+  port: 8888
+spring:
+  thymeleaf:
+    # 去除thymeleaf的html严格校验
+    mode: LEGACYHTML5
+  freemarker:
+    # 设定thymeleaf文件路径 默认为src/main/resources/templates
+    template-loader-path:
+      lasspath:/templates
+  # 国际化
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8

@@ -1,0 +1,14 @@
+# Java class files
+*.class
+
+# Log Files
+*.log
+
+# Intellij
+*.iml
+*/*.iml
+
+*/.idea/
+.idea/
+*/.settings/
+*/target/
