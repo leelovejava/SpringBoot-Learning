@@ -127,7 +127,7 @@
 - chapter4-3-1：[使用Spring Security](http://blog.didispace.com/springbootsecurity/)
 - [从源码看Spring Security之采坑笔记（Spring Boot篇）](https://www.javazhiyin.com/4582.html)
 - [在SpringBoot中优雅的使用Spring Security OAuth 2](https://mp.weixin.qq.com/s/gG-4Wl07Gl1lNXzuROhI0w)
-- chapter4-3-2：[使用Spring Session（未完成）]
+- boot-session: 使用Spring Session
 - [spring-boot-shiro](https://github.com/ityouknow/spring-boot-examples/tree/master/spring-boot-shiro)
 
 shiro
