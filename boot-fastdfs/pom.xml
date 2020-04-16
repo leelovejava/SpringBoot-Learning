@@ -40,6 +40,7 @@
             <groupId>org.csource</groupId>
             <artifactId>fastdfs-client-java</artifactId>
             <version>1.27-RELEASE</version>
+            <systemPath>${project.basedir}/lib/fastdfs-client-java-1.28-SNAPSHOT.jar</systemPath>
         </dependency>
     </dependencies>
 
