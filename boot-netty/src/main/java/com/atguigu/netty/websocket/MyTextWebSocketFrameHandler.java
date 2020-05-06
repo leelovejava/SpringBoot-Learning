@@ -6,8 +6,11 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 
 import java.time.LocalDateTime;
 
-//这里 TextWebSocketFrame 类型，表示一个文本帧(frame)
-public class MyTextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>{
+/***
+ * 这里 TextWebSocketFrame 类型，表示一个文本帧(frame)
+ * @author leelovejava
+ */
+public class MyTextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
 
@@ -17,7 +20,12 @@ public class MyTextWebSocketFrameHandler extends SimpleChannelInboundHandler<Tex
         ctx.channel().writeAndFlush(new TextWebSocketFrame("服务器时间" + LocalDateTime.now() + " " + msg.text()));
     }
 
-    //当web客户端连接后， 触发方法
+    /**
+     * 当web客户端连接后， 触发方法
+     *
+     * @param ctx
+     * @throws Exception
+     */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         //id 表示唯一的值，LongText 是唯一的 ShortText 不是唯一

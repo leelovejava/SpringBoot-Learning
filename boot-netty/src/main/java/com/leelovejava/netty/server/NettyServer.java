@@ -39,9 +39,9 @@ public class NettyServer {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            //关闭主线程组
+            // 关闭主线程组
             bossGroup.shutdownGracefully();
-            //关闭工作线程组
+            // 关闭工作线程组
             workGroup.shutdownGracefully();
         }
     }

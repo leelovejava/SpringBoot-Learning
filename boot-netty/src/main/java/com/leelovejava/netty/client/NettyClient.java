@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 客户端
+ *
  * @author leelovejava
  **/
 @Slf4j
@@ -19,7 +20,7 @@ public class NettyClient {
         EventLoopGroup group = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap()
                 .group(group)
-                //该参数的作用就是禁止使用Nagle算法，使用于小数据即时传输
+                // 该参数的作用就是禁止使用Nagle算法，使用于小数据即时传输
                 .option(ChannelOption.TCP_NODELAY, true)
                 .channel(NioSocketChannel.class)
                 .handler(new NettyClientInitializer());
@@ -27,12 +28,12 @@ public class NettyClient {
         try {
             ChannelFuture future = bootstrap.connect("127.0.0.1", 8090).sync();
             log.info("客户端成功....");
-            //发送消息
+            // 发送消息
             future.channel().writeAndFlush("你好啊");
             // 等待连接被关闭
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.error("netty client", e);
         } finally {
             group.shutdownGracefully();
         }

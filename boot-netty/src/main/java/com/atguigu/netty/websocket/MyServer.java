@@ -1,6 +1,5 @@
 package com.atguigu.netty.websocket;
 
-import com.atguigu.netty.heartbeat.MyServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -15,17 +14,18 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
-import io.netty.handler.timeout.IdleStateHandler;
 
-import java.util.concurrent.TimeUnit;
-
+/**
+ * @author leelovejava
+ */
 public class MyServer {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
 
-        //创建两个线程组
+        // 创建两个线程组
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
-        EventLoopGroup workerGroup = new NioEventLoopGroup(); //8个NioEventLoop
+        // 8个NioEventLoop
+        EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
 
             ServerBootstrap serverBootstrap = new ServerBootstrap();
@@ -69,7 +69,7 @@ public class MyServer {
             ChannelFuture channelFuture = serverBootstrap.bind(7000).sync();
             channelFuture.channel().closeFuture().sync();
 
-        }finally {
+        } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }

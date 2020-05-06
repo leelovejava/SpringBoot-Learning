@@ -6,11 +6,13 @@
 </head>
 <body>
 <script>
-    var socket;
-    //判断当前浏览器是否支持websocket
-    if(window.WebSocket) {
+    let socket;
+    // 判断当前浏览器是否支持websocket
+    if (window.WebSocket) {
         //go on
         socket = new WebSocket("ws://localhost:7000/hello2");
+        // gateWay方式:
+        /// socket = new WebSocket("ws://localhost:9527/hello2");
         //相当于channelReado, ev 收到服务器端回送的消息
         socket.onmessage = function (ev) {
             var rt = document.getElementById("responseText");
@@ -35,10 +37,12 @@
 
     //发送消息到服务器
     function send(message) {
-        if(!window.socket) { //先判断socket是否创建好
+        // 先判断socket是否创建好
+        if (!window.socket) {
+            console.error("socket创建失败")
             return;
         }
-        if(socket.readyState == WebSocket.OPEN) {
+        if (socket.readyState == WebSocket.OPEN) {
             //通过socket 发送消息
             socket.send(message)
         } else {
@@ -46,11 +50,11 @@
         }
     }
 </script>
-    <form onsubmit="return false">
-        <textarea name="message" style="height: 300px; width: 300px"></textarea>
-        <input type="button" value="发生消息" onclick="send(this.form.message.value)">
-        <textarea id="responseText" style="height: 300px; width: 300px"></textarea>
-        <input type="button" value="清空内容" onclick="document.getElementById('responseText').value=''">
-    </form>
+<form onsubmit="return false">
+    <textarea name="message" style="height: 300px; width: 300px"></textarea>
+    <input type="button" value="发生消息" onclick="send(this.form.message.value)">
+    <textarea id="responseText" style="height: 300px; width: 300px"></textarea>
+    <input type="button" value="清空内容" onclick="document.getElementById('responseText').value=''">
+</form>
 </body>
 </html>
