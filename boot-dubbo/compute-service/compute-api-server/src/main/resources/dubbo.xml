@@ -12,13 +12,13 @@
     <dubbo:registry id="zookeeper" protocol="zookeeper" address="${dubbo.registry.address}" />
 
     <!-- 用dubbo协议在30001 -->
-    <dubbo:protocol name="dubbo" port="30001" dispather="all" threadpool="cached" threads="5000"/>
+    <dubbo:protocol name="dubbo" port="30001" threadpool="cached" threads="5000"/>
 
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="com.didispace.service.ComputeService" ref="computeService"
+    <dubbo:service interface="com.leelovejava.dubbo.service.ComputeService" ref="computeService"
                    version="1.0" registry="zookeeper" owner="shp"/>
 
     <!-- 具体服务接口的实现 -->
-    <bean id="computeService" class="com.didispace.service.impl.ComputeServiceImpl" />
+    <bean id="computeService" class="com.leelovejava.dubbo.service.impl.ComputeServiceImpl" />
 
 </beans>

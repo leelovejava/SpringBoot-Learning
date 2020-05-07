@@ -1,4 +1,4 @@
-package com.didispace;
+package com.leelovejava.dubbo;
 
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
@@ -9,6 +9,9 @@ import org.springframework.context.annotation.ImportResource;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * @author leelovejava
+ */
 @SpringBootApplication
 @ImportResource({"classpath:dubbo.xml"})
 public class Application {

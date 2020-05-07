@@ -1,9 +1,10 @@
-package com.didispace.service.impl;
+package com.leelovejava.dubbo.service.impl;
 
-import com.didispace.service.ComputeService;
+import com.leelovejava.dubbo.service.ComputeService;
 
 /**
- * Created by zhaiyc on 2016/7/14.
+ * @author zhaiyc
+ * @date 2016/7/14
  */
 public class ComputeServiceImpl implements ComputeService {
 

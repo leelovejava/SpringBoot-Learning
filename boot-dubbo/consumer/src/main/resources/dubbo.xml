@@ -12,7 +12,7 @@
     <dubbo:registry id="zookeeper" protocol="zookeeper" address="${dubbo.registry.address}" />
 
     <!-- 引用ComputeService服务-->
-    <dubbo:reference id="computeService" interface="com.didispace.service.ComputeService"
+    <dubbo:reference id="computeService" interface="com.leelovejava.dubbo.service.ComputeService"
                      check="false" version="1.0" url="" registry="zookeeper" protocol="dubbo" timeout="15000"/>
 
 </beans>

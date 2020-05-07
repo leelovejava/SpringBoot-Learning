@@ -1,7 +1,8 @@
-package com.didispace.service;
+package com.leelovejava.dubbo.service;
 
 /**
- * Created by zhaiyc on 2016/7/14.
+ * @author zhaiyc
+ * @date 2016/7/14
  */
 public interface ComputeService {
 
