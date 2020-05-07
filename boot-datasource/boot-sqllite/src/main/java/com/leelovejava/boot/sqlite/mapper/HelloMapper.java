@@ -46,7 +46,7 @@ public interface HelloMapper {
      * @param model
      * @return
      */
-    @Update("UPDATE hello SET value=#{value} WHERE id=#{id}")
+    @Update("UPDATE hello SET title=#{title} WHERE id=#{id}")
     int updateValue(HelloModel model);
 
     /**
