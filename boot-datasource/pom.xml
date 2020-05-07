@@ -11,6 +11,7 @@
     <modules>
         <module>sharding-database-table</module>
         <module>mysql-mycat</module>
+        <module>boot-sqllite</module>
     </modules>
 
     <parent>

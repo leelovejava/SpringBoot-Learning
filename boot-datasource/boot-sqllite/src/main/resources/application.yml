@@ -1,0 +1,21 @@
+sqlite:
+  # 数据库名称
+  dbName: sqlite.db
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    # 方式一：  引用外部文件
+    #        url: jdbc:sqlite:D:/eclipse/xy.db
+    #方式二： 引用项目中的文件
+  # url: jdbc:sqlite::resource:static/sqlite/xy.db
+    url: jdbc:sqlite:D:\setup\sqlite\hello.sqlite
+    username: root
+    password: root
+# Mybatis配置
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
+# sql打印
+logging:
+  level: debug
+  level.com.leelovejava.boot.sqllite: debug
+  path: logs/
