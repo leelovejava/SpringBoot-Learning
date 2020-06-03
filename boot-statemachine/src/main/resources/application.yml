@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: stateMachine
+  redis:
+    host: 127.0.0.1
+    database: 1

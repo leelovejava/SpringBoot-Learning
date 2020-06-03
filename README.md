@@ -209,7 +209,7 @@ shiro
 - springboot-solr：[springboot-solr](https://gitee.com/11230595/springboot-solr)
 
 #### 其他功能
-- chapter6-1-1：[使用Spring StateMachine框架实现状态机](http://blog.didispace.com/spring-statemachine/)
+- boot-statemachine：[使用Spring StateMachine框架实现状态机](http://blog.didispace.com/spring-statemachine/)
 - 工作流 [springboot-activiti](https://gitee.com/wyy396731037/springboot-activiti)
 
 #### Dubbo进行服务治理
