@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    click:
+      driverClassName: ru.yandex.clickhouse.ClickHouseDriver
+      url: jdbc:clickhouse://127.0.0.1:8123/default
+      initialSize: 10
+      maxActive: 100
+      minIdle: 10
+      maxWait: 6000
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+
+# mybatis 配置
+mybatis:
+  type-aliases-package: com.leelovejava.clickhouse.entity
+  mapper-locations: classpath:/mapper/*.xml

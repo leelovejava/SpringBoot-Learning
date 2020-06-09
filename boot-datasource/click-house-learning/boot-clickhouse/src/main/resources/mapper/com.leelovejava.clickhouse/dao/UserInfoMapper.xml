@@ -1,0 +1,36 @@
+<mapper namespace="com.leelovejava.clickhouse.mapper.UserInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.leelovejava.clickhouse.entity.UserInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="pass_word" jdbcType="VARCHAR" property="passWord"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="create_day" jdbcType="VARCHAR" property="createDay"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_name,pass_word,phone,email,create_day
+    </sql>
+
+    <insert id="saveData" parameterType="com.leelovejava.clickhouse.entity.UserInfo">
+        INSERT INTO cs_user_info
+        (id,user_name,pass_word,phone,email,create_day)
+        VALUES
+        (#{id,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR},#{passWord,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{createDay,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from cs_user_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from cs_user_info
+    </select>
+</mapper>
