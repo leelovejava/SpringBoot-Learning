@@ -56,3 +56,11 @@ class AtomicDemo implements Runnable {
 
 
 }
+/**
+ * int inc=1;
+ * inc=inc+1;
+ * step1: 从内存中读取inc的值给存到缓存中，为c
+ * step2: 临时值 t = c + 1 (在寄存器里完成加法操作，不要认为是在缓存里把自己加1)
+ * step3: 写回缓存的操作 c = t
+ * *step4: 写回主存的操作 Inc = c
+ */

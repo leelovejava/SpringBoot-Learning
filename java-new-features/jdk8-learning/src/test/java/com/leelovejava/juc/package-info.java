@@ -17,8 +17,13 @@
  */
 package com.leelovejava.juc;
 /**
- * Java JUC 简介
+ * 1) Java JUC 简介:
  * 在 Java 5.0 提供了 java.util.concurrent （简称JUC ）包，在此包中增加了在并发编程中很常用的实用工具类，
  * 用于定义类似于线程的自定义子系统，包括线程池、异步 IO 和轻量级任务框架。
  * 提供可调的、灵活的线程池。还提供了设计用于多线程上下文中的 Collection 实现等
- **/
+ * 2) 三个概念: 原子性、可见性、有序性
+ * 有序性：程序执行的顺序按照代码的先后顺序执行
+ *
+ * note:
+ * https://gitee.com/moxi159753/LearningNotes/tree/master/%E6%A0%A1%E6%8B%9B%E9%9D%A2%E8%AF%95/JUC
+ */
