@@ -40,11 +40,15 @@ public class LeaveController {
     private ProcessEngine processEngine;
 
     /**
-     * http://localhost:4000/leave/createProcessDiagramPic?processId=37513
      *
+     * 1. 首先启动一个请假的流程，以员工ID staffId 作为唯一标识，XML文件中会接收变量 leaveTask，
+     * Flowable内部会进行数据库持久化，并返回一个流程Id processId ，
+     * 用它可以查询工作流的整体情况，任务Id task为员工具体的请假任务
+     * http://localhost:4000/leave/startLeaveProcess?staffId=37513
      * @author xiaofu
      * @description 启动流程
      * @date 2020/8/26 17:36
+     * @return 创建请假流程 processId：5d835e4e-eb51-11ea-8450-005056c00001任务taskId:5d8fba64-eb51-11ea-8450-005056c00001
      */
     @RequestMapping(value = "startLeaveProcess")
     public String startLeaveProcess(String staffId) {
@@ -54,6 +58,7 @@ public class LeaveController {
         StringBuilder sb = new StringBuilder();
         sb.append("创建请假流程 processId：" + processInstance.getId());
         List<Task> tasks = taskService.createTaskQuery().taskAssignee(staffId).orderByTaskCreateTime().desc().list();
+        // 注意：一个请假流程 processId中可以包含多个请假任务 taskId
         for (Task task : tasks) {
             sb.append("任务taskId:" + task.getId());
         }
@@ -61,40 +66,8 @@ public class LeaveController {
     }
 
     /**
-     * @param taskId
-     * @author xinzhifu
-     * @description 批准
-     * @date 2020/8/27 14:30
-     */
-    @RequestMapping(value = "applyTask")
-    public String applyTask(String taskId) {
-        Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
-        if (task == null) {
-            throw new RuntimeException("流程不存在");
-        }
-        HashMap<String, Object> map = new HashMap<>(1);
-        map.put("checkResult", "通过");
-        taskService.complete(taskId, map);
-        return "申请审核通过~";
-    }
-
-    /**
-     * http://localhost:4000/leave/rejectTask?taskId=10086
-     * @param taskId
-     * @author xinzhifu
-     * @description 驳回
-     * @date 2020/8/27 14:30
-     */
-    @RequestMapping(value = "rejectTask")
-    public String rejectTask(String taskId) {
-        HashMap<String, Object> map = new HashMap<>(1);
-        map.put("checkResult", "驳回");
-        taskService.complete(taskId, map);
-        return "申请审核驳回~";
-    }
-
-
-    /**
+     * 2. 用启动流程时返回的 processId 看一下一下当前的流程图
+     * http://localhost:4000/leave/createProcessDiagramPic?processId=5d835e4e-eb51-11ea-8450-005056c00001
      * @author xiaofu
      * @description 生成流程图
      * @date 2020/8/27 14:29
@@ -165,4 +138,43 @@ public class LeaveController {
             }
         }
     }
+
+    /**
+     * 3.
+     * @param taskId
+     * @author xinzhifu
+     * @description 批准
+     * @date 2020/8/27 14:30
+     */
+    @RequestMapping(value = "applyTask")
+    public String applyTask(String taskId) {
+        Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+        if (task == null) {
+            throw new RuntimeException("流程不存在");
+        }
+        HashMap<String, Object> map = new HashMap<>(1);
+        map.put("checkResult", "通过");
+        taskService.complete(taskId, map);
+        return "申请审核通过~";
+    }
+
+    /**
+     * 3
+     * http://localhost:4000/leave/rejectTask?taskId=5d8fba64-eb51-11ea-8450-005056c00001
+     * @param taskId
+     * @author xinzhifu
+     * @description 驳回
+     * @date 2020/8/27 14:30
+     * @return 申请审核驳回~
+     */
+    @RequestMapping(value = "rejectTask")
+    public String rejectTask(String taskId) {
+        HashMap<String, Object> map = new HashMap<>(1);
+        map.put("checkResult", "驳回");
+        taskService.complete(taskId, map);
+        return "申请审核驳回~";
+    }
+
+
+
 }
