@@ -1,15 +1,18 @@
 package com.leelovejava.boot.jwt.controller;
 
-import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.leelovejava.boot.jwt.config.AudienceConfig;
 import com.leelovejava.boot.jwt.service.UserService;
 import com.leelovejava.boot.jwt.util.JwtHelper;
 import com.leelovejava.boot.jwt.util.MatcherUtil;
 import com.leelovejava.boot.jwt.util.ResultVOUtil;
-import com.leelovejava.boot.jwt.config.AudienceConfig;
 import com.leelovejava.boot.jwt.vo.ResultVo;
 import com.leelovejava.boot.jwt.vo.UserVo;
 import io.jsonwebtoken.Claims;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -21,6 +24,7 @@ import javax.annotation.Resource;
  * 3. 如果验证成功，将使用jwt的api生成一个token
  * 4. 这个token将会返回给前端，前端将会把它保存起来（cookie、上下文或者其他），之后每次请求，都把这个token加在http头里发送到服务端
  * 5. 服务端能够验证token的合法性，因为里面有过期时间和防篡改机制，所以token需要完整发送
+ *
  * @author leelovejava
  */
 @RestController
@@ -80,7 +84,7 @@ public class UserController {
     public ResultVo getTokenInfo(@RequestParam("token") String token) {
         try {
             Claims claims = JwtHelper.parseJWT(token, audience.getBase64Secret());
-            return ResultVOUtil.success(JSON.toJSONString(claims));
+            return ResultVOUtil.success(new ObjectMapper().writeValueAsString(claims));
         } catch (Exception e) {
             e.printStackTrace();
         }
