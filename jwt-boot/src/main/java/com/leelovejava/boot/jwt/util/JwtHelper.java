@@ -28,6 +28,7 @@ public class JwtHelper {
                     .parseClaimsJws(jsonWebToken).getBody();
             return claims;
         } catch (Exception ex) {
+            // 如果secret被篡改了,那么将会抛出SignatureException异常
             ex.printStackTrace();
             return null;
         }

@@ -12,6 +12,7 @@
         <module>jdk8-learning</module>
         <module>jdk12-learning</module>
         <module>jdk13-learning</module>
+        <module>jdk15-learning</module>
     </modules>
 
 
