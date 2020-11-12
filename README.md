@@ -234,6 +234,10 @@ shiro
 
 - [lenos](https://gitee.com/bweird/lenosp)
 
+-----------
+
+https://github.com/xkcoding/spring-boot-demo
+
 ------------------------------------
 
 - [SpringBoot支持AJAX跨域请求](https://blog.battcn.com/2017/07/13/springboot/springboot-cors/)
