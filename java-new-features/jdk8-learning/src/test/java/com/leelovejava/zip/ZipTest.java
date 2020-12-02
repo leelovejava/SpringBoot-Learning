@@ -22,11 +22,11 @@ public class ZipTest {
     private static final String JPG_FILE_DIRECTORY = "D:\\logs\\test\\photo\\";
 
     public static void main(String[] args) {
-        zipFileNoBuffer();
+        ///zipFileNoBuffer();
         ///zipFileBuffer();
-        //zipFileChannel();
+        ///zipFileChannel();
         ///zipFileMap();
-        //zipFilePip();
+        ///zipFilePip();
     }
 
     /**
@@ -42,6 +42,7 @@ public class ZipTest {
                 try (InputStream input = new FileInputStream(file)) {
                     zipOut.putNextEntry(new ZipEntry(file.getName()));
                     int temp;
+                    // 调用本地方法与原生操作系统进行交互，从磁盘中读取数据。每读取一个字节的数据就调用一次本地方法与操作系统交互，是非常耗时的
                     while ((temp = input.read()) != -1) {
                         zipOut.write(temp);
                     }
@@ -68,6 +69,8 @@ public class ZipTest {
                 try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(file))) {
                     zipOut.putNextEntry(new ZipEntry(file.getName()));
                     int temp;
+                    // 如果使用缓冲区的话（这里假设初始的缓冲区大小足够放下30000字节的数据）那么只需要调用一次就行。
+                    // 因为缓冲区在第一次调用read()方法的时候会直接从磁盘中将数据直接读取到内存中。随后再一个字节一个字节的慢慢返回。
                     while ((temp = bufferedInputStream.read()) != -1) {
                         bufferedOutputStream.write(temp);
                     }
@@ -103,8 +106,8 @@ public class ZipTest {
     }
 
     /**
-     * 使用内存映射文件
-     * Version 4 使用Map映射文件
+     * Version 4 使用Map内存映射文件
+     * 内存中开辟了一段直接缓冲区,与数据直接作交互
      */
     public static void zipFileMap() {
         // 开始时间
@@ -186,17 +189,15 @@ public class ZipTest {
     }
 
     /**
-     * noBuffer,
-     * buffer,
-     * channel,fileSize:859M,consume time:77366
-     * map
-     * pip
+     * noBuffer,fileSize:20M,consume time:93916
+     * buffer,fileSize:20M,consume time:4478
+     * channel,fileSize:20M,consume time:2711
+     * map,fileSize:20M,consume time:2395
+     * pip,fileSize:20M,consume time:3312
      *
      * @param time 开始时间
      */
     private static void printInfo(long time) {
-        // fileSize:20M
-        // consume time:29599
         long size = FileUtils.sizeOfDirectory(new File(JPG_FILE_DIRECTORY));
         System.out.println("fileSize:" + (size / 1024 / 1024) + "M");
         System.out.println("consume time:" + (System.currentTimeMillis() - time));
